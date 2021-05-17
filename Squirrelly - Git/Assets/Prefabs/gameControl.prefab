@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3683458224521270165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3683458224521270169}
+  - component: {fileID: 3683458224521270166}
+  - component: {fileID: 2403009407643287743}
+  m_Layer: 0
+  m_Name: gameControl
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3683458224521270169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683458224521270165}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3683458224521270166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683458224521270165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ab38de9acaed3459a8e0ab2cb32a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeTrials:
+  - associatedLevel: {fileID: 11400000, guid: 1a1ce51e926d7d14394585c9c028d62c, type: 2}
+    id: 1
+    type: 1
+    difficultySetting: 0
+  - associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
+    id: 2
+    type: 0
+    difficultySetting: 0
+  - associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
+    id: 3
+    type: 0
+    difficultySetting: 0
+  - associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
+    id: 4
+    type: 0
+    difficultySetting: 0
+  - associatedLevel: {fileID: 11400000, guid: 1a1ce51e926d7d14394585c9c028d62c, type: 2}
+    id: 5
+    type: 0
+    difficultySetting: 0
+  waveBased: []
+  highScore: []
+  stars: {fileID: 0}
+  id: {fileID: 0}
+--- !u!114 &2403009407643287743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683458224521270165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a7dda09f4a628d41aa9d40c7d1f3376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasAnimator: {fileID: 0}

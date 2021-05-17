@@ -6,22 +6,16 @@ public class gameController : MonoBehaviour
 {
     gameData gData;
     //This is for the Editor
-    public List<levelElement> timeTrials, waveBased, highScore;
-    //This is used for all levels
-    private List<levelElement> groupedLevels;
+    [SerializeField] private List<levelElement> groupedLevels;
+    private levelElement currentlySelectedLevel;
 
     //For UI
     [SerializeField] private Slider stars;
-    [SerializeField] private InputField id;
+    [SerializeField] private InputField levelName;
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         gData = serializationHandler.LoadGame(serializationHandler.fileTag) != null ? new gameData(serializationHandler.LoadGame(serializationHandler.fileTag)) : new gameData();
-        groupedLevels = new List<levelElement>();
-
-        //Combine all Levels into Single List that will be Generated into a Map/Key Value -> This will make Access 1-1 -> Allows for Re-structuring
-        groupedLevels.AddRange(timeTrials);
-        groupedLevels.AddRange(waveBased);
-        groupedLevels.AddRange(highScore);
     }
 
     private void Start()
@@ -47,7 +41,7 @@ public class gameController : MonoBehaviour
                 _ = gData.lData.levelDictionary ?? throw errorHandler.fileNotFound;
                 foreach (KeyValuePair<string, storedLevelData> element in gData.lData.levelDictionary)
                 {
-                    Debug.Log("Element ID: " + element.Key + " Element Value Name: " + element.Value.levelName);
+                    Debug.Log("Element ID: " + element.Key);
                 }
                 Debug.Log("Total Coins: " + gData.pData.coins);
                 break;
@@ -59,13 +53,23 @@ public class gameController : MonoBehaviour
 
     public void modifyLevelData()
     {
-        gData.lData.modifyLevelData(id.text, (int)stars.value);
+        //gData.lData.modifyLevelData(id.text, (int)stars.value);
+        foreach (levelElement element in groupedLevels)
+        {
+            if (element.associatedLevel.name == levelName.text)
+            {
+                currentlySelectedLevel = element;
+                break;
+            }
+        }
     }
 
     public void printLevelData()
     {
-        gData.lData.printData(id.text);
+        gData.lData.printData(levelName.text);
     }
+
+    public levelElement getActiveLevel { get { return currentlySelectedLevel; } }
 }
 
 #region Level Information for Proper Storage and Backtracking
@@ -73,23 +77,5 @@ public class gameController : MonoBehaviour
 public struct levelElement
 {
     public level associatedLevel;
-    public string id;
-    public levelType type;
-    public difficulty difficultySetting;
-
-    public enum levelType
-    {
-        waveBased,
-        timeTrial,
-        highScore
-    }
-
-    public enum difficulty
-    {
-        easy,
-        moderate,
-        challenging,
-        impossible
-    }
 }
 #endregion

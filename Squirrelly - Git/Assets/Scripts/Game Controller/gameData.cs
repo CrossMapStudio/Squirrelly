@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -19,7 +18,6 @@ public class gameData
         else
         {
             pData = savedData.pData;
-            Debug.Log("Stored Levels: " + savedData.lData.levelDictionary.Count);
             lData = savedData.lData;
         }
     }
@@ -51,6 +49,12 @@ public class progressData
 [Serializable]
 public class levelHandler
 {
+    private enum gameModeID
+    {
+        timeMode,
+        waveMode,
+        scoreMode
+    }
     public levelHandler(gameData _parent)
     {
         parent = _parent;
@@ -59,59 +63,83 @@ public class levelHandler
 
     public void bakestoredLevelData(List<levelElement> element)
     {
-        List<string> removeKeyList = new List<string>();
+        //Set the Gamemodes first and create a total index
+        timeGamemode tMode;
+        waveGamemode wMode;
+        highScoreGamemode sMode;
+
+        //Set all to false before parsing and checking
+        foreach (KeyValuePair<string, storedLevelData> el in levelDictionary)
+        {
+            el.Value.found = false;
+        }
+
+        //Looking for new or duplicated Levels (Same Number or Mor eLevels)
         for (int i = 0; i < element.Count; i++)
         {
-            string nameChange = element[i].associatedLevel.name + element[i].id;
-            if (!levelDictionary.ContainsKey(element[i].id))
+            tMode = element[i].associatedLevel.getTimeMode;
+            if (tMode != null)
+            for (int j = 0; j < tMode.getCount; j++)
             {
-                levelDictionary.Add(element[i].id, new storedLevelData(element[i].id, nameChange));
-                continue;
+                checkLevelSer(element[i], gameModeID.timeMode.ToString(), j);
+            }
+            wMode = element[i].associatedLevel.getWaveMode;
+            if (wMode != null)
+            for (int j = 0; j < wMode.getCount; j++)
+            {
+                checkLevelSer(element[i], gameModeID.waveMode.ToString(), j);
+            }
+            sMode = element[i].associatedLevel.getHighScoreMode;
+            if (sMode != null)
+            for (int j = 0; j < sMode.getCount; j++)
+            {
+                checkLevelSer(element[i], gameModeID.scoreMode.ToString(), j);
+            }
+        }
+
+        List<string> elementsToRemove = new List<string>();
+        //Looking for Removed Levels -> Optimize the Dictionary (Less Levels Than Expected)
+        foreach (KeyValuePair<string, storedLevelData> el in levelDictionary)
+        {
+            if (!el.Value.found)
+                elementsToRemove.Add(el.Key);
+        }
+
+        for (int i = 0; i < elementsToRemove.Count; i++)
+        {
+            levelDictionary.Remove(elementsToRemove[i]);
+        }
+    }
+ 
+    public void checkLevelSer(levelElement element, string gamemode, int diff)
+    {
+        string idToCheck = element.associatedLevel.id + gamemode + diff;
+        if (!levelDictionary.ContainsKey(idToCheck))
+        {
+            var local = new storedLevelData(idToCheck, element.associatedLevel.id);
+            levelDictionary.Add(idToCheck, local);
+
+            local.found = true;
+        }
+        else
+        {
+            if (levelDictionary[idToCheck].levelName != element.associatedLevel.id)
+            {
+                levelDictionary.Remove(idToCheck);
+                var local = new storedLevelData(idToCheck, element.associatedLevel.id);
+                levelDictionary.Add(idToCheck, local);
+                local.found = true;
+                Debug.Log(idToCheck + " Level was not found -> New Level Instantiated.");
             }
             else
             {
-                if (levelDictionary[element[i].id].levelName != nameChange)
-                {
-                    levelDictionary.Remove(element[i].id);
-                    levelDictionary.Add(element[i].id, new storedLevelData(element[i].id, nameChange));
-                    Debug.Log(nameChange);
-                    continue;
-                }
-            }
-        }
-
-        if (levelDictionary.Count > element.Count)
-        {
-            foreach (KeyValuePair<string, storedLevelData> pair in levelDictionary)
-            {
-                for (int i = 0; i < element.Count; i++)
-                {
-                    string nameChange = element[i].associatedLevel.name + element[i].id;
-                    if (element[i].id == pair.Key)
-                    {
-                        if (pair.Value.levelName != nameChange)
-                        {
-                            removeKeyList.Add(pair.Key);
-                            levelDictionary.Add(element[i].id, new storedLevelData(element[i].id, nameChange));
-                            break;
-                        }
-                        break;
-                    }
-
-                    if (i == element.Count - 1)
-                    {
-                        removeKeyList.Add(pair.Key);
-                        break;
-                    }
-                }
-            }
-
-            for (int i = 0; i < removeKeyList.Count; i++)
-            {
-                levelDictionary.Remove(removeKeyList[i]);
+                levelDictionary[idToCheck].found = true;
+                Debug.Log(idToCheck + " Level Found!");
             }
         }
     }
+
+    #region Debugging
     public void modifyLevelData(string id, int starsEarned)
     {
         levelDictionary[id].stars = starsEarned;
@@ -121,8 +149,9 @@ public class levelHandler
     {
         storedLevelData lev = levelDictionary[id];
         _ = lev ?? throw errorHandler.keyValueNonExistent;
-        Debug.Log("Level Title: " + lev.levelName + '\n' + "Level Stars: " + lev.stars);
+        Debug.Log("Level Title: " + lev.ID + '\n');
     }
+    #endregion
 
     public gameData parent { get; set; }
     public Dictionary<string, storedLevelData> levelDictionary { get; }
@@ -133,19 +162,19 @@ public class levelHandler
 public class storedLevelData
 {
     //Level ID, Gamemode, Difficulty, Time of Completion, In-Progress, Locations of Units, Location of Vehicles, Current Time, Best Time, Stars Earned
-    public storedLevelData(string idValue, string name)
+    public storedLevelData(string idValue, string _levelName)
     {
         ID = idValue;
-        levelName = name;
+        levelName = _levelName;
     }
     public string ID { get; set; }
     public string levelName { get; set; }
-
     //Achievements - Time of Completion - Waves Completed - Best Time - If Completed? - 
     public int stars { get; set; }
     public float bestTime { get; set; }
     public int wavesCompleted { get; set; }
-    public bool completed { get; set; }
+    //For Serielization
+    public bool found { get; set; } = false;
     //Will need Get Sets For Some of These (Time, Level Type, Etc.)
 }
 #endregion
