@@ -9,9 +9,16 @@ public class gameController : MonoBehaviour
     [SerializeField] private List<levelElement> groupedLevels;
     private levelElement currentlySelectedLevel;
 
-    //For UI
+    //For UI ---> These are all temporary
     [SerializeField] private Slider stars;
     [SerializeField] private InputField levelName;
+
+    //This will be temp we can set most of this with the level system
+    public GameObject gameUnit;
+    public LayerMask unitLayer;
+
+    //This will change with the level data element actually feeding the correct units -> For now this is for input handling
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);

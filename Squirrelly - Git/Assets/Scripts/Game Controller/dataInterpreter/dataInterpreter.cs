@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.Transactions;
-using UnityEditor;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class dataInterpreter : MonoBehaviour
@@ -17,10 +14,10 @@ public class dataInterpreter : MonoBehaviour
 
     //Controller for the Game Loop
     gridController gridControl;
-    public int maxSize
-    {
-        get { return gridSizeX * gridSizeY; }
-    }
+    public gameController parent { get; set; }
+    public LayerMask unitLayer { get; set; }
+    public int maxSize { get { return gridSizeX * gridSizeY; } }
+    public int xSize { get { return gridSizeX; } }
 
     public void bakeGrid()
     {
@@ -52,13 +49,13 @@ public class dataInterpreter : MonoBehaviour
             }
         }
         //Give to Grid Handler to Populate the Map
-        gridControl = new gridController(localAvailableNodes);
+        gridControl = new gridController(localAvailableNodes, this);
     }
 
     public Node nodeFromWorldPoint(Vector3 worldPos)
     {
         float perX = (worldPos.x + activeElement.associatedLevel.gridSize.x / 2) / activeElement.associatedLevel.gridSize.x;
-        float perY = (worldPos.y + activeElement.associatedLevel.gridSize.y / 2) / activeElement.associatedLevel.gridSize.y;
+        float perY = (worldPos.z + activeElement.associatedLevel.gridSize.y / 2) / activeElement.associatedLevel.gridSize.y;
 
         //Checks for within the Grid Location will prevent enemies from Attempting to path outside the node structures
         perX = Mathf.Clamp01(perX);
@@ -72,24 +69,30 @@ public class dataInterpreter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(activeElement.associatedLevel.gridSize.x, 0f, activeElement.associatedLevel.gridSize.y));
+        //Gizmos.DrawWireCube(transform.position, new Vector3(activeElement.associatedLevel.gridSize.x, 0f, activeElement.associatedLevel.gridSize.y));
         if (grid != null && displayGridGizmos)
         {
-            foreach (Node element in grid)
+            foreach (baseUnit element in gridControl.getUnitList)
             {
-                Gizmos.color = element.active ? Color.green : Color.red;
-                Gizmos.DrawWireCube(element.worldPosition, Vector3.one * (nodeDiameter - .3f));
+                Color local = element.potential ? Color.cyan : Color.white;
+                Gizmos.color = element.selected ? Color.blue : local;
+                Vector3 lift = new Vector3(0f, .3f, 0f);
+                Gizmos.DrawCube(element.worldPosition + lift, Vector3.one * (nodeDiameter - .3f));
+                gridControl.redrawConnections(element);
             }
         }
     }
+    public gridController callGrid { get { return gridControl; } }
+    public Node[,] getGrid { get { return grid; } }
 }
 
 public class Node
 {
     public Vector3 worldPosition;
     public int gridX, gridY;
-    public bool active = false;
-    public Node[] neighbors = new Node[2];
+    public bool active = false, selected = false;
+    //Instant of instantiated squirrel etc. --- Placeholder for now
+    public baseUnit presentEntity;
 
     public Node(Vector3 _worldPosition, int _gridX, int _gridY)
     {
@@ -99,20 +102,22 @@ public class Node
         gridY = _gridY;
     }
 }
-
 /// <summary>
 /// This class will handle the random placemeent of Units -> and Connection of Nodes
 /// </summary>
 public class gridController
 {
+    dataInterpreter parent;
     int totalFillSlots;
     Node[,] availableNodes;
-    List<Node> activeNodes;
-    public gridController(Node[,] _availableNodes)
+    List<baseUnit> activeUnits;
+    baseUnit selectedUnit = null;
+    public gridController(Node[,] _availableNodes, dataInterpreter _parent)
     {
         availableNodes = _availableNodes;
+        parent = _parent;
         totalFillSlots = availableNodes.GetLength(1) / 2;
-        activeNodes = new List<Node>();
+        activeUnits = new List<baseUnit>();
         populateGrid();
     }
 
@@ -121,42 +126,89 @@ public class gridController
         //This is where the algorithm will play a role in terms of level difficulty -> For now it will be a constant algorithm
         for (int i = 0; i < totalFillSlots; i++)
         {
-            int spawnChance = UnityEngine.Random.Range(0, 2);
-            if (spawnChance == 1)
-            {
-                activeNodes.Add(availableNodes[0,i]);
-                availableNodes[0, i].active = true;
-                continue;
-            }
-            else
-            {
-                activeNodes.Add(availableNodes[1,i]);
-                availableNodes[1, i].active = true;
-                continue;
-            }
+            int spawnChance = UnityEngine.Random.Range(0, 2) == 1 ? 0 : 1;
+            Node local = availableNodes[spawnChance, i];
+            var clone = GameObject.Instantiate(parent.parent.gameUnit, local.worldPosition, Quaternion.identity);
+            clone.GetComponent<baseUnit>().worldPosition = local.worldPosition;
+            activeUnits.Add(clone.GetComponent<baseUnit>());
         }
 
         //This Section creates the connections
-        Node previous = null;
-        Node current = activeNodes[0];
-        Node next = activeNodes[1];
+        baseUnit previous = null;
+        baseUnit current = activeUnits[0];
+        baseUnit next = activeUnits[1];
         Vector3 nextOffset = new Vector3(.2f, 0f, .2f);
         Vector3 previousOffset = new Vector3(-.2f, 0f, -.2f);
-        for (int i = 0; i < activeNodes.Count; i++)
+        for (int i = 0; i < activeUnits.Count; i++)
         {
-            current = activeNodes[i];
+            current = activeUnits[i];
 
-            previous = i - 1 >= 0 ? activeNodes[i - 1] : null;
-            next = i + 1 < activeNodes.Count ? activeNodes[i + 1] : null;
+            previous = i - 1 >= 0 ? activeUnits[i - 1] : null;
+            next = i + 1 < activeUnits.Count ? activeUnits[i + 1] : null;
 
             current.neighbors[0] = previous;
             current.neighbors[1] = next;
-
-            if (previous != null)
-                Debug.DrawLine(current.worldPosition + previousOffset, current.neighbors[0].worldPosition + previousOffset, Color.cyan, Mathf.Infinity);
-
-            if (next != null)
-                Debug.DrawLine(current.worldPosition + nextOffset, current.neighbors[1].worldPosition + nextOffset, Color.blue, Mathf.Infinity);
         }
     }
+
+    public void checkNodeSelection(baseUnit element)
+    {
+        if (selectedUnit != element)
+        {
+            if (selectedUnit != null)
+            {
+                selectedUnit.selected = false;
+                selectedUnit.triggerNeighbors(false);
+                selectedUnit = null;
+            }
+            //Now set new one
+            if (element != null)
+            {
+                selectedUnit = element;
+                selectedUnit.selected = true;
+                selectedUnit.triggerNeighbors(true);
+            }
+        }
+    }
+
+    public void startSwitch()
+    {
+        if (selectedUnit != null)
+        {
+            switchNodeSelection(selectedUnit);
+            if (selectedUnit.neighbors[0] != null)
+                switchNodeSelection(selectedUnit.neighbors[0]);
+            if (selectedUnit.neighbors[1] != null)
+                switchNodeSelection(selectedUnit.neighbors[1]);
+        }
+    }
+
+    public void switchNodeSelection(baseUnit uni)
+    {
+        Node checkNode = parent.nodeFromWorldPoint(uni.worldPosition);
+        if (checkNode.gridX == 0)
+        {
+            Node target = parent.getGrid[parent.xSize - 1, checkNode.gridY];
+            uni.worldPosition = target.worldPosition;
+        }
+        else
+        {
+            Node target = parent.getGrid[0, checkNode.gridY];
+            uni.worldPosition = target.worldPosition;
+        }
+    }
+
+    public void redrawConnections(baseUnit current)
+    {
+        Vector3 nextOffset = new Vector3(.2f, 0f, .2f);
+        Vector3 previousOffset = new Vector3(-.2f, 0f, -.2f);
+
+        if (current.neighbors[0] != null)
+            Debug.DrawLine(current.worldPosition + previousOffset, current.neighbors[0].worldPosition + previousOffset, Color.cyan);
+
+        if (current.neighbors[1] != null)
+            Debug.DrawLine(current.worldPosition + nextOffset, current.neighbors[1].worldPosition + nextOffset, Color.blue);
+    }
+
+    public List<baseUnit> getUnitList { get { return activeUnits; } }
 }

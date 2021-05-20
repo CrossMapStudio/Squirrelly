@@ -695,9 +695,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3683458224521270166, guid: b81a63e89594cd9459eeae44856d044d, type: 3}
+      propertyPath: gameUnit
+      value: 
+      objectReference: {fileID: 8115288634431194154, guid: f378880030cae994d85b49c8cb4eeb54, type: 3}
+    - target: {fileID: 3683458224521270166, guid: b81a63e89594cd9459eeae44856d044d, type: 3}
       propertyPath: levelName
       value: 
       objectReference: {fileID: 388648937}
+    - target: {fileID: 3683458224521270166, guid: b81a63e89594cd9459eeae44856d044d, type: 3}
+      propertyPath: unitLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 3683458224521270166, guid: b81a63e89594cd9459eeae44856d044d, type: 3}
       propertyPath: timeTrials.Array.size
       value: 1
