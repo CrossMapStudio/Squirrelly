@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class dataInterpreter : MonoBehaviour
 {
-    levelElement activeElement;
+    level activeLevel;
     public bool displayGridGizmos = true;
     [SerializeField] private float nodeRadius = .5f;
     Node[,] grid;
@@ -14,6 +14,8 @@ public class dataInterpreter : MonoBehaviour
 
     //Controller for the Game Loop
     gridController gridControl;
+    gameStateController gameStateControl;
+
     public gameController parent { get; set; }
     public LayerMask unitLayer { get; set; }
     public int maxSize { get { return gridSizeX * gridSizeY; } }
@@ -21,16 +23,19 @@ public class dataInterpreter : MonoBehaviour
 
     public void bakeGrid()
     {
-        activeElement = GetComponent<gameController>().getActiveLevel;
-        originPoint = activeElement.associatedLevel.originPoint;
+        activeLevel = GetComponent<gameController>().currentlySelectedLevel;
+        originPoint = activeLevel.originPoint;
 
         nodeDiameter = nodeRadius * 2f;
-        gridSizeX = Mathf.RoundToInt(activeElement.associatedLevel.gridSize.x / nodeDiameter);
-        gridSizeY = Mathf.RoundToInt(activeElement.associatedLevel.gridSize.y / nodeDiameter);
+        gridSizeX = Mathf.RoundToInt(activeLevel.gridSize.x / nodeDiameter);
+        gridSizeY = Mathf.RoundToInt(activeLevel.gridSize.y / nodeDiameter);
         grid = new Node[gridSizeX, gridSizeY];
-        Node[,] localAvailableNodes = new Node[2, grid.GetLength(1) * 2];
 
-        Vector3 worldBottomLeft = originPoint - Vector3.right * activeElement.associatedLevel.gridSize.x / 2 - Vector3.forward * activeElement.associatedLevel.gridSize.y / 2;
+        Node[,] localAvailableNodes = new Node[2, grid.GetLength(1) * 2];
+        //Used for win state
+        List<baseUnit> winStateNodes = new List<baseUnit>();
+
+        Vector3 worldBottomLeft = originPoint - Vector3.right * activeLevel.gridSize.x / 2 - Vector3.forward * activeLevel.gridSize.y / 2;
         for (int i = 0; i < gridSizeX; i++)
         {
             for (int j = 0; j < gridSizeY; j++)
@@ -41,21 +46,28 @@ public class dataInterpreter : MonoBehaviour
                 if (i == 0)
                 {
                     localAvailableNodes[0, j] = grid[0, j];
+                    winStateNodes.Add(grid[0, j].presentEntity);
                 }
-                else if(i == gridSizeX - 1)
+                else if (i == gridSizeX - 1)
                 {
                     localAvailableNodes[1, j] = grid[i, j];
                 }
             }
         }
         //Give to Grid Handler to Populate the Map
-        gridControl = new gridController(localAvailableNodes, this);
+        gameStateControl = new gameStateController(winStateNodes, gridSizeY);
+        gridControl = new gridController(localAvailableNodes, this, gameStateControl);
+    }
+
+    public void Update()
+    {
+        if (!(gameStateControl is null)) gameStateControl.update();
     }
 
     public Node nodeFromWorldPoint(Vector3 worldPos)
     {
-        float perX = (worldPos.x + activeElement.associatedLevel.gridSize.x / 2) / activeElement.associatedLevel.gridSize.x;
-        float perY = (worldPos.z + activeElement.associatedLevel.gridSize.y / 2) / activeElement.associatedLevel.gridSize.y;
+        float perX = (worldPos.x + activeLevel.gridSize.x / 2) / activeLevel.gridSize.x;
+        float perY = (worldPos.z + activeLevel.gridSize.y / 2) / activeLevel.gridSize.y;
 
         //Checks for within the Grid Location will prevent enemies from Attempting to path outside the node structures
         perX = Mathf.Clamp01(perX);
@@ -69,12 +81,13 @@ public class dataInterpreter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Gizmos.DrawWireCube(transform.position, new Vector3(activeElement.associatedLevel.gridSize.x, 0f, activeElement.associatedLevel.gridSize.y));
+        //Gizmos.DrawWireCube(transform.position, new Vector3(activeLevel.associatedLevel.gridSize.x, 0f, activeLevel.associatedLevel.gridSize.y));
         if (grid != null && displayGridGizmos)
         {
             foreach (baseUnit element in gridControl.getUnitList)
             {
                 Color local = element.potential ? Color.cyan : Color.white;
+                local = element.worldPosition.y == 0 ? Color.black : local;
                 Gizmos.color = element.selected ? Color.blue : local;
                 Vector3 lift = new Vector3(0f, .3f, 0f);
                 Gizmos.DrawCube(element.worldPosition + lift, Vector3.one * (nodeDiameter - .3f));
@@ -85,50 +98,34 @@ public class dataInterpreter : MonoBehaviour
     public gridController callGrid { get { return gridControl; } }
     public Node[,] getGrid { get { return grid; } }
 }
-
-public class Node
-{
-    public Vector3 worldPosition;
-    public int gridX, gridY;
-    public bool active = false, selected = false;
-    //Instant of instantiated squirrel etc. --- Placeholder for now
-    public baseUnit presentEntity;
-
-    public Node(Vector3 _worldPosition, int _gridX, int _gridY)
-    {
-        worldPosition = _worldPosition;
-
-        gridX = _gridX;
-        gridY = _gridY;
-    }
-}
 /// <summary>
 /// This class will handle the random placemeent of Units -> and Connection of Nodes
 /// </summary>
 public class gridController
 {
     dataInterpreter parent;
+    gameStateController gameStateControl;
     int totalFillSlots;
     Node[,] availableNodes;
     List<baseUnit> activeUnits;
     baseUnit selectedUnit = null;
-    public gridController(Node[,] _availableNodes, dataInterpreter _parent)
+    public gridController(Node[,] _availableNodes, dataInterpreter _parent, gameStateController _gameStateControl)
     {
         availableNodes = _availableNodes;
+        gameStateControl = _gameStateControl;
         parent = _parent;
         totalFillSlots = availableNodes.GetLength(1) / 2;
         activeUnits = new List<baseUnit>();
         populateGrid();
     }
-
-    public void populateGrid()
+    private void populateGrid()
     {
         //This is where the algorithm will play a role in terms of level difficulty -> For now it will be a constant algorithm
         for (int i = 0; i < totalFillSlots; i++)
         {
-            int spawnChance = UnityEngine.Random.Range(0, 2) == 1 ? 0 : 1;
+            int spawnChance = Random.Range(0, 2) == 1 ? 0 : 1;
             Node local = availableNodes[spawnChance, i];
-            var clone = GameObject.Instantiate(parent.parent.gameUnit, local.worldPosition, Quaternion.identity);
+            var clone = Object.Instantiate(parent.parent.gameUnit, local.worldPosition, Quaternion.identity);
             clone.GetComponent<baseUnit>().worldPosition = local.worldPosition;
             activeUnits.Add(clone.GetComponent<baseUnit>());
         }
@@ -153,21 +150,18 @@ public class gridController
 
     public void checkNodeSelection(baseUnit element)
     {
-        if (selectedUnit != element)
+        if (selectedUnit != null && selectedUnit != element)
         {
-            if (selectedUnit != null)
-            {
-                selectedUnit.selected = false;
-                selectedUnit.triggerNeighbors(false);
-                selectedUnit = null;
-            }
-            //Now set new one
-            if (element != null)
-            {
-                selectedUnit = element;
-                selectedUnit.selected = true;
-                selectedUnit.triggerNeighbors(true);
-            }
+            selectedUnit.selected = false;
+            selectedUnit.triggerNeighbors(false);
+            selectedUnit = null;
+        }
+        //Now set new one
+        if (element != null)
+        {
+            selectedUnit = element;
+            selectedUnit.selected = true;
+            selectedUnit.triggerNeighbors(true);
         }
     }
 
@@ -190,11 +184,13 @@ public class gridController
         {
             Node target = parent.getGrid[parent.xSize - 1, checkNode.gridY];
             uni.worldPosition = target.worldPosition;
+            gameStateControl.updateList(uni, false);
         }
         else
         {
             Node target = parent.getGrid[0, checkNode.gridY];
             uni.worldPosition = target.worldPosition;
+            gameStateControl.updateList(uni, true);
         }
     }
 
@@ -211,4 +207,67 @@ public class gridController
     }
 
     public List<baseUnit> getUnitList { get { return activeUnits; } }
+}
+
+public class Node
+{
+    public Vector3 worldPosition;
+    public int gridX, gridY;
+    public bool active = false, selected = false;
+    //Instant of instantiated squirrel etc. --- Placeholder for now
+    public baseUnit presentEntity;
+
+    public Node(Vector3 _worldPosition, int _gridX, int _gridY)
+    {
+        worldPosition = _worldPosition;
+
+        gridX = _gridX;
+        gridY = _gridY;
+
+        if (!(presentEntity is null))
+        {
+            //Do something ---> 
+        }
+    }
+}
+
+public class gameStateController
+{
+    private List<baseUnit> winStateList;
+    private int winNum;
+    private enum state
+    {
+        playing,
+        won,
+        lost
+    }
+    private state gameState = state.playing;
+    public gameStateController(List<baseUnit> activeUnits, int totalNum)
+    {
+        winStateList = activeUnits;
+        winNum = totalNum;
+    }
+
+    public void update()
+    {
+        gameState = winStateList.Count == winNum ? state.won : state.playing;
+        if (gameState == state.won)
+        {
+            //units animate and make em do dance or something ->
+            //Generate new random grid layout ->
+            Debug.Log("Level Complete");
+        }
+    }
+
+    public void updateList(baseUnit toCheck, bool active)
+    {
+        if (active)
+        {
+            winStateList.Add(toCheck);
+        }
+        else
+        {
+           winStateList.Remove(toCheck);
+        }
+    }
 }

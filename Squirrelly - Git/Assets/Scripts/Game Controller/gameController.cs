@@ -1,33 +1,39 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class gameController : MonoBehaviour
 {
     gameData gData;
+    [HideInInspector]
+    public sceneManager sceneControl;
     //This is for the Editor
     [SerializeField] private List<levelElement> groupedLevels;
-    private levelElement currentlySelectedLevel;
-
-    //For UI ---> These are all temporary
-    [SerializeField] private Slider stars;
-    [SerializeField] private InputField levelName;
+    //Might need to make private ---
+    [HideInInspector]
+    public level currentlySelectedLevel;
+    [HideInInspector]
+    public storedLevelData activeStorage;
 
     //This will be temp we can set most of this with the level system
     public GameObject gameUnit;
     public LayerMask unitLayer;
-
+    public List<storedLevelData> updatedLevels { get; set; }
+    private Dictionary<string, level> levelListing;
     //This will change with the level data element actually feeding the correct units -> For now this is for input handling
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         gData = serializationHandler.LoadGame(serializationHandler.fileTag) != null ? new gameData(serializationHandler.LoadGame(serializationHandler.fileTag)) : new gameData();
-    }
-
-    private void Start()
-    {
-        gData.generatestoredLevelData(groupedLevels);
+        sceneControl = GetComponent<sceneManager>();
+        updatedLevels = gData.generatestoredLevelData(groupedLevels);
+        levelListing = new Dictionary<string, level>();
+        //Create the Dictionary to Access the Updated Levels with the Grouped Levels
+        for (int i = 0; i < updatedLevels.Count; i++)
+        {
+            levelListing.Add(updatedLevels[i].id, groupedLevels[i].associatedLevel);
+        }
     }
 
     //Really for Debugging (AutoSave for Later)
@@ -60,23 +66,36 @@ public class gameController : MonoBehaviour
 
     public void modifyLevelData()
     {
-        //gData.lData.modifyLevelData(id.text, (int)stars.value);
-        foreach (levelElement element in groupedLevels)
-        {
-            if (element.associatedLevel.name == levelName.text)
-            {
-                currentlySelectedLevel = element;
-                break;
-            }
-        }
+        //This is the function to call first before the serielization
+        Debug.Log("Active Storage Stars: " + activeStorage.getContainer(activeStorage.gameModeTags[0]).getGameInfo(0).starsEarned);
+        gData.lData.modifyStorage(activeStorage.id, activeStorage);
     }
 
     public void printLevelData()
     {
-        gData.lData.printData(levelName.text);
+
     }
 
-    public levelElement getActiveLevel { get { return currentlySelectedLevel; } }
+    public void getActiveLevel(string id, storedLevelData _activeStorage)
+    {
+        currentlySelectedLevel = levelListing[id];
+        activeStorage = _activeStorage;
+    }
+
+    public bool compareCurrentLevel(string id)
+    {
+        bool local = currentlySelectedLevel == levelListing[id] ? true : false;
+        return local;
+    }
+
+    public void launchActiveLevel()
+    {
+        if (currentlySelectedLevel != null)
+        {
+            activeStorage.retrieveStorage();
+            sceneControl.loadScene(1);
+        }
+    }
 }
 
 #region Level Information for Proper Storage and Backtracking

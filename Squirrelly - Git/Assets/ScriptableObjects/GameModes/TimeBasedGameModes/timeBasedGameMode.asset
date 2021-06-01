@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a35309e2d718a74caebd5623f0c9c49, type: 3}
   m_Name: timeBasedGameMode
   m_EditorClassIdentifier: 
+  id: time
   gamemodeDifficulties:
   - totalTime: 0
     spawners: 0

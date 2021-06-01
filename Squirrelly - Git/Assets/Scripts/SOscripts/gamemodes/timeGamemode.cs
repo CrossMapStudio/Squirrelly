@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "timeGameMode", menuName = "ScriptableObjects/GameMode/TimeGameMode")]
 public class timeGamemode : ScriptableObject
 {
+    public string id;
     [SerializeField] private timeGameModeParameters[] gamemodeDifficulties;
     public int getCount { get { return gamemodeDifficulties.Length; } }
 }

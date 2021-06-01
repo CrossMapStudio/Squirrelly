@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b76cf1adcd3e4c438a7af303773956d, type: 3}
   m_Name: highScoreGameMode
   m_EditorClassIdentifier: 
+  id: highScore
   gamemodeDifficulties:
   - spawn: 0
   - spawn: 0

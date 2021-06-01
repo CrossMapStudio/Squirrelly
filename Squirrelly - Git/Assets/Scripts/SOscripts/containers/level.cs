@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "level", menuName = "ScriptableObjects/Level")]
 public class level : ScriptableObject
 {
+    public string displayName;
     [SerializeField] private string idTag;
     public Vector2 gridSize;
     public Vector3 originPoint = Vector3.zero;

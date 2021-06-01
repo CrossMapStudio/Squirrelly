@@ -39,8 +39,10 @@ public class sceneManager : MonoBehaviour
         //This may change^^
         if (SceneManager.GetActiveScene().buildIndex == playSceneIndex)
         {
+            //May need optimizing
             dataInterpreter local = gameObject.AddComponent(typeof(dataInterpreter)) as dataInterpreter;
             inputHandler input = gameObject.AddComponent(typeof(inputHandler)) as inputHandler;
+
             local.parent = GetComponent<gameController>();
             local.unitLayer = local.parent.unitLayer;
             local.enabled = true;
