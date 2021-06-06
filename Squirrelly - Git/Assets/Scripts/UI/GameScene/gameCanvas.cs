@@ -16,6 +16,11 @@ public class gameCanvas : MonoBehaviour
         gameControl.activeStorage.addStar(stars);
     }
 
+    public void waveReset()
+    {
+        gameControl.gameObject.GetComponent<dataInterpreter>().gameStateControl.waveTrigger();
+    }
+
     public void quitScene() 
     {
         Debug.Log("Saving");

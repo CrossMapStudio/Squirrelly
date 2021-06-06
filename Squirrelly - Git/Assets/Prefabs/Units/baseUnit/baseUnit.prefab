@@ -126,12 +126,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldPosition: {x: 0, y: 0, z: 0}
+  pos1: {x: 0, y: 0, z: 0}
+  pos2: {x: 0, y: 0, z: 0}
   neighbors:
   - {fileID: 0}
   - {fileID: 0}
   selected: 0
   potential: 0
   entity: {fileID: 0}
-  speedScaler: 10
+  speedScaler: 30
   selectedMat: {fileID: 2100000, guid: 99de54a33aec301478268eb9311ee651, type: 2}
   potentialMat: {fileID: 2100000, guid: 479e8b7a70fc61a4dba4ba9e044dc20a, type: 2}

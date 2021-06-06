@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
+using UnityEditor;
 using UnityEngine;
 /// <summary>
 /// Game Data will Collect Class Information --- This allows Serielization to Handle One Class and Read Back Data
@@ -83,7 +83,7 @@ public class levelHandler
                 //All Checks for Changes -> Some Can Be Handled in Class
                 storedLevelData active = levelDictionary[el.associatedLevel.id];
                 active.found = true;
-                active.update();
+                active.update(el.associatedLevel);
             }
         }
 
@@ -135,31 +135,125 @@ public class storedLevelData
         if (associatedLevel.getTimeMode != null)
         {
             int local = associatedLevel.getTimeMode.getCount;
-            container c = new container(local);
+            container c = new container(local, associatedLevel.getTimeMode.name);
             gamemodes.Add(gameModeTags[0], c);
         }
 
         if (associatedLevel.getWaveMode != null)
         {
             int local = associatedLevel.getWaveMode.getCount;
-            container c = new container(local);
+            container c = new container(local, associatedLevel.getWaveMode.name);
             gamemodes.Add(gameModeTags[1], c);
         }
 
         if (associatedLevel.getHighScoreMode != null)
         {
             int local = associatedLevel.getHighScoreMode.getCount;
-            container c = new container(local);
+            container c = new container(local, associatedLevel.getHighScoreMode.name);
             gamemodes.Add(gameModeTags[2], c);
         }
     }
 
-    public void update()
+    public void update(level associatedLevel)
     {
         //Will Appropriately check all Data and Remove as Necessary
         Debug.Log("Update Fired");
         Debug.Log("GameMode Size: " + gamemodes.Count);
-        Debug.Log("Stars: " + getContainer(gameModeTags[0]).getGameInfo(0).starsEarned);
+        //Debug.Log("Stars: " + getContainer(gameModeTags[0]).getGameInfo(0).starsEarned);
+
+        //Hard Coded GameMode Types for Right Now --- If GameModes Change/Are Added - 
+        if (associatedLevel.getTimeMode != null)
+        {
+            if (gamemodes.ContainsKey(gameModeTags[0]))
+            {
+                if (!gamemodes[gameModeTags[0]].compareName(associatedLevel.getTimeMode.name))
+                {
+                    gamemodes.Remove(gameModeTags[0]);
+                    int local = associatedLevel.getTimeMode.getCount;
+                    container c = new container(local, associatedLevel.getTimeMode.name);
+                    gamemodes.Add(gameModeTags[0], c);
+                }
+                else
+                {
+                    //Check Difficulties/Compare
+                    gamemodes[gameModeTags[0]].compareDataSize(associatedLevel.getTimeMode.getCount);
+                }
+            }
+            else
+            {
+                //Add the container
+                int local = associatedLevel.getTimeMode.getCount;
+                container c = new container(local, associatedLevel.getTimeMode.name);
+                gamemodes.Add(gameModeTags[0], c);
+            }
+        }
+        else if (gamemodes.ContainsKey(gameModeTags[0]))
+        {
+            gamemodes.Remove(gameModeTags[0]);
+        }
+
+        /*************************************/
+        if (associatedLevel.getWaveMode != null)
+        {
+            if (gamemodes.ContainsKey(gameModeTags[1]))
+            {
+                if (!gamemodes[gameModeTags[1]].compareName(associatedLevel.getWaveMode.name))
+                {
+                    gamemodes.Remove(gameModeTags[1]);
+                    int local = associatedLevel.getWaveMode.getCount;
+                    container c = new container(local, associatedLevel.getWaveMode.name);
+                    gamemodes.Add(gameModeTags[1], c);
+                }
+                else
+                {
+                    //Check Difficulties/Compare
+                    gamemodes[gameModeTags[1]].compareDataSize(associatedLevel.getWaveMode.getCount);
+                }
+            }
+            else
+            {
+                //Add the container
+                int local = associatedLevel.getWaveMode.getCount;
+                container c = new container(local, associatedLevel.getWaveMode.name);
+                gamemodes.Add(gameModeTags[1], c);
+            }
+        }
+        else if (gamemodes.ContainsKey(gameModeTags[1]))
+        {
+            gamemodes.Remove(gameModeTags[1]);
+        }
+        /*********************************************/
+
+        if (associatedLevel.getHighScoreMode != null)
+        {
+            if (gamemodes.ContainsKey(gameModeTags[2]))
+            {
+                if (!gamemodes[gameModeTags[2]].compareName(associatedLevel.getHighScoreMode.name))
+                {
+                    gamemodes.Remove(gameModeTags[2]);
+                    int local = associatedLevel.getHighScoreMode.getCount;
+                    container c = new container(local, associatedLevel.getHighScoreMode.name);
+                    gamemodes.Add(gameModeTags[2], c);
+                }
+                else
+                {
+                    //Check Difficulties/Compare
+                    gamemodes[gameModeTags[2]].compareDataSize(associatedLevel.getHighScoreMode.getCount);
+                }
+            }
+            else
+            {
+                //Add the container
+                int local = associatedLevel.getHighScoreMode.getCount;
+                container c = new container(local, associatedLevel.getHighScoreMode.name);
+                gamemodes.Add(gameModeTags[2], c);
+            }
+        }
+        else if (gamemodes.ContainsKey(gameModeTags[2]))
+        {
+            //Garbage Collection --- Etc.
+            gamemodes.Remove(gameModeTags[2]);
+        }
     }
 
     //Need Methods to Grab Correct Data
@@ -171,9 +265,14 @@ public class storedLevelData
         }
         else
         {
-            //Will need to write an Instantiation Method but Update should handle this!
-            throw errorHandler.keyValueNonExistent;
+            //Ultimately just Null Return
+            return new container(0, "");
         }
+    }
+
+    public void setContainer(string key, container element)
+    {
+        gamemodes[key] = element;
     }
 
     public void retrieveStorage()
@@ -192,10 +291,14 @@ public class storedLevelData
 [Serializable]
 public struct container
 {
+    //Difficulties
     List<gameInfo> data;
-    public container(int index)
+    //Distinguish Different Scriptable Object
+    string gameModeUniqueName;
+    public container(int index, string uniqueName)
     {
         data = new List<gameInfo>();
+        gameModeUniqueName = uniqueName;
         for (int i = 0; i < index; i++)
         {
             gameInfo local = new gameInfo();
@@ -206,6 +309,25 @@ public struct container
     public int dataSize { get { return data.Count; } }
     public gameInfo getGameInfo(int index){return data[index];}
     public void setGameInfo(int index, gameInfo element) { data[index] = element; }
+    public bool compareName(string name) { return name == gameModeUniqueName ? true : false; }
+    public void compareDataSize (int size)
+    {
+        if (size > dataSize)
+        {
+            for (int i = dataSize - 1; i < size; i++)
+            {
+                gameInfo local = new gameInfo();
+                data.Add(local);
+            }
+        }
+        else if (size < dataSize)
+        {
+            for (int i = dataSize - 1; i > size; i--)
+            {
+                data.RemoveAt(i);
+            }
+        }
+    }
 }
 
 [Serializable]

@@ -22,7 +22,7 @@ public class inputHandler : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            data.callGrid.startSwitch();
+            data.Grid.gridControl.startSwitch();
         }
     }
 
@@ -34,11 +34,11 @@ public class inputHandler : MonoBehaviour
             Ray ray = main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out unitHit, data.unitLayer))
             {
-                data.callGrid.checkNodeSelection(unitHit.collider.GetComponent<baseUnit>());
+                data.Grid.gridControl.checkNodeSelection(unitHit.collider.GetComponent<baseUnit>());
             }
             else
             {
-                data.callGrid.checkNodeSelection(null);
+               data.Grid.gridControl.checkNodeSelection(null);
             }
         }
     }

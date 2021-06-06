@@ -36,10 +36,6 @@ public class mainMenuCanvas : MonoBehaviour
 
             levels.Add(button);
         }
-
-
-        currentActive = levels[0];
-        levels[0].setStatus(true);
     }
 
     public void updateButtons()
@@ -54,7 +50,7 @@ public class mainMenuCanvas : MonoBehaviour
     void updateStats(ref levelButton button, storedLevelData element)
     {
        container current = element.getContainer(element.gameModeTags[gameMode.value]);
-        if (difficulty.value >= current.dataSize)
+        if (difficulty.value >= current.dataSize || current.dataSize == 0)
         {
             if (gameControl.compareCurrentLevel(element.id))
             {

@@ -39,14 +39,22 @@ public class sceneManager : MonoBehaviour
         //This may change^^
         if (SceneManager.GetActiveScene().buildIndex == playSceneIndex)
         {
-            //May need optimizing
-            dataInterpreter local = gameObject.AddComponent(typeof(dataInterpreter)) as dataInterpreter;
-            inputHandler input = gameObject.AddComponent(typeof(inputHandler)) as inputHandler;
-
-            local.parent = GetComponent<gameController>();
-            local.unitLayer = local.parent.unitLayer;
-            local.enabled = true;
-            local.bakeGrid();
+            gameStateInit();
         }
+    }
+
+    private void gameStateInit()
+    {
+        //May need optimizing
+        dataInterpreter local = gameObject.AddComponent(typeof(dataInterpreter)) as dataInterpreter;
+        inputHandler input = gameObject.AddComponent(typeof(inputHandler)) as inputHandler;
+
+        gameController c = GetComponent<gameController>();
+        local.activeLevel = c.currentlySelectedLevel;
+        //Will Vary based on the GameMode that was Selected + Difficulty
+        local.unitList = c.currentlySelectedLevel.getTimeMode.units;
+        local.unitLayer = c.unitLayer;
+        local.enabled = true;
+        local.initializeOnStart();
     }
 }

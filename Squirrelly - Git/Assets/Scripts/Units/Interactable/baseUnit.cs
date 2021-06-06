@@ -1,10 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class baseUnit : MonoBehaviour
 {
     private Rigidbody rb;
     [HideInInspector]
-    public Vector3 worldPosition;
+    public Vector3 worldPosition, pos1, pos2;
+    [HideInInspector]
+    public int winStatePos;
+    [HideInInspector]
+    public bool winState;
+    [HideInInspector]
+    public Vector3[] winStateCorr; 
     [HideInInspector]
     public baseUnit[] neighbors = new baseUnit[2];
     [HideInInspector]
@@ -16,6 +23,9 @@ public class baseUnit : MonoBehaviour
     private MeshRenderer mRend;
     private Material baseMat;
     public Material selectedMat, potentialMat;
+
+    //Add to this?
+    public static List<baseUnit> finalList = new List<baseUnit>();
 
     private void Awake()
     {
@@ -49,6 +59,18 @@ public class baseUnit : MonoBehaviour
             //Begin moving the block at the speed
             Vector3 target = worldPosition - transform.position;
             rb.MovePosition(transform.position + (target.normalized * speedScaler) * Time.fixedDeltaTime);
+        }
+
+        Debug.Log(winStateCorr[winStatePos].x);
+        if (Mathf.Abs(transform.position.x - winStateCorr[winStatePos].x) <= .5f)
+        {
+            if (!finalList.Contains(this))
+            finalList.Add(this);
+        }
+        else
+        {
+            if (finalList.Contains(this))
+                finalList.Remove(this);
         }
     }
 }
