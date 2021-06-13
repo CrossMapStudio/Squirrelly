@@ -13,12 +13,8 @@ MonoBehaviour:
   m_Name: timeGameModeC1
   m_EditorClassIdentifier: 
   id: time2
+  units:
+  - {fileID: 8115288634431194154, guid: f378880030cae994d85b49c8cb4eeb54, type: 3}
   gamemodeDifficulties:
-  - totalTime: 0
-    spawners: 0
-  - totalTime: 0
-    spawners: 0
-  - totalTime: 0
-    spawners: 0
-  - totalTime: 0
-    spawners: 0
+  - startTime: 12
+    addedTime: 10

@@ -1,4 +1,6 @@
+using GridHandler;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class baseUnit : MonoBehaviour
@@ -7,25 +9,30 @@ public class baseUnit : MonoBehaviour
     [HideInInspector]
     public Vector3 worldPosition, pos1, pos2;
     [HideInInspector]
-    public int winStatePos;
-    [HideInInspector]
     public bool winState;
-    [HideInInspector]
-    public Vector3[] winStateCorr; 
     [HideInInspector]
     public baseUnit[] neighbors = new baseUnit[2];
     [HideInInspector]
     public bool selected = false, potential = false;
     [HideInInspector]
     public baseUnit entity;
+    [HideInInspector]
+    public float winPos;
 
     public float speedScaler;
     private MeshRenderer mRend;
     private Material baseMat;
     public Material selectedMat, potentialMat;
+    public ParticleSystem onDelete;
 
-    //Add to this?
-    public static List<baseUnit> finalList = new List<baseUnit>();
+    //This will change most likely
+    private enum unitState
+    {
+        idle,
+        moving
+    }
+
+    private unitState currentState = unitState.idle;
 
     private void Awake()
     {
@@ -43,6 +50,20 @@ public class baseUnit : MonoBehaviour
             neighbors[1].potential = triggerStatus;
     }
 
+    public void destroyUnit()
+    {
+        //This will Handle Rerouting Neighbors/Killing the Unit
+        if (neighbors[0] != null)
+            neighbors[0].neighbors[1] = neighbors[1];
+
+        if (neighbors[1] != null)
+            neighbors[1].neighbors[0] = neighbors[0];
+
+        var clone = Instantiate(onDelete, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity);
+        Destroy(clone, 2f);
+        Destroy(gameObject);
+    }
+
     public void Update()
     {
         Material temp = selected ? selectedMat : baseMat;
@@ -54,23 +75,43 @@ public class baseUnit : MonoBehaviour
 
     public void FixedUpdate()
     {
+        Vector3 target = new Vector3();
         if (transform.position != worldPosition)
         {
             //Begin moving the block at the speed
-            Vector3 target = worldPosition - transform.position;
+            target = worldPosition - transform.position;
             rb.MovePosition(transform.position + (target.normalized * speedScaler) * Time.fixedDeltaTime);
+            if (currentState != unitState.moving)
+                currentState = unitState.moving;
         }
 
-        Debug.Log(winStateCorr[winStatePos].x);
-        if (Mathf.Abs(transform.position.x - winStateCorr[winStatePos].x) <= .5f)
+        if (currentState == unitState.moving)
         {
-            if (!finalList.Contains(this))
-            finalList.Add(this);
+            if (Vector3.Distance(worldPosition, transform.position) <= .2f)
+            {
+                transform.position = worldPosition;
+                currentState = unitState.idle;
+            }
+
+            if (worldPosition.x != winPos)
+            {
+                if (winState == true)
+                {
+                    winState = false;
+                    gameStateController.compareNum--;
+                }
+            }
         }
         else
         {
-            if (finalList.Contains(this))
-                finalList.Remove(this);
+            if (worldPosition.x == winPos)
+            {
+                if (winState == false)
+                {
+                    winState = true;
+                    gameStateController.compareNum++;
+                }
+            }
         }
     }
 }

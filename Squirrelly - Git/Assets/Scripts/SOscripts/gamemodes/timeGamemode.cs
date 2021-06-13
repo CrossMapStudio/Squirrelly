@@ -7,7 +7,7 @@ public class timeGamemode : ScriptableObject
 {
     public string id;
     public List<GameObject> units;
-    [SerializeField] private timeGameModeParameters[] gamemodeDifficulties;
+    public timeGameModeParameters[] gamemodeDifficulties;
     public int getCount { get { return gamemodeDifficulties.Length; } }
 }
 
@@ -15,5 +15,5 @@ public class timeGamemode : ScriptableObject
 public struct timeGameModeParameters
 {
     //Just PlaceHolders
-    [SerializeField] private float totalTime, spawners;
+    public float startTime, addedTime;
 }

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40189cd265a19245b1329dd02485d96, type: 3}
   m_Name: level
   m_EditorClassIdentifier: 
-  displayName: Tutorial
+  displayName: ' Level 1'
   idTag: Tutorial
   gridSize: {x: 10, y: 10}
   originPoint: {x: 0, y: 0, z: 0}
   timeMode: {fileID: 11400000, guid: 41cf05e7458722e409c1702931e67466, type: 2}
-  waveMode: {fileID: 0}
-  scoreMode: {fileID: 11400000, guid: f31de5e136c032145a48a0c67259ea9d, type: 2}
+  waveMode: {fileID: 11400000, guid: fdaed21a26dc3ad49bebc6f736ffbd51, type: 2}
+  scoreMode: {fileID: 0}

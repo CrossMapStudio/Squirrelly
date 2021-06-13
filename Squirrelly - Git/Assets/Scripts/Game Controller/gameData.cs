@@ -58,7 +58,7 @@ public class levelHandler
 
     public List<storedLevelData> bakestoredLevelData(List<levelElement> element)
     {
-        List<storedLevelData> levels = levelDictionary.Values.ToList();
+        List<storedLevelData> levels = new List<storedLevelData>();
 
         foreach (KeyValuePair<string, storedLevelData> el in levelDictionary)
         {
@@ -75,7 +75,6 @@ public class levelHandler
                 storedLevelData sData = new storedLevelData(el.associatedLevel);
                 levelDictionary.Add(el.associatedLevel.id, sData);
                 sData.found = true;
-
                 levels.Add(sData);
             }
             else
@@ -84,6 +83,7 @@ public class levelHandler
                 storedLevelData active = levelDictionary[el.associatedLevel.id];
                 active.found = true;
                 active.update(el.associatedLevel);
+                levels.Add(active);
             }
         }
 
@@ -94,7 +94,7 @@ public class levelHandler
                 levelDictionary.Remove(levels[i].id);
         }
 
-        return levelDictionary.Values.ToList();
+        return levels;
     }
 
     #region Debugging
@@ -160,7 +160,9 @@ public class storedLevelData
         Debug.Log("Update Fired");
         Debug.Log("GameMode Size: " + gamemodes.Count);
         //Debug.Log("Stars: " + getContainer(gameModeTags[0]).getGameInfo(0).starsEarned);
-
+        //Also Check for Name Switch ->
+        if (associatedLevel.displayName != displayName)
+            displayName = associatedLevel.displayName;
         //Hard Coded GameMode Types for Right Now --- If GameModes Change/Are Added - 
         if (associatedLevel.getTimeMode != null)
         {

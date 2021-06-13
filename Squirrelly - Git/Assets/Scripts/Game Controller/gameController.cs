@@ -21,6 +21,8 @@ public class gameController : MonoBehaviour
     public List<storedLevelData> updatedLevels { get; set; }
     private Dictionary<string, level> levelListing;
     //This will change with the level data element actually feeding the correct units -> For now this is for input handling
+    //Pause State ->
+    public static bool pauseState = false;
 
     private void Awake()
     {

@@ -12,33 +12,67 @@ public class inputHandler : MonoBehaviour
     private dataInterpreter data;
     private bool fireCast = true;
 
+    public enum controlSetting
+    {
+        mouseKey,
+        controller
+    }
+
+    public controlSetting currentControl;
+
     private void Awake()
     {
         main = Camera.main;
         data = GetComponent<dataInterpreter>();
+        //This will pull from a setting class in later builds
+        currentControl = controlSetting.mouseKey;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (currentControl == controlSetting.mouseKey)
         {
-            data.Grid.gridControl.startSwitch();
+            if (Input.GetMouseButtonDown(0))
+            {
+                data.Grid.gridControl.startSwitch();
+            }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                data.unitElimination();
+            }
+
+            //Starts the Pause State
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                gameController.pauseState = !gameController.pauseState;
+                data.gameUI.triggerPauseMenuUI();
+            }
+
+            fireCast = !gameController.pauseState;
+        }
+        else if (currentControl == controlSetting.controller)
+        {
+            //This will be the build ver for Controller --- Plugin ?
         }
     }
 
     private void FixedUpdate()
     {
-        if (fireCast)
+        if (currentControl == controlSetting.mouseKey)
         {
-            RaycastHit unitHit;
-            Ray ray = main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out unitHit, data.unitLayer))
+            if (fireCast)
             {
-                data.Grid.gridControl.checkNodeSelection(unitHit.collider.GetComponent<baseUnit>());
-            }
-            else
-            {
-               data.Grid.gridControl.checkNodeSelection(null);
+                RaycastHit unitHit;
+                Ray ray = main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out unitHit, data.unitLayer))
+                {
+                    data.Grid.gridControl.checkNodeSelection(unitHit.collider.GetComponent<baseUnit>());
+                }
+                else
+                {
+                    data.Grid.gridControl.checkNodeSelection(null);
+                }
             }
         }
     }

@@ -64,13 +64,8 @@ namespace GridHandler
 
         public List<baseUnit> populateGrid(List<GameObject> units)
         {
-            for (int i = 0; i < activeUnits.Count; i++)
-            {
-                Object.Destroy(activeUnits[i]);
-            }
-            activeUnits.Clear();
-            unitList.Clear();
-
+            //Wipe it clean
+            clearGrid();
             //This is where the algorithm will play a role in terms of level difficulty -> For now it will be a constant algorithm
             for (int i = 0; i < totalFillSlots; i++)
             {
@@ -80,20 +75,11 @@ namespace GridHandler
                 var clone = Object.Instantiate(units[0], local.worldPosition, Quaternion.identity);
                 activeUnits.Add(clone);
                 baseUnit unit = clone.GetComponent<baseUnit>();
-
-                if (spawnChance == 0)
-                {
-                    unit.winStatePos = 0;
-                }
-                else
-                {
-                    unit.winStatePos = 1;
-                }
-                
                 unit.worldPosition = local.worldPosition;
+                unit.winPos = availableNodes[0, i].worldPosition.x;
+
                 unit.pos1 = unit.worldPosition;
                 unit.pos2 = availableNodes[spawnChance == 0 ? 1 : 0, i].worldPosition;
-                unit.winStateCorr = new Vector3[] { unit.pos1, unit.pos2 };
                 unitList.Add(clone.GetComponent<baseUnit>());
             }
 
@@ -115,6 +101,17 @@ namespace GridHandler
             }
 
             return unitList;
+        }
+
+        public void clearGrid()
+        {
+            for (int i = 0; i < unitList.Count; i++)
+            {
+                deleteUnit(unitList[i]);
+            }
+            gameStateController.compareNum = 0;
+            activeUnits.Clear();
+            unitList.Clear();
         }
 
         public void checkNodeSelection(baseUnit element)
@@ -146,21 +143,19 @@ namespace GridHandler
             }
         }
 
+        public bool deleteUnit(baseUnit unit = null)
+        {
+            if (unit != null)
+            {
+                unit.destroyUnit();
+                return true;
+            }
+            return false;
+        }
+
         public void switchNodeSelection(baseUnit uni)
         {
             uni.worldPosition = uni.worldPosition == uni.pos1 ? uni.pos2 : uni.pos1;
-        }
-
-        public void redrawConnections(baseUnit current)
-        {
-            Vector3 nextOffset = new Vector3(.2f, 0f, .2f);
-            Vector3 previousOffset = new Vector3(-.2f, 0f, -.2f);
-
-            if (current.neighbors[0] != null)
-                Debug.DrawLine(current.worldPosition + previousOffset, current.neighbors[0].worldPosition + previousOffset, Color.cyan);
-
-            if (current.neighbors[1] != null)
-                Debug.DrawLine(current.worldPosition + nextOffset, current.neighbors[1].worldPosition + nextOffset, Color.blue);
         }
     }
 
