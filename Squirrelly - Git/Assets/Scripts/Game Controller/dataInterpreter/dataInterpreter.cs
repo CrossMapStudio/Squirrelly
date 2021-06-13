@@ -38,6 +38,10 @@ public class dataInterpreter : MonoBehaviour
                 gameModeInt = new timeModeInt(difficultyIndex, this, gameStateControl, gameUI);
                 break;
         }
+
+        //Generate the Level Stage Element --- Can Also Hold Load until this is finished + If we want to do baked lighting
+        var stage = activeLevel.stageElement == null ? Instantiate(activeLevel.defaultStageElement, transform.position, Quaternion.identity) : 
+            Instantiate(activeLevel.stageElement, transform.position + activeLevel.levelOriginAdjustment, Quaternion.identity);
     }
 
     private void Update()

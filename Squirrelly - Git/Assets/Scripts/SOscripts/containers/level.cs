@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "level", menuName = "ScriptableObjects/Level")]
@@ -10,6 +7,9 @@ public class level : ScriptableObject
     [SerializeField] private string idTag;
     public Vector2 gridSize;
     public Vector3 originPoint = Vector3.zero;
+    //This is the prefab level design -> Baked Lighting Etc...
+    public GameObject stageElement, defaultStageElement;
+    public Vector3 levelOriginAdjustment;
 
     //These are the Added SO to Encapsulate the Difficulty Levels with Associated Gamemodes
     [SerializeField] private timeGamemode timeMode;

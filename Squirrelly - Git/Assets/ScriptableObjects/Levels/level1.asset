@@ -16,6 +16,9 @@ MonoBehaviour:
   idTag: Level2ID
   gridSize: {x: 8, y: 12}
   originPoint: {x: 0, y: 0, z: 0}
+  stageElement: {fileID: 0}
+  defaultStageElement: {fileID: 3130297672343218521, guid: 23d105b538bad3a4a8f39df2ebbcea85, type: 3}
+  levelOriginAdjustment: {x: 0, y: 0, z: 0}
   timeMode: {fileID: 11400000, guid: bfc68a3e205d658408d42ed14bb87b7f, type: 2}
   waveMode: {fileID: 0}
   scoreMode: {fileID: 0}
