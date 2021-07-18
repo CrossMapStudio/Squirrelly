@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3683458224521270169}
   - component: {fileID: 3683458224521270166}
   - component: {fileID: 2403009407643287743}
+  - component: {fileID: 7434821740218711696}
+  - component: {fileID: -1462270475550252148}
   m_Layer: 0
   m_Name: gameControl
   m_TagString: GameController
@@ -47,8 +49,6 @@ MonoBehaviour:
   sceneControl: {fileID: 0}
   groupedLevels:
   - associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
-  - associatedLevel: {fileID: 11400000, guid: 7fd6608fdab63ab4eac3ca25fe77cf96, type: 2}
-  - associatedLevel: {fileID: 11400000, guid: aa5b1e867b356d24a9c0ed1db4c6f3cd, type: 2}
   currentlySelectedLevel: {fileID: 0}
   activeStorage:
     id: 
@@ -72,3 +72,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7dda09f4a628d41aa9d40c7d1f3376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7434821740218711696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683458224521270165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2749bf10015b5084f8d0818545a47db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1462270475550252148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683458224521270165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db94ece4f2c3a1b4584b9e82fc3bbfb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeLevel: {fileID: 0}
+  unitList: []
+  unitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  controller: {fileID: 0}
+  gameUI: {fileID: 0}

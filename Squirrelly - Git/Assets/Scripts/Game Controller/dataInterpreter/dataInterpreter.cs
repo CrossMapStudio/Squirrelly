@@ -17,16 +17,13 @@ public class dataInterpreter : MonoBehaviour
     public interpreter gameModeInt;
     public gameCanvas gameUI;
 
-    private void Awake()
-    {
-        //Used for Intepreter
-        gameUI = Camera.main.transform.GetChild(0).GetComponent<gameCanvas>();
-    }
-
     public void initializeOnStart()
     {
+        gameUI = Camera.main.transform.GetChild(0).GetComponent<gameCanvas>();
         Grid.bakeGrid(activeLevel, activeLevel.originPoint, .5f, unitList);
         gameStateControl = new gameStateController(Grid, this);
+
+        gameStateControl.activeUnits = Grid.gridControl.getUnitList;
 
         controller = GetComponent<gameController>();
         var gamemodeIndex = controller.activeStorage.containerIndex;
@@ -58,6 +55,13 @@ public class dataInterpreter : MonoBehaviour
         if (Grid.gridControl.deleteUnit())
             gameStateControl.adjustWinNumber();
     }
+
+    public void clear()
+    {
+        gameUI = null;
+        gameStateControl = null;
+        gameModeInt = null;
+    }
 }
 /// <summary>
 /// This class will handle the random placemeent of Units -> and Connection of Nodes
@@ -65,7 +69,7 @@ public class dataInterpreter : MonoBehaviour
 
 public class gameStateController
 {
-    private List<baseUnit> activeUnits;
+    public List<baseUnit> activeUnits;
     private int winNum;
     private GridGenerator grid;
     private dataInterpreter data;
@@ -180,7 +184,9 @@ public class timeModeInt : interpreter
         {
             if (!gameController.pauseState)
                 currentTime -= Time.deltaTime;
-            gameUI.timer.text = currentTime.ToString("F2");
+
+            if (gameUI != null)
+                gameUI.timer.text = currentTime.ToString("F2");
         }
     }
 

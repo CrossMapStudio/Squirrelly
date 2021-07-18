@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: level2
   m_EditorClassIdentifier: 
   displayName: Level 3
-  idTag: boss
+  idTag: Level3ID
   gridSize: {x: 5, y: 10}
   originPoint: {x: 0, y: 0, z: 0}
   stageElement: {fileID: 0}
   defaultStageElement: {fileID: 3130297672343218521, guid: 23d105b538bad3a4a8f39df2ebbcea85, type: 3}
   levelOriginAdjustment: {x: 0, y: 0, z: 0}
-  timeMode: {fileID: 11400000, guid: 41cf05e7458722e409c1702931e67466, type: 2}
+  timeMode: {fileID: 0}
   waveMode: {fileID: 0}
   scoreMode: {fileID: 0}

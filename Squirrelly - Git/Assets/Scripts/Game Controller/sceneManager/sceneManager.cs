@@ -6,22 +6,44 @@ using UnityEngine.UI;
 public class sceneManager : MonoBehaviour
 {
     private int sceneToLoad;
-    private bool beginLoad;
+    private bool beginLoad, waitForAnim;
 
     public static int currentLevelIndex = 0;
-    private int mainMenuIndex = 0, playSceneIndex = 1;
+    private int levelSelectIndex = 1, playSceneIndex = 2, mainMenuIndex = 0;
 
     private gameController c;
+
+    private Animator passedAnim;
+    string loadStartAnim;
+
+    private inputHandler inputHandle;
+    private dataInterpreter data;
 
     public void Start()
     {
         c = GetComponent<gameController>();
+        inputHandle = c.GetComponent<inputHandler>();
+        data = gameObject.GetComponent<dataInterpreter>();
     }
 
-    public void loadScene(int scene)
+    public void loadScene(int scene, Animator loadSceneAnim = null, string animToTrigger = null, string animationNameForLoadStart = null)
     {
-        sceneToLoad = scene;
-        beginLoad = true;
+        if (data.Grid.gridControl != null)
+            data.Grid.gridControl.clearGrid();
+
+        if (!loadSceneAnim)
+        {
+            sceneToLoad = scene;
+            beginLoad = true;
+        }
+        else
+        {
+            sceneToLoad = scene;
+            passedAnim = loadSceneAnim;
+            loadStartAnim = animationNameForLoadStart;
+            passedAnim.Play(animToTrigger);
+            waitForAnim = true;
+        }
     }
 
     private void Update()
@@ -31,17 +53,20 @@ public class sceneManager : MonoBehaviour
             StartCoroutine(loadAsync());
             beginLoad = false;
         }
+        else if (waitForAnim)
+        {
+            if (passedAnim.GetCurrentAnimatorStateInfo(0).IsName(loadStartAnim))
+            {
+                beginLoad = true;
+                waitForAnim = false;
+            }
+        }
     }
 
     IEnumerator loadAsync()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
         currentLevelIndex = sceneToLoad;
-        if (currentLevelIndex == mainMenuIndex)
-        {
-            gameStateDestroy();
-        }
-        
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
@@ -57,28 +82,22 @@ public class sceneManager : MonoBehaviour
 
     private void gameStateInit()
     {
-        //May need optimizing
-        dataInterpreter local = gameObject.AddComponent(typeof(dataInterpreter)) as dataInterpreter;
-        inputHandler input = gameObject.AddComponent(typeof(inputHandler)) as inputHandler;
-
-        local.activeLevel = c.currentlySelectedLevel;
+        data.clear();
+        data.activeLevel = c.currentlySelectedLevel;
         //Will Vary based on the GameMode that was Selected + Difficulty
-        local.unitList = c.currentlySelectedLevel.getTimeMode.units;
-        local.unitLayer = c.unitLayer;
-        local.enabled = true;
-        local.initializeOnStart();
-    }
-
-    private void gameStateDestroy()
-    {
-        c.GetComponent<dataInterpreter>().Grid.gridControl.clearGrid();
-        Destroy(c.GetComponent<dataInterpreter>());
-        Destroy(c.GetComponent<inputHandler>());
+        data.unitList = c.currentlySelectedLevel.getTimeMode.units;
+        data.unitLayer = c.unitLayer;
+        data.enabled = true;
+        data.initializeOnStart();
     }
 
     public void restart(int index)
     {
-        gameStateDestroy();
         loadScene(index);
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
     }
 }

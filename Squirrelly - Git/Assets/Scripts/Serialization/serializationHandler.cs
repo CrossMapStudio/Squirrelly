@@ -75,6 +75,10 @@ public class serializationHandler
 public static class errorHandler
 {
     #region File Errors
+    public static void printMessage(string msg)
+    {
+        Debug.Log(msg);
+    }
     public static Exception fileNotFound { get; } = 
         new Exception("File Not Found on Clear - Either the Tag is Incorrect or the File does not Exist!");
     public static Exception noPassedData { get; } = 
@@ -84,6 +88,8 @@ public static class errorHandler
     #region Dictionary Errors
     public static Exception keyValueNonExistent { get; } =
         new Exception("The Key is not Found within the Dictionary or the Value is Null!");
+    public static Exception valueOutsideOfSwitchRange { get; } =
+    new Exception("The Value Passed to the Switch Statement forced Default Call!");
     #endregion
 }
 #endregion

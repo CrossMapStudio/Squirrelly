@@ -2,12 +2,13 @@ using GridHandler;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class baseUnit : MonoBehaviour
 {
     private Rigidbody rb;
     [HideInInspector]
-    public Vector3 worldPosition, pos1, pos2;
+    public Vector3 worldPosition, pos1, pos2, vel;
     [HideInInspector]
     public bool winState;
     [HideInInspector]
@@ -24,6 +25,31 @@ public class baseUnit : MonoBehaviour
     private Material baseMat;
     public Material selectedMat, potentialMat;
     public ParticleSystem onDelete;
+    public Text inputText;
+
+    private enum inputMapController
+    {
+        WB,
+        SB,
+        NB,
+        EB,
+        L1,
+        L2,
+        R1,
+        R2
+    }
+
+    private enum inputMapKeyMouse
+    { 
+        Q,
+        W,
+        E,
+        R,
+        T,
+        Y,
+        U,
+        I
+    }
 
     //This will change most likely
     private enum unitState
@@ -64,6 +90,21 @@ public class baseUnit : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void setInput(int controllerType, int input)
+    {
+        switch (controllerType)
+        {
+            case 0:
+                inputMapController ps = (inputMapController)input;
+                inputText.text = ps.ToString();
+                break;
+            case 1:
+                inputMapKeyMouse keyMouse = (inputMapKeyMouse)input;
+                inputText.text = keyMouse.ToString();
+                break;
+        }
+    }
+
     public void Update()
     {
         Material temp = selected ? selectedMat : baseMat;
@@ -78,16 +119,22 @@ public class baseUnit : MonoBehaviour
         Vector3 target = new Vector3();
         if (transform.position != worldPosition)
         {
-            //Begin moving the block at the speed
-            target = worldPosition - transform.position;
-            rb.MovePosition(transform.position + (target.normalized * speedScaler) * Time.fixedDeltaTime);
-            if (currentState != unitState.moving)
-                currentState = unitState.moving;
+            if (gameController.pauseState)
+            {
+                currentState = unitState.idle;
+            }
+            else
+            {
+                //Begin moving the block at the speed
+                transform.position = Vector3.SmoothDamp(transform.position, worldPosition, ref vel, speedScaler);
+                if (currentState != unitState.moving)
+                    currentState = unitState.moving;
+            }
         }
 
         if (currentState == unitState.moving)
         {
-            if (Vector3.Distance(worldPosition, transform.position) <= .2f)
+            if (Vector3.Distance(worldPosition, transform.position) <= .05f)
             {
                 transform.position = worldPosition;
                 currentState = unitState.idle;
@@ -114,4 +161,69 @@ public class baseUnit : MonoBehaviour
             }
         }
     }
+}
+
+public class stateMachine
+{
+    private state currentState, previousState;
+
+    public void changeState(state newState, GameObject stateIdentity = null)
+    {
+        if (currentState != null)
+        {
+            this.currentState.onExit();
+        }
+        this.previousState = this.currentState;
+        this.currentState = newState;
+        this.currentState.onEnter();
+    }
+
+    public void executeStateUpdate()
+    {
+        var runningState = this.currentState;
+        if (runningState != null)
+        {
+            this.currentState.onUpdate();
+        }
+    }
+
+    public void executeStateFixedUpdate()
+    {
+        var runningState = this.currentState;
+        if (runningState != null)
+        {
+            this.currentState.onFixedUpdate();
+        }
+    }
+
+    public void previousStateSwitch()
+    {
+        if (this.previousState != null)
+        {
+            this.currentState.onExit();
+            this.currentState = this.previousState;
+            this.currentState.onEnter();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    //To Allow Us to Check for the State
+    public string getCurrentState()
+    {
+        return this.currentState.ToString();
+    }
+}
+
+public interface state 
+{
+    public void onEnter();
+
+    public void onUpdate();
+
+    public void onFixedUpdate();
+
+    public void onExit();
 }

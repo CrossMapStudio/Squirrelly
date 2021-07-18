@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: ' Level 1'
   idTag: Tutorial
-  gridSize: {x: 12, y: 12}
+  gridSize: {x: 6, y: 7}
   originPoint: {x: 0, y: 0, z: 0}
-  stageElement: {fileID: 3727615082410265518, guid: 639d7f077dfa32147acf33c9dbfb3379, type: 3}
+  stageElement: {fileID: 5538174980248239246, guid: f5770bc95597f044d8226b39d6da066c, type: 3}
   defaultStageElement: {fileID: 3130297672343218521, guid: 23d105b538bad3a4a8f39df2ebbcea85, type: 3}
-  levelOriginAdjustment: {x: -25, y: 0, z: -25}
+  levelOriginAdjustment: {x: -15, y: 0, z: -15}
   timeMode: {fileID: 11400000, guid: 41cf05e7458722e409c1702931e67466, type: 2}
-  waveMode: {fileID: 11400000, guid: fdaed21a26dc3ad49bebc6f736ffbd51, type: 2}
+  waveMode: {fileID: 0}
   scoreMode: {fileID: 0}

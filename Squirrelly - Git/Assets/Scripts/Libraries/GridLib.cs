@@ -72,15 +72,25 @@ namespace GridHandler
                 int spawnChance = Random.Range(0, 2) == 1 ? 0 : 1;
                 Node local = availableNodes[spawnChance, i];
 
+                //Change for Spawn in
                 var clone = Object.Instantiate(units[0], local.worldPosition, Quaternion.identity);
                 activeUnits.Add(clone);
                 baseUnit unit = clone.GetComponent<baseUnit>();
                 unit.worldPosition = local.worldPosition;
                 unit.winPos = availableNodes[0, i].worldPosition.x;
 
+                if (inputHandler.currentControl == inputHandler.controlSetting.controller)
+                {
+                    unit.setInput(0, i);
+                }
+                else
+                {
+                    unit.setInput(1, i);
+                }
+
                 unit.pos1 = unit.worldPosition;
                 unit.pos2 = availableNodes[spawnChance == 0 ? 1 : 0, i].worldPosition;
-                unitList.Add(clone.GetComponent<baseUnit>());
+                unitList.Add(unit);
             }
 
             //This Section creates the connections
@@ -114,7 +124,7 @@ namespace GridHandler
             unitList.Clear();
         }
 
-        public void checkNodeSelection(baseUnit element)
+        public void checkNodeSelection(baseUnit element, bool switchAuto = true)
         {
             if (selectedUnit != null && selectedUnit != element)
             {
@@ -128,6 +138,8 @@ namespace GridHandler
                 selectedUnit = element;
                 selectedUnit.selected = true;
                 selectedUnit.triggerNeighbors(true);
+                if (switchAuto)
+                    startSwitch();
             }
         }
 
@@ -157,6 +169,8 @@ namespace GridHandler
         {
             uni.worldPosition = uni.worldPosition == uni.pos1 ? uni.pos2 : uni.pos1;
         }
+
+        public List<baseUnit> getUnitList { get { return unitList; } }
     }
 
     public class Node

@@ -63,6 +63,10 @@ public class gameController : MonoBehaviour
             case 4:
                 gData.pData.coins++;
                 break;
+            case 5:
+                //serializationHandler.saveGame(serializationHandler.fileTag, gData);
+                sceneControl.quitGame();
+                break;
         }
     }
 
@@ -90,12 +94,12 @@ public class gameController : MonoBehaviour
         return local;
     }
 
-    public void launchActiveLevel()
+    public void launchActiveLevel(Animator loadSceneAnim = null, string animToTrigger = null, string animationNameForLoadStart = null)
     {
         if (currentlySelectedLevel != null)
         {
             activeStorage.retrieveStorage();
-            sceneControl.loadScene(1);
+            sceneControl.loadScene(2, loadSceneAnim, animToTrigger, animationNameForLoadStart);
         }
     }
 }
