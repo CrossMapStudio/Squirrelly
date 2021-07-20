@@ -28,6 +28,8 @@ public class gameCanvas : MonoBehaviour
         IMap.InGamePause.Action1.performed += context => checkNullAction();
         IMap.InGamePause.Action2.started += context => pauseMenu(0);
         IMap.InGamePause.Options.started += context => pauseMenu(0);
+
+        gameController.pauseState = false;
     }
 
     //Debugging/Testing
@@ -70,6 +72,10 @@ public class gameCanvas : MonoBehaviour
     public void endGame()
     {
         pauseMenuUI.SetActive(true);
+        if (inputHandler.currentControl == inputHandler.controlSetting.controller)
+            activeButton.setHoveringValue = true;
+        IMap.InGame.Disable();
+        IMap.InGamePause.Enable();
         //Update States by Passing from Game Controller
     }
 
