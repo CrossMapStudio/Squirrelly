@@ -1,4 +1,5 @@
 using GridHandler;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -26,6 +27,12 @@ public class baseUnit : MonoBehaviour
     public Material selectedMat, potentialMat;
     public ParticleSystem onDelete;
     public Text inputText;
+
+    //New Stuff
+    public Animator unitAnimator;
+    private stateMachine unitStateMachine;
+    private animationController animControl;
+    private audioController audioControl;
 
     private enum inputMapController
     {
@@ -62,8 +69,15 @@ public class baseUnit : MonoBehaviour
 
     private void Awake()
     {
+        //Enter the Awake State ---
+        audioControl = new audioController();
+        animControl = new animationController(unitAnimator);
+
+        unitStateMachine = new stateMachine(animControl, audioControl);
+        unitStateMachine.changeState(new awakeState());
+
         rb = GetComponent<Rigidbody>();
-        mRend = GetComponent<MeshRenderer>();
+        mRend = transform.GetChild(1).GetComponent<MeshRenderer>();
         baseMat = mRend.material;
     }
 
@@ -112,11 +126,13 @@ public class baseUnit : MonoBehaviour
 
         if (temp != mRend.material)
             mRend.material = temp;
+
+        if (unitStateMachine != null)
+            unitStateMachine.executeStateUpdate();
     }
 
     public void FixedUpdate()
     {
-        Vector3 target = new Vector3();
         if (transform.position != worldPosition)
         {
             if (gameController.pauseState)
@@ -126,7 +142,7 @@ public class baseUnit : MonoBehaviour
             else
             {
                 //Begin moving the block at the speed
-                transform.position = Vector3.SmoothDamp(transform.position, worldPosition, ref vel, speedScaler);
+                transform.position = Vector3.MoveTowards(transform.position, worldPosition, speedScaler * Time.fixedDeltaTime);
                 if (currentState != unitState.moving)
                     currentState = unitState.moving;
             }
@@ -160,12 +176,34 @@ public class baseUnit : MonoBehaviour
                 }
             }
         }
+
+        if (unitStateMachine != null)
+            unitStateMachine.executeStateFixedUpdate();
+    }
+
+    //Mainly for Anim Triggers and Call Within the Base - 
+    public void changeState(int switchValue)
+    {
+        switch (switchValue)
+        {
+            case 0:
+                unitStateMachine.changeState(new idleState());
+                break;
+        }
     }
 }
 
 public class stateMachine
 {
     private state currentState, previousState;
+    private animationController animControl;
+    private audioController audioControl;
+
+    public stateMachine(animationController _animControl, audioController _audioControl)
+    {
+        animControl = _animControl;
+        audioControl = _audioControl;
+    }
 
     public void changeState(state newState, GameObject stateIdentity = null)
     {
@@ -175,6 +213,8 @@ public class stateMachine
         }
         this.previousState = this.currentState;
         this.currentState = newState;
+        this.currentState.animControl = animControl;
+        this.currentState.audioControl = audioControl;
         this.currentState.onEnter();
     }
 
@@ -196,6 +236,7 @@ public class stateMachine
         }
     }
 
+    //Prolly not needed --- Can Optimize if No Case
     public void previousStateSwitch()
     {
         if (this.previousState != null)
@@ -226,4 +267,232 @@ public interface state
     public void onFixedUpdate();
 
     public void onExit();
+
+    public animationController animControl { get; set; }
+    public audioController audioControl { get; set; }
 }
+
+#region States
+public class awakeState : state
+{
+    public void onEnter()
+    {
+        Debug.Log("Awake State");
+    }
+
+    public void onUpdate()
+    {
+
+    }
+
+    public void onFixedUpdate()
+    {
+
+    }
+
+    public void onExit()
+    {
+
+    }
+
+    public animationController animControl { get; set; }
+    public audioController audioControl { get; set; }
+}
+public class idleState : state
+{
+    public void onEnter()
+    {
+        Debug.Log("Idle State");
+    }
+
+    public void onUpdate()
+    {
+
+    }
+
+    public void onFixedUpdate()
+    {
+
+    }
+
+    public void onExit()
+    {
+
+    }
+
+    public animationController animControl { get; set; }
+    public audioController audioControl { get; set; }
+}
+public class movingState
+{
+    public class idleState : state
+    {
+
+        public void onEnter()
+        {
+
+        }
+
+        public void onUpdate()
+        {
+
+        }
+
+        public void onFixedUpdate()
+        {
+
+        }
+
+        public void onExit()
+        {
+
+        }
+
+        public animationController animControl { get; set; }
+        public audioController audioControl { get; set; }
+    }
+}
+public class deathState : state
+{
+
+    public void onEnter()
+    {
+
+    }
+
+    public void onUpdate()
+    {
+
+    }
+
+    public void onFixedUpdate()
+    {
+
+    }
+
+    public void onExit()
+    {
+
+    }
+
+    public animationController animControl { get; set; }
+    public audioController audioControl { get; set; }
+}
+public class positionEnterStatepublic : state
+{
+
+    public void onEnter()
+    {
+
+    }
+
+    public void onUpdate()
+    {
+
+    }
+
+    public void onFixedUpdate()
+    {
+
+    }
+
+    public void onExit()
+    {
+
+    }
+
+    public animationController animControl { get; set; }
+    public audioController audioControl { get; set; }
+}
+public class levelCompletionState : state
+{
+
+    public void onEnter()
+    {
+
+    }
+
+    public void onUpdate()
+    {
+
+    }
+
+    public void onFixedUpdate()
+    {
+
+    }
+
+    public void onExit()
+    {
+
+    }
+
+    public animationController animControl { get; set; }
+    public audioController audioControl { get; set; }
+}
+#endregion
+
+#region Unit Management
+
+public class animationController
+{
+    Animator unitAnimator;
+    public animationController(Animator _unitAnimator)
+    {
+        unitAnimator = _unitAnimator;
+    }
+
+    public void setTrigger(string triggerName)
+    {
+        //Error Handling Later
+        unitAnimator.SetTrigger(triggerName);
+    }
+
+    public void setBool(string boolName, bool value)
+    {
+        //Error Handling Good Here
+        if (!unitAnimator.GetBool(boolName)) {
+            errorHandler.printMessage("The Bool Value Passes is Non-Existent in the Animator"); 
+            return;
+        }
+
+        unitAnimator.SetBool(boolName, value);
+    }
+
+    public void setFloat(string valueName, float value)
+    {
+        //Error Handling Later
+        unitAnimator.SetFloat(valueName, value);
+    }
+}
+
+public class audioController
+{
+    public audioController()
+    {
+
+    }
+}
+
+//Used for CallBacks within the States --- Can Use Refactor
+public class changeState
+{
+    private int stateToChange, passed;
+    public changeState(int stateToChangeTo, int passedParameter = 0)
+    {
+        stateToChange = stateToChangeTo;
+        passed = passedParameter;
+    }
+
+    public int retrieveStateChange()
+    {
+        return stateToChange;
+    }
+
+    public int retrievePassedParameter()
+    {
+        return passed;
+    }
+}
+
+#endregion

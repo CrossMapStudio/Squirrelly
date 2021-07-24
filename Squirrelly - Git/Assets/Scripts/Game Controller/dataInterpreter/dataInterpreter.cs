@@ -16,11 +16,16 @@ public class dataInterpreter : MonoBehaviour
     public gameStateController gameStateControl;
     public interpreter gameModeInt;
     public gameCanvas gameUI;
+    //Grid Texture
+    public GameObject gridTexture;
+
+    public float nodeRadius = .5f;
+    public Vector2 unitSpacing;
 
     public void initializeOnStart()
     {
         gameUI = Camera.main.transform.GetChild(0).GetComponent<gameCanvas>();
-        Grid.bakeGrid(activeLevel, activeLevel.originPoint, .5f, unitList);
+        Grid.bakeGrid(activeLevel, activeLevel.originPoint, nodeRadius, unitSpacing, unitList, gridTexture);
         gameStateControl = new gameStateController(Grid, this);
 
         gameStateControl.activeUnits = Grid.gridControl.getUnitList;

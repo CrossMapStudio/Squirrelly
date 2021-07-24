@@ -103,3 +103,6 @@ MonoBehaviour:
     m_Bits: 0
   controller: {fileID: 0}
   gameUI: {fileID: 0}
+  gridTexture: {fileID: 4900122137560295377, guid: 5a37a2017f54f884e8bc36c5d4b388c3, type: 3}
+  nodeRadius: 0.5
+  unitSpacing: {x: 1, y: 2}

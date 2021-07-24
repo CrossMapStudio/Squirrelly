@@ -5,25 +5,31 @@ namespace GridHandler
 {
     public class GridGenerator
     {
+        //6-7
         //Used for Assigning Win Side, Etc.
         Node[,] grid;
         public gridController gridControl;
         List<GameObject> levelUnits;
-        public void bakeGrid(level activeLevel, Vector3 originPoint, float nodeRadius, List<GameObject> _levelUnits)
+        GameObject gridTexture;
+        public void bakeGrid(level activeLevel, Vector3 originPoint, float nodeRadius, Vector2 unitSpacing, List<GameObject> _levelUnits, GameObject _gridTexture = null)
         {
             float nodeDiameter = nodeRadius * 2f;
-            int gridSizeX = Mathf.RoundToInt(activeLevel.gridSize.x / nodeDiameter);
-            int gridSizeY = Mathf.RoundToInt(activeLevel.gridSize.y / nodeDiameter);
+            gridTexture = _gridTexture;
+            int gridSizeX = Mathf.RoundToInt(activeLevel.gridSize.x);
+            int gridSizeY = Mathf.RoundToInt(activeLevel.gridSize.y);
             grid = new Node[gridSizeX, gridSizeY];
 
             Node[,] localAvailableNodes = new Node[2, grid.GetLength(1) * 2];
-            Vector3 worldBottomLeft = originPoint - Vector3.right * activeLevel.gridSize.x / 2 - Vector3.forward * activeLevel.gridSize.y / 2;
+            Vector3 worldBottomLeft = originPoint - Vector3.right * activeLevel.gridSize.x * unitSpacing.x / 2 - Vector3.forward * activeLevel.gridSize.y * unitSpacing.y / 2;
             for (int i = 0; i < gridSizeX; i++)
             {
                 for (int j = 0; j < gridSizeY; j++)
                 {
-                    Vector3 worldPoint = worldBottomLeft + Vector3.right * (i * nodeDiameter + nodeRadius) + Vector3.forward * (j * nodeDiameter + nodeRadius);
+                    Vector3 worldPoint = worldBottomLeft + Vector3.right * ((i * nodeDiameter + nodeRadius) * unitSpacing.x) + Vector3.forward * ((j * nodeDiameter + nodeRadius) * unitSpacing.y);
                     grid[i, j] = new Node(worldPoint, i, j);
+
+                    //Destroy Later
+                    Object.Instantiate(gridTexture, worldPoint, Quaternion.identity);
 
                     if (i == 0)
                     {
