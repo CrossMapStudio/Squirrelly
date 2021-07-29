@@ -55,12 +55,6 @@ public class dataInterpreter : MonoBehaviour
             gameModeInt.onUpdate();
     }
 
-    public void unitElimination()
-    {
-        if (Grid.gridControl.deleteUnit())
-            gameStateControl.adjustWinNumber();
-    }
-
     public void clear()
     {
         gameUI = null;
@@ -75,10 +69,8 @@ public class dataInterpreter : MonoBehaviour
 public class gameStateController
 {
     public List<baseUnit> activeUnits;
-    private int winNum;
-    private GridGenerator grid;
+    public GridGenerator grid;
     private dataInterpreter data;
-    public static int compareNum;
     private enum state
     {
         start,
@@ -90,7 +82,6 @@ public class gameStateController
     private state gameState = state.start;
     public gameStateController(GridGenerator _grid, dataInterpreter _data, int totalNum = 0)
     {
-        winNum = totalNum;
         grid = _grid;
         data = _data;
         waveTrigger();
@@ -98,7 +89,6 @@ public class gameStateController
 
     public void update()
     {
-        gameState = compareNum >= winNum ? state.cleared : gameState;
         if (gameState == state.cleared)
         {
             //units animate and make em do dance or something ->
@@ -112,13 +102,8 @@ public class gameStateController
         if (gameState != state.start)
             data.gameModeInt.onWaveCompletion();
 
-        winNum = grid.startWave().Count;
+        grid.startWave();
         gameState = state.playing;
-    }
-
-    public void adjustWinNumber()
-    {
-        winNum--;
     }
 
     public void setState(int index)
@@ -135,6 +120,7 @@ public class gameStateController
                 }
                 break;
             case 1:
+                gameState = state.cleared;
                 break;
             default:
                 break;
@@ -192,6 +178,13 @@ public class timeModeInt : interpreter
 
             if (gameUI != null)
                 gameUI.timer.text = currentTime.ToString("F2");
+
+            if (!gameController.pauseState)
+            {
+                if (controller.grid.gridControl.checkWinNodes())
+                    controller.setState(1);
+
+            }
         }
     }
 

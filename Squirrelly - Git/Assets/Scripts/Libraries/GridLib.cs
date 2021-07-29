@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace GridHandler
 {
@@ -11,12 +12,14 @@ namespace GridHandler
         public gridController gridControl;
         List<GameObject> levelUnits;
         GameObject gridTexture;
+
+        public int gridSizeX, gridSizeY;
         public void bakeGrid(level activeLevel, Vector3 originPoint, float nodeRadius, Vector2 unitSpacing, List<GameObject> _levelUnits, GameObject _gridTexture = null)
         {
             float nodeDiameter = nodeRadius * 2f;
             gridTexture = _gridTexture;
-            int gridSizeX = Mathf.RoundToInt(activeLevel.gridSize.x);
-            int gridSizeY = Mathf.RoundToInt(activeLevel.gridSize.y);
+            gridSizeX = Mathf.RoundToInt(activeLevel.gridSize.x);
+            gridSizeY = Mathf.RoundToInt(activeLevel.gridSize.y);
             grid = new Node[gridSizeX, gridSizeY];
 
             Node[,] localAvailableNodes = new Node[2, grid.GetLength(1) * 2];
@@ -28,22 +31,22 @@ namespace GridHandler
                     Vector3 worldPoint = worldBottomLeft + Vector3.right * ((i * nodeDiameter + nodeRadius) * unitSpacing.x) + Vector3.forward * ((j * nodeDiameter + nodeRadius) * unitSpacing.y);
                     grid[i, j] = new Node(worldPoint, i, j);
 
-                    //Destroy Later
-                    Object.Instantiate(gridTexture, worldPoint, Quaternion.identity);
-
                     if (i == 0)
                     {
+                        grid[0, j].isWinPos = true;
                         localAvailableNodes[0, j] = grid[0, j];
                     }
                     else if (i == gridSizeX - 1)
                     {
                         localAvailableNodes[1, j] = grid[i, j];
                     }
+
+                    Object.Instantiate(gridTexture, worldPoint, Quaternion.identity);
                 }
             }
 
             levelUnits = _levelUnits;
-            gridControl = new gridController(localAvailableNodes);
+            gridControl = new gridController(this, localAvailableNodes);
         }
 
         public List<baseUnit> startWave()
@@ -59,9 +62,11 @@ namespace GridHandler
         baseUnit selectedUnit = null;
         List<GameObject> activeUnits;
         List<baseUnit> unitList;
+        GridGenerator controller;
 
-        public gridController(Node[,] _availableNodes)
+        public gridController(GridGenerator _controller, Node[,] _availableNodes)
         {
+            controller = _controller;
             availableNodes = _availableNodes;
             totalFillSlots = availableNodes.GetLength(1) / 2;
             activeUnits = new List<GameObject>();
@@ -84,7 +89,7 @@ namespace GridHandler
                 baseUnit unit = clone.GetComponent<baseUnit>();
                 unit.worldPosition = local.worldPosition;
                 unit.winPos = availableNodes[0, i].worldPosition.x;
-
+                unit.winState = unit.worldPosition.x == unit.winPos ?  true : false;
                 if (inputHandler.currentControl == inputHandler.controlSetting.controller)
                 {
                     unit.setInput(0, i);
@@ -94,8 +99,17 @@ namespace GridHandler
                     unit.setInput(1, i);
                 }
 
-                unit.pos1 = unit.worldPosition;
-                unit.pos2 = availableNodes[spawnChance == 0 ? 1 : 0, i].worldPosition;
+                unit.pos1 = availableNodes[0, i].worldPosition;
+                unit.pos2 = availableNodes[1, i].worldPosition;
+                unit.activeNodes.Add(availableNodes[0, i]); unit.activeNodes.Add(availableNodes[1, i]);
+                if (unit.worldPosition == availableNodes[0, i].worldPosition)
+                {
+                    availableNodes[0, i].inWinPos = true;
+                }
+                else
+                {
+                    availableNodes[0, i].inWinPos = false;
+                }
                 unitList.Add(unit);
             }
 
@@ -121,13 +135,15 @@ namespace GridHandler
 
         public void clearGrid()
         {
-            for (int i = 0; i < unitList.Count; i++)
-            {
-                deleteUnit(unitList[i]);
-            }
-            gameStateController.compareNum = 0;
+            destoryUnit(true);
             activeUnits.Clear();
             unitList.Clear();
+
+            for (int i = 0; i < controller.gridSizeY; i++)
+            {
+                availableNodes[0, i].inWinPos = false;
+                availableNodes[0, i].isWinPos = true;
+            }
         }
 
         public void checkNodeSelection(baseUnit element, bool switchAuto = true)
@@ -161,14 +177,25 @@ namespace GridHandler
             }
         }
 
-        public bool deleteUnit(baseUnit unit = null)
+        public void destoryUnit(bool destroyAll = false)
         {
-            if (unit != null)
+            if (!destroyAll)
             {
-                unit.destroyUnit();
-                return true;
+                if (selectedUnit != null)
+                {
+                    selectedUnit.changeState(2);
+                    unitList.Remove(selectedUnit);
+                    selectedUnit = null;
+                }
             }
-            return false;
+            else
+            {
+                for (int i = 0; i < unitList.Count; i++)
+                {
+                    if (unitList[i] != null)
+                        unitList[i].destroyUnit();
+                }
+            }
         }
 
         public void switchNodeSelection(baseUnit uni)
@@ -177,6 +204,25 @@ namespace GridHandler
         }
 
         public List<baseUnit> getUnitList { get { return unitList; } }
+
+        public bool checkWinNodes()
+        {
+            for (int i = 0; i < controller.gridSizeY; i++)
+            {
+                if (!availableNodes[0, i].isWinPos)
+                    continue;
+
+                if (availableNodes[0, i].inWinPos)
+                {
+                    continue;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     public class Node
@@ -187,6 +233,9 @@ namespace GridHandler
         //Instant of instantiated squirrel etc. --- Placeholder for now
         public baseUnit presentEntity;
 
+        public bool isWinPos;
+        public bool inWinPos;
+
         public Node(Vector3 _worldPosition, int _gridX, int _gridY)
         {
             worldPosition = _worldPosition;
@@ -196,7 +245,7 @@ namespace GridHandler
 
             if (!(presentEntity is null))
             {
-                //Do something ---> 
+
             }
         }
     }

@@ -20,6 +20,11 @@ public class baseUnit : MonoBehaviour
     public baseUnit entity;
     [HideInInspector]
     public float winPos;
+    [HideInInspector]
+    public dataInterpreter gameData;
+
+    [HideInInspector]
+    public List<Node> activeNodes;
 
     public float speedScaler;
     private MeshRenderer mRend;
@@ -33,6 +38,10 @@ public class baseUnit : MonoBehaviour
     private stateMachine unitStateMachine;
     private animationController animControl;
     private audioController audioControl;
+
+    public float RotationSpeed = 2f;
+    private Vector3 _direction;
+    private Quaternion _lookRotation;
 
     private enum inputMapController
     {
@@ -73,12 +82,17 @@ public class baseUnit : MonoBehaviour
         audioControl = new audioController();
         animControl = new animationController(unitAnimator);
 
-        unitStateMachine = new stateMachine(animControl, audioControl);
-        unitStateMachine.changeState(new awakeState());
+        unitStateMachine = new stateMachine(this, animControl, audioControl);
+        unitStateMachine.changeState(new idleState());
+
+        //For Tracking Unit on Death for Win State
+        gameData = GameObject.FindGameObjectWithTag("GameController").GetComponent<dataInterpreter>();
 
         rb = GetComponent<Rigidbody>();
         mRend = transform.GetChild(1).GetComponent<MeshRenderer>();
         baseMat = mRend.material;
+
+        activeNodes = new List<Node>();
     }
 
     public void triggerNeighbors(bool triggerStatus = false)
@@ -93,13 +107,18 @@ public class baseUnit : MonoBehaviour
     public void destroyUnit()
     {
         //This will Handle Rerouting Neighbors/Killing the Unit
+        /*
         if (neighbors[0] != null)
             neighbors[0].neighbors[1] = neighbors[1];
 
         if (neighbors[1] != null)
             neighbors[1].neighbors[0] = neighbors[0];
+            */
 
         var clone = Instantiate(onDelete, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity);
+
+        activeNodes[0].isWinPos = false;
+
         Destroy(clone, 2f);
         Destroy(gameObject);
     }
@@ -129,6 +148,17 @@ public class baseUnit : MonoBehaviour
 
         if (unitStateMachine != null)
             unitStateMachine.executeStateUpdate();
+
+        if (worldPosition == pos1 && transform.position == worldPosition)
+        {
+            if (activeNodes[0] != null)
+                activeNodes[0].inWinPos = true;
+        }
+        else
+        {
+            if (activeNodes[0] != null)
+                activeNodes[0].inWinPos = false;
+        }
     }
 
     public void FixedUpdate()
@@ -144,36 +174,20 @@ public class baseUnit : MonoBehaviour
                 //Begin moving the block at the speed
                 transform.position = Vector3.MoveTowards(transform.position, worldPosition, speedScaler * Time.fixedDeltaTime);
                 if (currentState != unitState.moving)
+                {
                     currentState = unitState.moving;
+                    changeState(1);
+                }
+
             }
         }
 
         if (currentState == unitState.moving)
         {
-            if (Vector3.Distance(worldPosition, transform.position) <= .05f)
+            if (transform.position == worldPosition)
             {
-                transform.position = worldPosition;
                 currentState = unitState.idle;
-            }
-
-            if (worldPosition.x != winPos)
-            {
-                if (winState == true)
-                {
-                    winState = false;
-                    gameStateController.compareNum--;
-                }
-            }
-        }
-        else
-        {
-            if (worldPosition.x == winPos)
-            {
-                if (winState == false)
-                {
-                    winState = true;
-                    gameStateController.compareNum++;
-                }
+                changeState(0);
             }
         }
 
@@ -189,6 +203,13 @@ public class baseUnit : MonoBehaviour
             case 0:
                 unitStateMachine.changeState(new idleState());
                 break;
+            case 1:
+                unitStateMachine.changeState(new movingState());
+                break;
+            case 2:
+                if (unitStateMachine.getCurrentState() != "deathState")
+                    unitStateMachine.changeState(new deathState());
+                break;
         }
     }
 }
@@ -196,11 +217,13 @@ public class baseUnit : MonoBehaviour
 public class stateMachine
 {
     private state currentState, previousState;
+    private baseUnit controller;
     private animationController animControl;
     private audioController audioControl;
 
-    public stateMachine(animationController _animControl, audioController _audioControl)
+    public stateMachine(baseUnit _controller, animationController _animControl, audioController _audioControl)
     {
+        controller = _controller;
         animControl = _animControl;
         audioControl = _audioControl;
     }
@@ -213,6 +236,7 @@ public class stateMachine
         }
         this.previousState = this.currentState;
         this.currentState = newState;
+        this.currentState.controller = controller;
         this.currentState.animControl = animControl;
         this.currentState.audioControl = audioControl;
         this.currentState.onEnter();
@@ -268,6 +292,7 @@ public interface state
 
     public void onExit();
 
+    public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
 }
@@ -295,19 +320,39 @@ public class awakeState : state
 
     }
 
+    public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
 }
 public class idleState : state
 {
+    #region Members
+    Vector3 lookDirection;
+    Quaternion lookRotation;
+    #endregion
     public void onEnter()
     {
         Debug.Log("Idle State");
+        animControl.setBool("idleState", true);
     }
 
     public void onUpdate()
     {
+        //find the vector pointing from our position to the target
+        if (controller.worldPosition == controller.pos1)
+        {
+            lookDirection = (controller.pos2 - controller.transform.position).normalized;
+        }
+        else
+        {
+            lookDirection = (controller.pos1 - controller.transform.position).normalized;
+        }
 
+        //create the rotation we need to be in to look at the target
+        lookRotation = Quaternion.LookRotation(lookDirection);
+
+        //rotate us over time according to speed until we are in the required rotation
+        controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, lookRotation, Time.deltaTime * 4f);
     }
 
     public void onFixedUpdate()
@@ -317,47 +362,74 @@ public class idleState : state
 
     public void onExit()
     {
-
+        animControl.setBool("idleState", false);
     }
 
+    public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
 }
-public class movingState
+public class movingState : state
 {
-    public class idleState : state
+    #region Members
+    Vector3 lookDirection;
+    Quaternion lookRotation;
+    #endregion
+    public void onEnter()
+    {
+        animControl.setBool("movingState", true);
+        Debug.Log("Movement State");
+    }
+
+    public void onUpdate()
+    {
+        //find the vector pointing from our position to the target
+        lookDirection = (controller.worldPosition - controller.transform.position).normalized;
+        float dot = Vector3.Dot(controller.transform.forward, lookDirection);
+        animControl.setFloat("movementXParam", dot);
+        float localAnimParam = 1 + dot;
+
+        if (controller.worldPosition == controller.pos1)
+        {
+            animControl.setFloat("movementYParam", -2 + localAnimParam);
+        }
+        else
+        {
+            animControl.setFloat("movementYParam", 2 - localAnimParam);
+        }
+        //create the rotation we need to be in to look at the target
+        lookRotation = Quaternion.LookRotation(lookDirection);
+        //rotate us over time according to speed until we are in the required rotation
+        controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, lookRotation, Time.deltaTime * 4f);
+    }
+
+    public void onFixedUpdate()
     {
 
-        public void onEnter()
-        {
-
-        }
-
-        public void onUpdate()
-        {
-
-        }
-
-        public void onFixedUpdate()
-        {
-
-        }
-
-        public void onExit()
-        {
-
-        }
-
-        public animationController animControl { get; set; }
-        public audioController audioControl { get; set; }
     }
+
+    public void onExit()
+    {
+        animControl.setBool("movingState", false);
+    }
+
+    public baseUnit controller { get; set; }
+    public animationController animControl { get; set; }
+    public audioController audioControl { get; set; }
 }
 public class deathState : state
 {
-
     public void onEnter()
     {
+        animControl.setTrigger("dead");
+        //This will Handle Rerouting Neighbors/Killing the Unit
+        if (controller.neighbors[0] != null)
+            controller.neighbors[0].neighbors[1] = controller.neighbors[1];
 
+        if (controller.neighbors[1] != null)
+            controller.neighbors[1].neighbors[0] = controller.neighbors[0];
+        animControl = null;
+        audioControl = null;
     }
 
     public void onUpdate()
@@ -375,6 +447,7 @@ public class deathState : state
 
     }
 
+    public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
 }
@@ -401,6 +474,7 @@ public class positionEnterStatepublic : state
 
     }
 
+    public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
 }
@@ -427,6 +501,7 @@ public class levelCompletionState : state
 
     }
 
+    public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
 }
@@ -450,12 +525,6 @@ public class animationController
 
     public void setBool(string boolName, bool value)
     {
-        //Error Handling Good Here
-        if (!unitAnimator.GetBool(boolName)) {
-            errorHandler.printMessage("The Bool Value Passes is Non-Existent in the Animator"); 
-            return;
-        }
-
         unitAnimator.SetBool(boolName, value);
     }
 

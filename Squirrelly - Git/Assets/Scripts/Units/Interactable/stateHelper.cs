@@ -10,4 +10,9 @@ public class stateHelper : MonoBehaviour
     {
         parentedUnit.changeState(state);
     }
+
+    public void animationTriggerToDestroyUnit()
+    {
+        parentedUnit.destroyUnit();
+    }
 }

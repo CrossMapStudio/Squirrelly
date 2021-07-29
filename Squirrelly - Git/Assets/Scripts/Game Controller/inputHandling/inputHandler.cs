@@ -95,6 +95,12 @@ public class inputHandler : MonoBehaviour
                 if (data != null)
                     data.Grid.gridControl.startSwitch();
 
+            //For Debugging
+            if (Input.GetMouseButtonDown(1))
+                if (data != null)
+                    data.Grid.gridControl.destoryUnit();
+
+
             for (int i = 0; i < keys.Length; i++)
             {
                 if (Input.GetKeyDown(keys[i]))

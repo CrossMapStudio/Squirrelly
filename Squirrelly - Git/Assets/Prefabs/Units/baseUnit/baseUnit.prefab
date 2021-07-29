@@ -1,5 +1,1559 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &105535464945250934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6049192583194069838}
+  m_Layer: 0
+  m_Name: squirrel_r_Paw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6049192583194069838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105535464945250934}
+  m_LocalRotation: {x: 0.00000049726145, y: -0.00000013810543, z: -0.10051579, w: 0.9949355}
+  m_LocalPosition: {x: 0.02015099, y: -0.00000004053116, z: 0.000000085830685}
+  m_LocalScale: {x: 0.99999964, y: 0.9999996, z: 1}
+  m_Children:
+  - {fileID: 5631946138440036817}
+  m_Father: {fileID: 3138330320007374783}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00009213214, y: 0.00011244121, z: -10.725071}
+--- !u!1 &148755635341529263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3681332005414411983}
+  m_Layer: 0
+  m_Name: squirrel_SpineBase_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3681332005414411983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148755635341529263}
+  m_LocalRotation: {x: 0.060498767, y: 0.7045141, z: 0.060497828, w: 0.7045139}
+  m_LocalPosition: {x: 0.00000000770736, y: 0.08176887, z: -0.041851453}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0.000075125194, y: 90.00001, z: -44.9642}
+--- !u!1 &361045050508031573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2825453067727071992}
+  m_Layer: 0
+  m_Name: squirrel_Tail7_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2825453067727071992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361045050508031573}
+  m_LocalRotation: {x: -0.000014157386, y: 0.0000059767344, z: -0.19640853, w: 0.98052216}
+  m_LocalPosition: {x: -0.04039817, y: -0.000000038146972, z: 9.383074e-10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 312908720216373361}
+  m_Father: {fileID: 674726667448578378}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.001458093, y: 0.0009886958, z: -22.128983}
+--- !u!1 &386504294099929162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3611305163721560503}
+  m_Layer: 0
+  m_Name: squirrel_r_PawLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3611305163721560503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386504294099929162}
+  m_LocalRotation: {x: 0.00000004371191, y: -0.00000004371135, z: 0.00000004377216, w: 1}
+  m_LocalPosition: {x: 0.040705994, y: 0.00021669388, z: 0.000000069141386}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7799304499274941675}
+  - {fileID: 9001763530674225036}
+  m_Father: {fileID: 3753908488003288320}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000040824116, y: -0.000004082416, z: 0.00001117265}
+--- !u!1 &419353312301788015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2477421966184921910}
+  m_Layer: 0
+  m_Name: squirrel_l_EyelidLower_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2477421966184921910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419353312301788015}
+  m_LocalRotation: {x: 0.056861397, y: -0.63777196, z: 0.37186238, w: 0.67211014}
+  m_LocalPosition: {x: -0.040155485, y: 0.0021084356, z: -0.009427414}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1.0000001}
+  m_Children:
+  - {fileID: 7387489962607917140}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 33.41924, y: -77.54414, z: 30.796286}
+--- !u!1 &459632679566402899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1150659673983128995}
+  m_Layer: 0
+  m_Name: squirrel_Tail3_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1150659673983128995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459632679566402899}
+  m_LocalRotation: {x: -0.0000041637713, y: -0.000000015989357, z: 0.23277572, w: 0.9725304}
+  m_LocalPosition: {x: -0.028107243, y: -0.00000010967254, z: 0.000000019073486}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6415414657800269541}
+  m_Father: {fileID: 1106746034292306626}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00046526061, y: -0.00011456427, z: 41.900196}
+--- !u!1 &676851237169865533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 346190810600012607}
+  m_Layer: 0
+  m_Name: squirrel_Spine_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &346190810600012607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676851237169865533}
+  m_LocalRotation: {x: -0.031096557, y: 0.7064227, z: -0.03109571, w: 0.70642275}
+  m_LocalPosition: {x: -0.0000000036813255, y: 0.07466804, z: 0.013828401}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: -0.00006343602, y: 89.99998, z: -77.34823}
+--- !u!1 &944770674904833798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 312908720216373361}
+  m_Layer: 0
+  m_Name: squirrel_Tail7-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &312908720216373361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944770674904833798}
+  m_LocalRotation: {x: -0.0000014305169, y: -0.00000007556989, z: -0.000000014901271, w: 1}
+  m_LocalPosition: {x: -0.05116454, y: 0, z: 0.000000009537907}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2825453067727071992}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0001631662, y: -0.000007382504, z: -0.0000020380198}
+--- !u!1 &1088191657063649820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8117899896696691905}
+  m_Layer: 0
+  m_Name: squirrel_r_ToeTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8117899896696691905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088191657063649820}
+  m_LocalRotation: {x: 0.00000004371134, y: -0.00000004371131, z: 0.000000043713953, w: 1}
+  m_LocalPosition: {x: -0.023052253, y: -0.00417047, z: 0.0000010442734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3396701363113855373}
+  m_Father: {fileID: 3933851478803951485}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.0000064341903, y: -0.0000064341925, z: 48.600056}
+--- !u!1 &1111059240213446013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5267922063287350423}
+  m_Layer: 0
+  m_Name: squirrel_r_Scapula_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5267922063287350423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111059240213446013}
+  m_LocalRotation: {x: -0.000000557704, y: 0.00000022173606, z: 0.91480273, w: -0.40390095}
+  m_LocalPosition: {x: -0.027530741, y: 0.004234495, z: 0.029550001}
+  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 7910973608985819928}
+  m_Father: {fileID: 4477707923842536496}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0.0000035837554, y: -0.00008408618, z: -72.61904}
+--- !u!1 &1114562335976572796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4527581382542531027}
+  m_Layer: 0
+  m_Name: squirrel_r_Ear2-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4527581382542531027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114562335976572796}
+  m_LocalRotation: {x: -1.110223e-16, y: -0.000000014901161, z: -0.000000007450581, w: 1}
+  m_LocalPosition: {x: 0.02398825, y: 0.0000000023841857, z: -0.000000009536743}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 7197836749079129614}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -3.036884e-14, y: -0.0000020380185, z: -0.0000010190092}
+--- !u!1 &1120855406431322036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772355746071859091}
+  - component: {fileID: 8722401855015520107}
+  - component: {fileID: 4273593674500751643}
+  m_Layer: 0
+  m_Name: squirrel_r_Foot_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &772355746071859091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120855406431322036}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.029550018, y: 0.091020614, z: 0.02895308}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6347302169777641636}
+  m_Father: {fileID: 1854275753146165135}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8722401855015520107
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120855406431322036}
+  m_Mesh: {fileID: -2154973931710614071, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+--- !u!23 &4273593674500751643
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120855406431322036}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1494084411451974081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5631946138440036817}
+  m_Layer: 0
+  m_Name: squirrel_r_Paw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5631946138440036817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494084411451974081}
+  m_LocalRotation: {x: -0.000000238419, y: -9.38138e-15, z: -0.000000007217749, w: 1}
+  m_LocalPosition: {x: 0.020941867, y: 0.00000000923872, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6049192583194069838}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000026702113, y: -1.0477242e-12, z: -0.0000009871652}
+--- !u!1 &1648057888657853630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8015156383430600912}
+  m_Layer: 0
+  m_Name: squirrel_r_Toe-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8015156383430600912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648057888657853630}
+  m_LocalRotation: {x: -0.00000023841892, y: -2.3534952e-11, z: -0.000000007450581, w: 1}
+  m_LocalPosition: {x: 0.023062306, y: 0.000000004917383, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1198065646013200224}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000026702102, y: -0.000000003218612, z: -0.0000010190092}
+--- !u!1 &1700718386361843919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1137992707661744015}
+  m_Layer: 0
+  m_Name: squirrel_r_EyelidLower_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1137992707661744015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700718386361843919}
+  m_LocalRotation: {x: 0.6377667, y: 0.056845184, z: 0.6721085, w: -0.37187696}
+  m_LocalPosition: {x: -0.038353883, y: -0.0064394567, z: 0.027421782}
+  m_LocalScale: {x: 1.0000001, y: 0.99999976, z: 0.9999995}
+  m_Children: []
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: -33.41873, y: 77.54293, z: -149.20076}
+--- !u!1 &1834499370546623575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7353372003333216146}
+  - component: {fileID: 9126844266139810376}
+  m_Layer: 0
+  m_Name: squirrel_teethlower_mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7353372003333216146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834499370546623575}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.000000010702621, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!137 &9126844266139810376
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834499370546623575}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -7960456506634364820, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 1361328895345312795, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  m_Bones:
+  - {fileID: 6393868292588088494}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 6393868292588088494}
+  m_AABB:
+    m_Center: {x: -0.017222323, y: 0.0009778063, z: -0.000000016763806}
+    m_Extent: {x: 0.0061641783, y: 0.0035103085, z: 0.011462917}
+  m_DirtyAABB: 0
+--- !u!1 &1897573249659418564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1196654768626865202}
+  m_Layer: 0
+  m_Name: squirrel_l_Ear2_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1196654768626865202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897573249659418564}
+  m_LocalRotation: {x: -0.000000023324207, y: -0.000000056839596, z: -0.14391784, w: 0.9895897}
+  m_LocalPosition: {x: -0.015299591, y: 0.0000000047683715, z: -0.000000009536743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4138367255205113686}
+  m_Father: {fileID: 1703462547945231387}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000033750337, y: 0.000030117897, z: -16.549238}
+--- !u!1 &1938029884827691909
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6393868292588088494}
+  m_Layer: 0
+  m_Name: squirrel_Jaw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6393868292588088494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938029884827691909}
+  m_LocalRotation: {x: 0.000000022586201, y: -0.00000011729623, z: -0.18672712, w: 0.98241186}
+  m_LocalPosition: {x: -0.01979062, y: -0.000000019073486, z: -0.0000000022406448}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 1404161100477236348}
+  m_Father: {fileID: 7766254455111375620}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000044968483, y: 0.000013945388, z: -21.523664}
+--- !u!1 &2053686178913150366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6111085689588270482}
+  m_Layer: 0
+  m_Name: squirrel_r_Thigh_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6111085689588270482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2053686178913150366}
+  m_LocalRotation: {x: 0.0000004777813, y: 0.000000072034155, z: 0.5806609, w: 0.8141455}
+  m_LocalPosition: {x: -0.013217649, y: 0.0013037681, z: 0.029550012}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 0.99999976}
+  m_Children:
+  - {fileID: 4667876251466154242}
+  m_Father: {fileID: 1326190274424938833}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.0000907815, y: 0.00006401561, z: 84.33143}
+--- !u!1 &2075829163129638127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516884986491811484}
+  m_Layer: 0
+  m_Name: squirrel_l_Metacarpus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516884986491811484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075829163129638127}
+  m_LocalRotation: {x: -0.0000007110014, y: -0.0000007501468, z: -0.5019397, w: 0.8649027}
+  m_LocalPosition: {x: -0.03477169, y: -0.000000023841856, z: -0.0000000023841857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3951554351904236661}
+  m_Father: {fileID: 6460413531935413327}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0001835476, y: 0.0004829281, z: 61.65413}
+--- !u!1 &2095636066836725492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6004919081718518089}
+  m_Layer: 0
+  m_Name: squirrel_l_Eye_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6004919081718518089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095636066836725492}
+  m_LocalRotation: {x: 0.17922942, y: -0.61470544, z: 0.23474117, w: 0.7313759}
+  m_LocalPosition: {x: -0.042836845, y: -0.00035198688, z: -0.029093554}
+  m_LocalScale: {x: 1.0000002, y: 0.99999976, z: 0.9999996}
+  m_Children: []
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 33.419266, y: -77.544, z: 8.475739}
+--- !u!1 &2285887960916818572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6856117626074558614}
+  m_Layer: 0
+  m_Name: squirrel_l_Ankle_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6856117626074558614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285887960916818572}
+  m_LocalRotation: {x: 0.00000037029588, y: 0.00000050523784, z: 0.89393294, w: -0.44820073}
+  m_LocalPosition: {x: -0.040342856, y: 0, z: 0.0000000023841857}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 236664050146017736}
+  m_Father: {fileID: 3317358623443363794}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0002164066, y: 0.000056802965, z: -112.51376}
+--- !u!1 &2330454021736936920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673046518189986586}
+  m_Layer: 0
+  m_Name: squirrel_Mandible_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &673046518189986586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330454021736936920}
+  m_LocalRotation: {x: 0.0000109874545, y: -0.0000023115804, z: 0.38013086, w: 0.9249327}
+  m_LocalPosition: {x: -0.013739881, y: -0.034488104, z: -0.0000006341934}
+  m_LocalScale: {x: 0.9999997, y: 0.9999998, z: 1.0000004}
+  m_Children:
+  - {fileID: 614212095383353912}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0.0012514656, y: 0.0002466283, z: 44.683617}
+--- !u!1 &2341277040167517207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3753908488003288320}
+  m_Layer: 0
+  m_Name: squirrel_r_Wrist_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3753908488003288320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2341277040167517207}
+  m_LocalRotation: {x: 0.50133026, y: -0.49866822, z: 0.5013282, w: -0.4986664}
+  m_LocalPosition: {x: -0, y: 0, z: -0.00718832}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+  m_Children:
+  - {fileID: 3611305163721560503}
+  m_Father: {fileID: 1420014530971175513}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000066252987, y: 90.00021, z: -30.305014}
+--- !u!1 &2347088584575128938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7197836749079129614}
+  m_Layer: 0
+  m_Name: squirrel_r_Ear2_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7197836749079129614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347088584575128938}
+  m_LocalRotation: {x: 0.0000004229381, y: 0.00000016436, z: -0.143918, w: 0.98958963}
+  m_LocalPosition: {x: 0.015299597, y: 0.000000009536743, z: 0.000000019073486}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4527581382542531027}
+  m_Father: {fileID: 8475357474692623560}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00007272657, y: 0.00007986266, z: -16.549225}
+--- !u!1 &2469200388344612695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3698081972466762863}
+  m_Layer: 0
+  m_Name: squirrel_Spine2_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3698081972466762863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469200388344612695}
+  m_LocalRotation: {x: 0.000000059839316, y: -0.000000078391096, z: -0.06738612, w: 0.997727}
+  m_LocalPosition: {x: -0.029257862, y: 0, z: -0.0000000034838012}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 4477707923842536496}
+  m_Father: {fileID: 3898696933003975800}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000034600507, y: -0.00007196705, z: -16.491184}
+--- !u!1 &2476200616625722216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854275753146165135}
+  m_Layer: 0
+  m_Name: squirrel_Main_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1854275753146165135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476200616625722216}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8305938769100188718}
+  - {fileID: 4428107178250699214}
+  - {fileID: 8696233231830534577}
+  - {fileID: 772355746071859091}
+  - {fileID: 1420014530971175513}
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &2485301392341325445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815830013991418710}
+  m_Layer: 0
+  m_Name: squirrel_r_EyelidUpper_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1815830013991418710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485301392341325445}
+  m_LocalRotation: {x: 0.56083524, y: 0.3089346, z: 0.76496726, w: -0.069630794}
+  m_LocalPosition: {x: -0.047380056, y: 0.006907897, z: 0.027451554}
+  m_LocalScale: {x: 0.99999994, y: 0.9999997, z: 0.99999946}
+  m_Children: []
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: -33.418724, y: 77.54276, z: 163.28976}
+--- !u!1 &2548586117886655373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4477707923842536496}
+  m_Layer: 0
+  m_Name: squirrel_Spine3_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4477707923842536496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548586117886655373}
+  m_LocalRotation: {x: -0.0000012715903, y: -0.00000012934586, z: -0.06217559, w: 0.99806523}
+  m_LocalPosition: {x: -0.026933303, y: 0.00000014781952, z: 3.6379787e-14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3969189292723052948}
+  - {fileID: 1396465102238532714}
+  - {fileID: 3511035190134441778}
+  - {fileID: 5267922063287350423}
+  - {fileID: 4454256191981440774}
+  m_Father: {fileID: 3698081972466762863}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000105251755, y: -0.000072782364, z: -15.89283}
+--- !u!1 &2661182629770770489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7906227195356220100}
+  m_Layer: 0
+  m_Name: squirrel_l_paw_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7906227195356220100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2661182629770770489}
+  m_LocalRotation: {x: 0.5003785, y: 0.49962127, z: 0.5003736, w: -0.49962613}
+  m_LocalPosition: {x: -0.020941878, y: -0.00000003039837, z: 0.000000009536743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6026428837375860253}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.91606, y: -89.999435, z: 0}
+--- !u!1 &2824694449539014512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2292516578766724019}
+  m_Layer: 0
+  m_Name: squirrel_Snout-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2292516578766724019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2824694449539014512}
+  m_LocalRotation: {x: -0.000001192093, y: -0.00000008279086, z: -9.86944e-14, w: 1}
+  m_LocalPosition: {x: -0.03584194, y: -0.000000019073486, z: 1.8189894e-14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9180289813876848676}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00013646342, y: -0.0000083701125, z: 9.267835e-19}
+--- !u!1 &2910107400461795344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3933851478803951485}
+  m_Layer: 0
+  m_Name: squirrel_r_ToeLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3933851478803951485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910107400461795344}
+  m_LocalRotation: {x: 0.00000004371157, y: -0.00000004371123, z: 0.000000043713953, w: 1}
+  m_LocalPosition: {x: 0.055961356, y: -0.00007197379, z: -0.000003402233}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6165013711834505163}
+  - {fileID: 8117899896696691905}
+  m_Father: {fileID: 6347302169777641636}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000059783933, y: -0.000005978348, z: 0.000005978719}
+--- !u!1 &2959130957426887893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842383169130766064}
+  m_Layer: 0
+  m_Name: squirrel_Tail7_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &842383169130766064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2959130957426887893}
+  m_LocalRotation: {x: -0.0000141190485, y: 0.0000059892027, z: -0.1964085, w: 0.98052216}
+  m_LocalPosition: {x: -0.04039817, y: -0.000000076293944, z: 0.000000009536743}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9019656510553862816}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0014516125, y: 0.0009907178, z: -22.128967}
+--- !u!1 &2999324697996322633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8288409717577999238}
+  m_Layer: 0
+  m_Name: squirrel_l_Ear_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8288409717577999238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999324697996322633}
+  m_LocalRotation: {x: 0.2406369, y: -0.65039337, z: -0.41022134, w: 0.5922844}
+  m_LocalPosition: {x: -0.018216103, y: 0.025378933, z: -0.02594798}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999964}
+  m_Children:
+  - {fileID: 3596271181825679869}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -14.392287, y: -87.741905, z: -55.57217}
+--- !u!1 &3016430038898826537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4977421704453614848}
+  m_Layer: 0
+  m_Name: squirrel_l_heel_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4977421704453614848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3016430038898826537}
+  m_LocalRotation: {x: -0.49691686, y: -0.5030643, z: -0.49691516, w: 0.503066}
+  m_LocalPosition: {x: 0.026656955, y: 0.024719007, z: 0.000000009536743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7129102676602985321}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -89.29556, y: -89.999855, z: 0}
+--- !u!1 &3054807078325422341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6271718883224197664}
+  m_Layer: 0
+  m_Name: squirrel_r_ball_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6271718883224197664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054807078325422341}
+  m_LocalRotation: {x: 0.4937768, y: -0.50614667, z: 0.49377507, w: 0.50614846}
+  m_LocalPosition: {x: -0.000008630753, y: 0.000009649693, z: 0.0000024151802}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 6165013711834505163}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 88.58224, y: -89.999855, z: 0}
+--- !u!1 &3085970673926286522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4667876251466154242}
+  m_Layer: 0
+  m_Name: squirrel_r_Knee_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4667876251466154242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085970673926286522}
+  m_LocalRotation: {x: 0.00000002926201, y: -0.000000032471807, z: 0.6694369, w: 0.74286896}
+  m_LocalPosition: {x: 0.047806818, y: 0.0000002002716, z: -0.0000000023841857}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 2182203909186966946}
+  m_Father: {fileID: 6111085689588270482}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000035660353, y: -0.0000011490407, z: 71.52157}
+--- !u!1 &3164789734190390648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8744282184026509715}
+  m_Layer: 0
+  m_Name: squirrel_Tail4_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8744282184026509715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3164789734190390648}
+  m_LocalRotation: {x: -0.000007850151, y: -0.0000031807497, z: -0.17930694, w: 0.9837932}
+  m_LocalPosition: {x: -0.047289226, y: 0.000000019073486, z: 0.0000000042175086}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 4573056978212876148}
+  m_Father: {fileID: 4714741457069657039}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00094796077, y: -0.00018808944, z: -20.860056}
+--- !u!1 &3173279951725401769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3113239503043112806}
+  m_Layer: 0
+  m_Name: squirrel_l_EyelidUpper_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3113239503043112806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3173279951725401769}
+  m_LocalRotation: {x: 0.30895203, y: -0.5608336, z: 0.06961737, w: 0.7649627}
+  m_LocalPosition: {x: -0.047380246, y: 0.00690907, z: -0.027448427}
+  m_LocalScale: {x: 1.0000004, y: 0.9999999, z: 0.9999995}
+  m_Children: []
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 33.419186, y: -77.54396, z: -16.713198}
+--- !u!1 &3267298468382765654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106746034292306626}
+  m_Layer: 0
+  m_Name: squirrel_Tail2_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1106746034292306626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3267298468382765654}
+  m_LocalRotation: {x: 0.000000045416996, y: -0.0000002340528, z: 0.19049293, w: 0.98168856}
+  m_LocalPosition: {x: -0.022837857, y: -0.0000000667572, z: 2.2737367e-15}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 1150659673983128995}
+  m_Father: {fileID: 5511218360333811347}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000008783965, y: -0.000023864115, z: 35.415363}
+--- !u!1 &3287775885364754284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7129102676602985321}
+  m_Layer: 0
+  m_Name: squirrel_l_HeelPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7129102676602985321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3287775885364754284}
+  m_LocalRotation: {x: -4.51072e-24, y: -7.7493574e-14, z: -5.820767e-11, w: 1}
+  m_LocalPosition: {x: 0.023053117, y: 0.0041524502, z: 0.000000007152557}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 6993477817801689159}
+  - {fileID: 4977421704453614848}
+  m_Father: {fileID: 7800891866584157819}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -1.06178e-11, y: 5.3089e-12, z: 0}
+--- !u!1 &3306748196320545165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955542242135137537}
+  m_Layer: 0
+  m_Name: squirrel_r_EyelidUpper-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1955542242135137537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3306748196320545165}
+  m_LocalRotation: {x: -0.00000004470349, y: -0.000000022351745, z: 0.000000044703484, w: 1}
+  m_LocalPosition: {x: 0.014391618, y: -0.000000009536743, z: 0.000000019073486}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 0.9999998}
+  m_Children: []
+  m_Father: {fileID: 194411625872712718}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000061140568, y: -0.0000030570286, z: 0.000006114057}
+--- !u!1 &3339768865576442034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6460413531935413327}
+  m_Layer: 0
+  m_Name: squirrel_l_Radius_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6460413531935413327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339768865576442034}
+  m_LocalRotation: {x: -0.000000083831345, y: -0.00000013566985, z: -0.525653, w: 0.85069907}
+  m_LocalPosition: {x: -0.029822316, y: -0.000000028610229, z: 0.0000000023841857}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children:
+  - {fileID: 516884986491811484}
+  m_Father: {fileID: 6704550000212989372}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000017481074, y: -0.000002793834, z: -79.55455}
+--- !u!1 &3376504642424959514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9019656510553862816}
+  m_Layer: 0
+  m_Name: squirrel_Tail6_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9019656510553862816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376504642424959514}
+  m_LocalRotation: {x: -0.000016379918, y: 0.000002423022, z: -0.34436372, w: 0.93883634}
+  m_LocalPosition: {x: -0.040374067, y: -0.000000057220458, z: -2.910383e-13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 842383169130766064}
+  m_Father: {fileID: 7598278391597169706}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0016665806, y: 0.0009070465, z: -39.760876}
+--- !u!1 &3443127015050348766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626524775814635998}
+  m_Layer: 0
+  m_Name: squirrel_l_EyelidLower_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1626524775814635998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443127015050348766}
+  m_LocalRotation: {x: 0.05686157, y: -0.63777196, z: 0.37186253, w: 0.6721101}
+  m_LocalPosition: {x: -0.0383541, y: -0.0064382693, z: -0.02741933}
+  m_LocalScale: {x: 1.0000002, y: 0.99999994, z: 0.9999995}
+  m_Children: []
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 33.419292, y: -77.54412, z: 30.796253}
+--- !u!1 &3449972287074030271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5547729688034626108}
+  m_Layer: 0
+  m_Name: squirrel_l_wrist_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5547729688034626108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3449972287074030271}
+  m_LocalRotation: {x: 0.5003785, y: 0.49962127, z: 0.5003736, w: -0.49962613}
+  m_LocalPosition: {x: 0.019743785, y: 0.004030466, z: 0.0000000023841857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5960473428769850489}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -89.91606, y: -89.999435, z: 0}
+--- !u!1 &3627844820252321235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4573056978212876148}
+  m_Layer: 0
+  m_Name: squirrel_Tail5_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4573056978212876148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3627844820252321235}
+  m_LocalRotation: {x: -0.000007642571, y: -0.0000027053866, z: -0.3565409, w: 0.93427974}
+  m_LocalPosition: {x: -0.04506609, y: 0, z: 0.000000032071984}
+  m_LocalScale: {x: 1.0000005, y: 1.0000005, z: 1}
+  m_Children:
+  - {fileID: 674726667448578378}
+  m_Father: {fileID: 8744282184026509715}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00093010475, y: 0.000029837702, z: -41.25077}
 --- !u!1 &3639118429053808665
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,8 +1566,6 @@ GameObject:
   - component: {fileID: 6166247914517467101}
   - component: {fileID: 5993451934586652010}
   - component: {fileID: 7022260056170024900}
-  - component: {fileID: 856805718937743726}
-  - component: {fileID: 906852024305273142}
   m_Layer: 6
   m_Name: unit
   m_TagString: Untagged
@@ -30,7 +1582,7 @@ Transform:
   m_GameObject: {fileID: 3639118429053808665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 5521676610289806718}
   m_RootOrder: 1
@@ -97,38 +1649,657 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &856805718937743726
-Animator:
-  serializedVersion: 3
+--- !u!1 &3647315029798515909
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3639118429053808665}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 271564c7de9d66e498b244b296915e59, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &906852024305273142
-MonoBehaviour:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6019741230100997057}
+  m_Layer: 0
+  m_Name: squirrel_r_heel_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6019741230100997057
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3639118429053808665}
+  m_GameObject: {fileID: 3647315029798515909}
+  m_LocalRotation: {x: 0.4937768, y: -0.50614667, z: 0.49377507, w: 0.50614846}
+  m_LocalPosition: {x: -0.026656603, y: -0.024718702, z: 0.0000023198127}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 6165013711834505163}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 88.58224, y: -89.999855, z: 0}
+--- !u!1 &3723106911115527084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3039970725744744414}
+  - component: {fileID: 4744812788514732139}
+  m_Layer: 0
+  m_Name: squirrel_body_mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3039970725744744414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723106911115527084}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.0000000046189674, y: 0.0000000046189674, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!137 &4744812788514732139
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3723106911115527084}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00dec67299da17e43a62a8f5ac6ace64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentedUnit: {fileID: 4532538035932918899}
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2153349754267822321, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  - {fileID: -1835030991137111631, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  - {fileID: 1954884982682374696, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: -1083040848647918798, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  m_Bones:
+  - {fileID: 8719058923098506164}
+  - {fileID: 194411625872712718}
+  - {fileID: 8010237735071206962}
+  - {fileID: 6588448209315546383}
+  - {fileID: 9180289813876848676}
+  - {fileID: 6393868292588088494}
+  - {fileID: 7766254455111375620}
+  - {fileID: 3511035190134441778}
+  - {fileID: 8475357474692623560}
+  - {fileID: 4477707923842536496}
+  - {fileID: 5267922063287350423}
+  - {fileID: 7910973608985819928}
+  - {fileID: 1748837945838020284}
+  - {fileID: 7197836749079129614}
+  - {fileID: 3698081972466762863}
+  - {fileID: 6111085689588270482}
+  - {fileID: 3898696933003975800}
+  - {fileID: 1326190274424938833}
+  - {fileID: 4667876251466154242}
+  - {fileID: 6774938487181956772}
+  - {fileID: 2825453067727071992}
+  - {fileID: 1198065646013200224}
+  - {fileID: 2182203909186966946}
+  - {fileID: 3138330320007374783}
+  - {fileID: 3317358623443363794}
+  - {fileID: 1575076485405321786}
+  - {fileID: 531521659091137569}
+  - {fileID: 4714741457069657039}
+  - {fileID: 8744282184026509715}
+  - {fileID: 4573056978212876148}
+  - {fileID: 674726667448578378}
+  - {fileID: 6049192583194069838}
+  - {fileID: 1703462547945231387}
+  - {fileID: 3969189292723052948}
+  - {fileID: 6460413531935413327}
+  - {fileID: 8858364897119720858}
+  - {fileID: 7834738992417485716}
+  - {fileID: 2477421966184921910}
+  - {fileID: 6704550000212989372}
+  - {fileID: 1196654768626865202}
+  - {fileID: 236664050146017736}
+  - {fileID: 6856117626074558614}
+  - {fileID: 516884986491811484}
+  - {fileID: 3951554351904236661}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 1326190274424938833}
+  m_AABB:
+    m_Center: {x: -0.029013596, y: -0.02434361, z: -0.00000006519258}
+    m_Extent: {x: 0.22333127, y: 0.116710216, z: 0.054017566}
+  m_DirtyAABB: 0
+--- !u!1 &3725532255473600260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6342888535119127065}
+  m_Layer: 0
+  m_Name: squirrel_Snout_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6342888535119127065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3725532255473600260}
+  m_LocalRotation: {x: 0.000010909059, y: -0.0000026200523, z: 0.4075468, w: 0.91318434}
+  m_LocalPosition: {x: -0.069887035, y: -0.030803189, z: -0.00000057220444}
+  m_LocalScale: {x: 0.9999996, y: 0.9999997, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0.0012635353, y: 0.0002318566, z: 48.10166}
+--- !u!1 &3751326574692355468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4428107178250699214}
+  - component: {fileID: 3708637578278576783}
+  - component: {fileID: 8427925471413050929}
+  m_Layer: 0
+  m_Name: squirrel_l_Foot_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4428107178250699214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751326574692355468}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.029546823, y: 0.09102062, z: 0.028953046}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3960990203542450490}
+  m_Father: {fileID: 1854275753146165135}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3708637578278576783
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751326574692355468}
+  m_Mesh: {fileID: 8969774320688088012, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+--- !u!23 &8427925471413050929
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3751326574692355468}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3793504088642520314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3960990203542450490}
+  m_Layer: 0
+  m_Name: squirrel_l_Heel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3960990203542450490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793504088642520314}
+  m_LocalRotation: {x: 0.5004107, y: 0.49958807, z: 0.50041026, w: 0.49959034}
+  m_LocalPosition: {x: 0.0000000047683715, y: 0.006289749, z: -0.028953046}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 7800891866584157819}
+  m_Father: {fileID: 4428107178250699214}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0001539898, y: 89.999886, z: 48.094097}
+--- !u!1 &3798989746018106379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7815301056522226826}
+  m_Layer: 0
+  m_Name: squirrel_Hip_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7815301056522226826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3798989746018106379}
+  m_LocalRotation: {x: 0.70134413, y: -0.09009143, z: 0.70134425, w: -0.090090685}
+  m_LocalPosition: {x: -0.0000000018293849, y: 0.08176886, z: -0.041851453}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0.00006817617, y: 89.99999, z: 137.49074}
+--- !u!1 &3806130385977483664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8696233231830534577}
+  - component: {fileID: 6649913397510390663}
+  - component: {fileID: 4535513516602347663}
+  m_Layer: 0
+  m_Name: squirrel_l_Paw_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8696233231830534577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3806130385977483664}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.029546859, y: -0.053908315, z: 0.007188382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2883913743736848419}
+  m_Father: {fileID: 1854275753146165135}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &6649913397510390663
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3806130385977483664}
+  m_Mesh: {fileID: -7764101559345074843, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+--- !u!23 &4535513516602347663
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3806130385977483664}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3834059400130741153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7834738992417485716}
+  m_Layer: 0
+  m_Name: squirrel_l_EyelidUpper_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7834738992417485716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834059400130741153}
+  m_LocalRotation: {x: 0.30895203, y: -0.56083345, z: 0.069617264, w: 0.7649627}
+  m_LocalPosition: {x: -0.040155485, y: 0.0021084356, z: -0.009427414}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 5226823366098306509}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 33.419167, y: -77.54393, z: -16.713215}
+--- !u!1 &3937940469497027618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 674726667448578378}
+  m_Layer: 0
+  m_Name: squirrel_Tail6_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &674726667448578378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3937940469497027618}
+  m_LocalRotation: {x: -0.000016357533, y: 0.0000024199028, z: -0.3443637, w: 0.93883634}
+  m_LocalPosition: {x: -0.04037401, y: -0.000000038146972, z: 0.000000012919772}
+  m_LocalScale: {x: 0.9999997, y: 0.9999997, z: 1}
+  m_Children:
+  - {fileID: 2825453067727071992}
+  m_Father: {fileID: 4573056978212876148}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0016627476, y: 0.0009089152, z: -39.760876}
+--- !u!1 &4020605454346306211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7766254455111375620}
+  m_Layer: 0
+  m_Name: squirrel_Mandible_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7766254455111375620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020605454346306211}
+  m_LocalRotation: {x: 0.000010992193, y: -0.00000232801, z: 0.38013086, w: 0.9249327}
+  m_LocalPosition: {x: -0.013816108, y: -0.006815824, z: -0.000000019073486}
+  m_LocalScale: {x: 1.0000002, y: 0.9999999, z: 1.0000001}
+  m_Children:
+  - {fileID: 6393868292588088494}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0.0012783018, y: 0.000238937, z: 44.68362}
+--- !u!1 &4063331035447478025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420014530971175513}
+  - component: {fileID: 8476812148526160598}
+  - component: {fileID: 9011285139184450913}
+  m_Layer: 0
+  m_Name: squirrel_r_Paw_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1420014530971175513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063331035447478025}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.029549941, y: -0.053908248, z: 0.00718832}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3753908488003288320}
+  m_Father: {fileID: 1854275753146165135}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8476812148526160598
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063331035447478025}
+  m_Mesh: {fileID: -1354476744384340758, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+--- !u!23 &9011285139184450913
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063331035447478025}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4099545198632174039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8305938769100188718}
+  m_Layer: 0
+  m_Name: squirrel_COM_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8305938769100188718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4099545198632174039}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.0000000018293849, y: 0.041851453, z: 0.08176887}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1326190274424938833}
+  m_Father: {fileID: 1854275753146165135}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &4108002871932507230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6588448209315546383}
+  m_Layer: 0
+  m_Name: squirrel_r_EyelidLower_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6588448209315546383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4108002871932507230}
+  m_LocalRotation: {x: 0.6377668, y: 0.056845002, z: 0.67210853, w: -0.37187687}
+  m_LocalPosition: {x: -0.04015542, y: 0.0021080398, z: 0.009430275}
+  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 4482450601241181381}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: -33.41868, y: 77.54293, z: -149.20078}
 --- !u!1 &4123211568559823652
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +2400,1067 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4240300754214080660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3596271181825679869}
+  m_Layer: 0
+  m_Name: squirrel_l_Ear2_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3596271181825679869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4240300754214080660}
+  m_LocalRotation: {x: 0.000000021179664, y: 0.000000042093557, z: -0.1439179, w: 0.98958963}
+  m_LocalPosition: {x: -0.010092488, y: 0.0014242125, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8288409717577999238}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000031156178, y: 0.000010528554, z: -16.549242}
+--- !u!1 &4365701981646514259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8341278029147542184}
+  m_Layer: 0
+  m_Name: squirrel_r_Eye_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8341278029147542184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365701981646514259}
+  m_LocalRotation: {x: 0.61470336, y: 0.17921238, z: 0.7313772, w: -0.23475535}
+  m_LocalPosition: {x: -0.042836618, y: -0.00035324573, z: 0.02909631}
+  m_LocalScale: {x: 1.0000002, y: 0.9999999, z: 0.99999946}
+  m_Children: []
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: -33.418716, y: 77.54288, z: -171.52132}
+--- !u!1 &4407626789114128084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7938197541880423719}
+  m_Layer: 0
+  m_Name: squirrel_l_pivot_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7938197541880423719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4407626789114128084}
+  m_LocalRotation: {x: 0.5003785, y: 0.49962127, z: 0.5003736, w: -0.49962613}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5960473428769850489}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.91606, y: -89.999435, z: 0}
+--- !u!1 &4507429447884219191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6057472204249799492}
+  m_Layer: 0
+  m_Name: squirrel_l_Toe-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6057472204249799492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4507429447884219191}
+  m_LocalRotation: {x: 0, y: -0.000000070810636, z: -0, w: 1}
+  m_LocalPosition: {x: -0.023062339, y: 1.4901161e-10, z: -0.0000000047683715}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 236664050146017736}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0.0000067315846, z: 0}
+--- !u!1 &4512726634085474045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7799304499274941675}
+  m_Layer: 0
+  m_Name: squirrel_r_PawTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7799304499274941675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4512726634085474045}
+  m_LocalRotation: {x: 0.000000043711793, y: -0.000000043711324, z: 0.0000000433065, w: 1}
+  m_LocalPosition: {x: -0.02092393, y: -0.0033744718, z: -0.000000014305114}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1147492046424019686}
+  m_Father: {fileID: 3611305163721560503}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000035663652, y: -0.0000035663575, z: 1.472284}
+--- !u!1 &4561530047858192045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7387489962607917140}
+  m_Layer: 0
+  m_Name: squirrel_l_EyelidLower-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7387489962607917140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561530047858192045}
+  m_LocalRotation: {x: 0.000000029802319, y: -0.00000001490116, z: -0.000000029802319, w: 1}
+  m_LocalPosition: {x: -0.014391601, y: -0.000000028610229, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2477421966184921910}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000004076036, y: -0.0000020380185, z: -0.000004076036}
+--- !u!1 &4622125539016209615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3898696933003975800}
+  m_Layer: 0
+  m_Name: squirrel_Spine1_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3898696933003975800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622125539016209615}
+  m_LocalRotation: {x: -0.000000066628736, y: 0.00000018715633, z: 0.9991143, w: 0.042080432}
+  m_LocalPosition: {x: -0, y: -0.0000000047683715, z: 0.000000009536743}
+  m_LocalScale: {x: 1.0000006, y: 1.0000004, z: 0.99999994}
+  m_Children:
+  - {fileID: 3698081972466762863}
+  m_Father: {fileID: 1326190274424938833}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0.000002398055, y: -0.000013838957, z: 177.54506}
+--- !u!1 &4653333342189050084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3929677692664896663}
+  m_Layer: 0
+  m_Name: squirrel_r_pivot_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3929677692664896663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653333342189050084}
+  m_LocalRotation: {x: 0.49816364, y: -0.5018296, z: 0.49816173, w: 0.50183153}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 9001763530674225036}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.579414, y: -89.99976, z: -0.00023352375}
+--- !u!1 &4730398805229779279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1703462547945231387}
+  m_Layer: 0
+  m_Name: squirrel_l_Ear_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1703462547945231387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4730398805229779279}
+  m_LocalRotation: {x: 0.24063702, y: -0.65039337, z: -0.41022137, w: 0.59228444}
+  m_LocalPosition: {x: -0.020041961, y: 0.017389402, z: -0.020217903}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 1196654768626865202}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -14.392275, y: -87.741905, z: -55.572197}
+--- !u!1 &4930794831839197058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3951554351904236661}
+  m_Layer: 0
+  m_Name: squirrel_l_Paw_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3951554351904236661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930794831839197058}
+  m_LocalRotation: {x: -0.000004598476, y: -0.0000004500211, z: -0.10051525, w: 0.9949355}
+  m_LocalPosition: {x: -0.020150967, y: 0.0000000023841857, z: 0.0000000023841857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 799965828147344578}
+  m_Father: {fileID: 516884986491811484}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0005267645, y: 0.000012657494, z: -10.725602}
+--- !u!1 &5045204814488807751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6165013711834505163}
+  m_Layer: 0
+  m_Name: squirrel_r_HeelPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6165013711834505163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5045204814488807751}
+  m_LocalRotation: {x: 0.00000004371134, y: -0.00000004371131, z: 0.000000043713953, w: 1}
+  m_LocalPosition: {x: -0.023052253, y: -0.00417047, z: 0.0000010442734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6271718883224197664}
+  - {fileID: 6019741230100997057}
+  m_Father: {fileID: 3933851478803951485}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000040824157, y: -0.000004082427, z: 0.0000027833921}
+--- !u!1 &5082060424872716536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198065646013200224}
+  m_Layer: 0
+  m_Name: squirrel_r_Toe_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1198065646013200224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082060424872716536}
+  m_LocalRotation: {x: 0.000027459317, y: 0.00006940574, z: -0.3490093, w: 0.93711925}
+  m_LocalPosition: {x: 0.03635391, y: -0.0000019598008, z: -0.000000019073486}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 8015156383430600912}
+  m_Father: {fileID: 2182203909186966946}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0029063046, y: 0.009276001, z: 7.719875}
+--- !u!1 &5201435290748574622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3396701363113855373}
+  m_Layer: 0
+  m_Name: squirrel_r_toe_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3396701363113855373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5201435290748574622}
+  m_LocalRotation: {x: 0.4937768, y: -0.50614667, z: 0.49377507, w: 0.50614846}
+  m_LocalPosition: {x: 0.023047948, y: 0.00081857026, z: -0.0000010490418}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 8117899896696691905}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 88.58224, y: -89.999855, z: 0}
+--- !u!1 &5210795757666632241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 93426365206583054}
+  m_Layer: 0
+  m_Name: squirrel_NeckBase_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &93426365206583054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210795757666632241}
+  m_LocalRotation: {x: -0.14143863, y: 0.69281644, z: -0.14143115, w: 0.6928187}
+  m_LocalPosition: {x: -0.0000000101373425, y: 0.07485254, z: 0.06206623}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -0.00063135807, y: 89.99994, z: -68.44739}
+--- !u!1 &5292892269063261470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6415414657800269541}
+  m_Layer: 0
+  m_Name: squirrel_Tail4_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6415414657800269541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5292892269063261470}
+  m_LocalRotation: {x: -0.00000784889, y: -0.0000031740326, z: -0.17930695, w: 0.9837932}
+  m_LocalPosition: {x: -0.047289208, y: 0.000000019073486, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7598278391597169706}
+  m_Father: {fileID: 1150659673983128995}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00095115823, y: -0.00019605314, z: -20.860037}
+--- !u!1 &5514428915698782582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6026428837375860253}
+  m_Layer: 0
+  m_Name: squirrel_l_PawTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6026428837375860253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514428915698782582}
+  m_LocalRotation: {x: 0, y: 2.6645353e-14, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0209239, y: 0.003374548, z: 0.000000023841856}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7906227195356220100}
+  m_Father: {fileID: 2053587423266127558}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -1.385494e-11, y: -1.6393206e-11, z: 1.4722722}
+--- !u!1 &5583541758377510641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700421218924322992}
+  m_Layer: 0
+  m_Name: squirrel_r_wrist_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &700421218924322992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5583541758377510641}
+  m_LocalRotation: {x: 0.49816364, y: -0.5018296, z: 0.49816173, w: 0.50183153}
+  m_LocalPosition: {x: -0.01974381, y: -0.0040304433, z: -0.0000000834465}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 9001763530674225036}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 89.579414, y: -89.99976, z: -0.00023352375}
+--- !u!1 &5689320506161975494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4454256191981440774}
+  m_Layer: 0
+  m_Name: squirrel_r_Scapula_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4454256191981440774
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689320506161975494}
+  m_LocalRotation: {x: -0.0000005448699, y: 0.00000021111389, z: 0.9148027, w: -0.40390107}
+  m_LocalPosition: {x: -0.027530741, y: 0.004234495, z: 0.029549995}
+  m_LocalScale: {x: 0.9999996, y: 0.99999964, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 4477707923842536496}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: -0.00000037728682, y: -0.00006917286, z: -72.61903}
+--- !u!1 &5935576440757740068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4482450601241181381}
+  m_Layer: 0
+  m_Name: squirrel_r_EyelidLower-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4482450601241181381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935576440757740068}
+  m_LocalRotation: {x: 0.000000022351745, y: 0.000000022351747, z: 0.000000014901163, w: 1}
+  m_LocalPosition: {x: 0.014391598, y: 0, z: 0.000000019073486}
+  m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 6588448209315546383}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000030570284, y: 0.0000030570286, z: 0.0000020380198}
+--- !u!1 &5992062580532818907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8858364897119720858}
+  m_Layer: 0
+  m_Name: squirrel_l_Eye_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8858364897119720858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992062580532818907}
+  m_LocalRotation: {x: 0.17922921, y: -0.6147055, z: 0.23474099, w: 0.731376}
+  m_LocalPosition: {x: -0.040155485, y: 0.0021084356, z: -0.009427414}
+  m_LocalScale: {x: 1.0000004, y: 1.0000005, z: 1.0000005}
+  m_Children:
+  - {fileID: 2313534333519416797}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 33.41923, y: -77.54401, z: 8.475735}
+--- !u!1 &6087963008006754615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9180289813876848676}
+  m_Layer: 0
+  m_Name: squirrel_Snout_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9180289813876848676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6087963008006754615}
+  m_LocalRotation: {x: 0.000010910653, y: -0.0000026366495, z: 0.40754673, w: 0.91318434}
+  m_LocalPosition: {x: -0.042251203, y: -0.0000007629394, z: 3.7660355e-10}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 2292516578766724019}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0.0012990768, y: 0.00027100224, z: 48.101665}
+--- !u!1 &6125127346410020904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309832727675398599}
+  m_Layer: 0
+  m_Name: squirrel_l_ToeTap_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &309832727675398599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6125127346410020904}
+  m_LocalRotation: {x: -4.51072e-24, y: -7.7493574e-14, z: -5.820767e-11, w: 1}
+  m_LocalPosition: {x: 0.023053117, y: 0.0041524502, z: 0.000000007152557}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 4549220084979377728}
+  m_Father: {fileID: 7800891866584157819}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -6.2763596e-12, y: 5.5333446e-12, z: 48.600048}
+--- !u!1 &6214618594300302316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7796465711541082968}
+  m_Layer: 0
+  m_Name: squirrel_r_Ear2_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7796465711541082968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6214618594300302316}
+  m_LocalRotation: {x: 0.00000027453845, y: 0.00000023111592, z: -0.14391813, w: 0.98958963}
+  m_LocalPosition: {x: 0.010092468, y: -0.0014242029, z: 0.000000028610229}
+  m_LocalScale: {x: 0.9999998, y: 0.9999999, z: 0.9999999}
+  m_Children: []
+  m_Father: {fileID: 2679761323832874723}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00004637077, y: 0.000019724579, z: -16.549288}
+--- !u!1 &6221300135452871089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2679761323832874723}
+  m_Layer: 0
+  m_Name: squirrel_r_Ear_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2679761323832874723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6221300135452871089}
+  m_LocalRotation: {x: 0.6504047, y: 0.24062575, z: 0.5922872, w: 0.41020587}
+  m_LocalPosition: {x: -0.018215895, y: 0.025377788, z: 0.025950922}
+  m_LocalScale: {x: 0.9999998, y: 1.0000001, z: 0.9999995}
+  m_Children:
+  - {fileID: 7796465711541082968}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 14.39239, y: 87.74299, z: 124.43046}
+--- !u!1 &6256274466497719716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4714741457069657039}
+  m_Layer: 0
+  m_Name: squirrel_Tail3_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4714741457069657039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6256274466497719716}
+  m_LocalRotation: {x: -0.000004180459, y: -0.000000015456243, z: 0.2327757, w: 0.9725304}
+  m_LocalPosition: {x: -0.028107233, y: -0.000000014305114, z: 0.00000000956034}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 8744282184026509715}
+  m_Father: {fileID: 531521659091137569}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0004547708, y: -0.00015110972, z: 41.900192}
+--- !u!1 &6628875285098955526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3969189292723052948}
+  m_Layer: 0
+  m_Name: squirrel_l_Scapula_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3969189292723052948
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628875285098955526}
+  m_LocalRotation: {x: 0.0000004971328, y: -0.0000002443837, z: 0.4039014, w: 0.91480255}
+  m_LocalPosition: {x: -0.027530732, y: 0.004234567, z: -0.029546807}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_Children:
+  - {fileID: 6704550000212989372}
+  m_Father: {fileID: 4477707923842536496}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00007537797, y: 0.000011049837, z: 107.38099}
+--- !u!1 &6758117627851351049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8010237735071206962}
+  m_Layer: 0
+  m_Name: squirrel_Head_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8010237735071206962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6758117627851351049}
+  m_LocalRotation: {x: -0.0000056669905, y: 0.0000003545626, z: -0.027067177, w: 0.9996336}
+  m_LocalPosition: {x: -0.023551693, y: -0.000000019073486, z: -1.4551915e-13}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 1703462547945231387}
+  - {fileID: 8288409717577999238}
+  - {fileID: 8858364897119720858}
+  - {fileID: 6004919081718518089}
+  - {fileID: 2477421966184921910}
+  - {fileID: 1626524775814635998}
+  - {fileID: 7834738992417485716}
+  - {fileID: 3113239503043112806}
+  - {fileID: 7766254455111375620}
+  - {fileID: 673046518189986586}
+  - {fileID: 8475357474692623560}
+  - {fileID: 2679761323832874723}
+  - {fileID: 8719058923098506164}
+  - {fileID: 8341278029147542184}
+  - {fileID: 6588448209315546383}
+  - {fileID: 1137992707661744015}
+  - {fileID: 194411625872712718}
+  - {fileID: 1815830013991418710}
+  - {fileID: 9180289813876848676}
+  - {fileID: 6342888535119127065}
+  m_Father: {fileID: 3511035190134441778}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.618349, y: -1.2546544, z: 17.81694}
+--- !u!1 &6840961617923060394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 799965828147344578}
+  m_Layer: 0
+  m_Name: squirrel_l_Paw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &799965828147344578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6840961617923060394}
+  m_LocalRotation: {x: 0.000000007562449, y: -6.039438e-14, z: 2.3283067e-10, w: 1}
+  m_LocalPosition: {x: -0.020941857, y: 5.9604643e-10, z: 0.0000000023841857}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3951554351904236661}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000010343098, y: -8.259846e-12, z: 0.00000003184406}
+--- !u!1 &6978852532295078835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531521659091137569}
+  m_Layer: 0
+  m_Name: squirrel_Tail2_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &531521659091137569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6978852532295078835}
+  m_LocalRotation: {x: 0.000000033464516, y: -0.00000017705071, z: 0.19049294, w: 0.98168856}
+  m_LocalPosition: {x: -0.022837829, y: -0.000000052452087, z: 0}
+  m_LocalScale: {x: 0.9999997, y: 0.99999964, z: 1}
+  m_Children:
+  - {fileID: 4714741457069657039}
+  m_Father: {fileID: 6774938487181956772}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000006046139, y: -0.000026563752, z: 35.415306}
+--- !u!1 &7109560508204118190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3317358623443363794}
+  m_Layer: 0
+  m_Name: squirrel_l_Knee_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3317358623443363794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7109560508204118190}
+  m_LocalRotation: {x: 0.0000000036513381, y: -0.000000004051882, z: 0.66943645, w: 0.7428693}
+  m_LocalPosition: {x: -0.0478068, y: -0.0000002002716, z: -0.000000007152557}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6856117626074558614}
+  m_Father: {fileID: 1575076485405321786}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000044497432, y: -0.00000014337789, z: 71.52147}
+--- !u!1 &7121098800866346611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2883913743736848419}
+  m_Layer: 0
+  m_Name: squirrel_l_Wrist_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2883913743736848419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7121098800866346611}
+  m_LocalRotation: {x: 0.49866593, y: 0.5013261, z: 0.4986683, w: 0.5013326}
+  m_LocalPosition: {x: -0, y: 0, z: -0.007188382}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 2053587423266127558}
+  m_Father: {fileID: 8696233231830534577}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00023537152, y: 89.99948, z: 149.69492}
+--- !u!1 &7331081113945813745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2053587423266127558}
+  m_Layer: 0
+  m_Name: squirrel_l_PawLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2053587423266127558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331081113945813745}
+  m_LocalRotation: {x: 0, y: 2.6645353e-14, z: -0, w: 1}
+  m_LocalPosition: {x: -0.04070597, y: -0.00021674154, z: 0.00000004053116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6026428837375860253}
+  - {fileID: 5960473428769850489}
+  m_Father: {fileID: 2883913743736848419}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.855675e-11, y: -5.5303424e-19, z: -0.0000012161352}
+--- !u!1 &7440993267043044532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3511035190134441778}
+  m_Layer: 0
+  m_Name: squirrel_Neck_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3511035190134441778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440993267043044532}
+  m_LocalRotation: {x: -0.0000048099155, y: -0.000001463674, z: -0.09769231, w: 0.99521667}
+  m_LocalPosition: {x: -0.048238166, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 8010237735071206962}
+  m_Father: {fileID: 4477707923842536496}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 1.8709728, y: -0.835032, z: 36.637035}
+--- !u!1 &7453127147490722373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8097591688258074380}
+  m_Layer: 0
+  m_Name: squirrel_Head_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8097591688258074380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453127147490722373}
+  m_LocalRotation: {x: -0.11887775, y: 0.6970435, z: -0.11886226, w: 0.697044}
+  m_LocalPosition: {x: -0.000000072147344, y: 0.07875471, z: 0.085292414}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.0010065279, y: 85.98241, z: -22.894373}
 --- !u!1 &7455128336141086100
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +3540,287 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: X
+--- !u!1 &7519615807932670640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4549220084979377728}
+  m_Layer: 0
+  m_Name: squirrel_l_toe_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4549220084979377728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7519615807932670640}
+  m_LocalRotation: {x: -0.49691686, y: -0.5030643, z: -0.49691516, w: 0.503066}
+  m_LocalPosition: {x: -0.023047647, y: -0.0008182609, z: -0.0000000023841857}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 309832727675398599}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.29556, y: -89.999855, z: 0}
+--- !u!1 &7795863720600925211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4765800119400660851}
+  m_Layer: 0
+  m_Name: squirrel_r_Eye-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4765800119400660851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795863720600925211}
+  m_LocalRotation: {x: -0.000000022351742, y: -0.00000002514571, z: -5.6205046e-16, w: 1}
+  m_LocalPosition: {x: 0.014391608, y: 0.000000009536743, z: 0.000000009536743}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8719058923098506164}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000030570286, y: -0.0000034391564, z: -7.240496e-21}
+--- !u!1 &7808973724008516386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7932853017952290001}
+  - component: {fileID: 5627043190994275016}
+  m_Layer: 0
+  m_Name: squirrel_tongue_mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7932853017952290001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808973724008516386}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.0000000045701958, y: 0.08239788, z: 0.13189672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!137 &5627043190994275016
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808973724008516386}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -7960456506634364820, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 7516396187246210034, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  m_Bones:
+  - {fileID: 6393868292588088494}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 6393868292588088494}
+  m_AABB:
+    m_Center: {x: -0.013353813, y: 0.00085057854, z: -0.000000010244548}
+    m_Extent: {x: 0.009084854, y: 0.003077695, z: 0.008001595}
+  m_DirtyAABB: 0
+--- !u!1 &7939074608769324434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7800891866584157819}
+  m_Layer: 0
+  m_Name: squirrel_l_ToeLift_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7800891866584157819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939074608769324434}
+  m_LocalRotation: {x: -2.273737e-13, y: 3.641532e-14, z: 8.279886e-27, w: 1}
+  m_LocalPosition: {x: -0.05595223, y: 0.00009190559, z: 0.000000057220458}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 7129102676602985321}
+  - {fileID: 309832727675398599}
+  m_Father: {fileID: 3960990203542450490}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -3.1097715e-11, y: 4.9804913e-12, z: 1.0536309e-31}
+--- !u!1 &8027123827439629184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7218639340500199738}
+  - component: {fileID: 9174925701618599406}
+  - component: {fileID: 4589176588945588793}
+  m_Layer: 0
+  m_Name: Squirrel w Animation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7218639340500199738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8027123827439629184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_Children:
+  - {fileID: 3039970725744744414}
+  - {fileID: 8097591688258074380}
+  - {fileID: 7815301056522226826}
+  - {fileID: 1854275753146165135}
+  - {fileID: 93426365206583054}
+  - {fileID: 346190810600012607}
+  - {fileID: 3681332005414411983}
+  - {fileID: 7353372003333216146}
+  - {fileID: 3172132163538923188}
+  - {fileID: 7932853017952290001}
+  m_Father: {fileID: 5521676610289806718}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &9174925701618599406
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8027123827439629184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aed61896fd870c0409794a6442f9531b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4589176588945588793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8027123827439629184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00dec67299da17e43a62a8f5ac6ace64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentedUnit: {fileID: 4532538035932918899}
+--- !u!1 &8053027785711983146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3138330320007374783}
+  m_Layer: 0
+  m_Name: squirrel_r_Metacarpus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3138330320007374783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8053027785711983146}
+  m_LocalRotation: {x: -0.00000073829773, y: 0.00000015280715, z: -0.50194085, w: 0.864902}
+  m_LocalPosition: {x: 0.03477168, y: 0.000000057220458, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6049192583194069838}
+  m_Father: {fileID: 1748837945838020284}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00033153305, y: -0.0005318769, z: 61.654224}
 --- !u!1 &8115288634431194154
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +3853,7 @@ Transform:
   m_Children:
   - {fileID: 4457351322433949734}
   - {fileID: 1334065903051099300}
+  - {fileID: 7218639340500199738}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -396,9 +3910,837 @@ MonoBehaviour:
   potential: 0
   entity: {fileID: 0}
   winPos: 0
-  speedScaler: 75
+  gameData: {fileID: 0}
+  speedScaler: 20
   selectedMat: {fileID: 2100000, guid: 99de54a33aec301478268eb9311ee651, type: 2}
   potentialMat: {fileID: 2100000, guid: 479e8b7a70fc61a4dba4ba9e044dc20a, type: 2}
   onDelete: {fileID: 8854788515550762122, guid: b1c52bc7ec9ee634185cd1106aea7484, type: 3}
   inputText: {fileID: 6265984357123308581}
-  unitAnimator: {fileID: 0}
+  unitAnimator: {fileID: 9174925701618599406}
+  RotationSpeed: 0
+--- !u!1 &8186917304073249742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7598278391597169706}
+  m_Layer: 0
+  m_Name: squirrel_Tail5_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7598278391597169706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186917304073249742}
+  m_LocalRotation: {x: -0.000007662436, y: -0.000002692468, z: -0.3565409, w: 0.93427974}
+  m_LocalPosition: {x: -0.04506609, y: 0.000000009536743, z: 0.000000038147263}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 9019656510553862816}
+  m_Father: {fileID: 6415414657800269541}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00093035, y: 0.000024803963, z: -41.25077}
+--- !u!1 &8230778349567068671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6774938487181956772}
+  m_Layer: 0
+  m_Name: squirrel_Tail1_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6774938487181956772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8230778349567068671}
+  m_LocalRotation: {x: 0.0000002477477, y: -0.00000006512743, z: 0.068115294, w: 0.99767745}
+  m_LocalPosition: {x: -0.03604639, y: 0, z: 0.0000000040723305}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 531521659091137569}
+  m_Father: {fileID: 1326190274424938833}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0.000010835145, y: -0.000007887626, z: 84.930305}
+--- !u!1 &8250896794440115778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2182203909186966946}
+  m_Layer: 0
+  m_Name: squirrel_r_Ankle_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2182203909186966946
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8250896794440115778}
+  m_LocalRotation: {x: 0.00000037013345, y: 0.00000021288191, z: 0.89393324, w: -0.44820014}
+  m_LocalPosition: {x: 0.04034288, y: 0.000000014305114, z: 0.0000000047683715}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 1198065646013200224}
+  m_Father: {fileID: 4667876251466154242}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000028336877, y: 0.0000015304688, z: -112.513596}
+--- !u!1 &8253192730179463419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6704550000212989372}
+  m_Layer: 0
+  m_Name: squirrel_l_Humerus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6704550000212989372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8253192730179463419}
+  m_LocalRotation: {x: -0.0000000057419887, y: -0.00000032500645, z: 0.72134507, w: 0.6925758}
+  m_LocalPosition: {x: -0.03124829, y: 0, z: -0.0000000023841857}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6460413531935413327}
+  m_Father: {fileID: 3969189292723052948}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000010688938, y: -0.000004620945, z: 59.88871}
+--- !u!1 &8283589615682434711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1396465102238532714}
+  m_Layer: 0
+  m_Name: squirrel_l_Scapula_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1396465102238532714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8283589615682434711}
+  m_LocalRotation: {x: 0.0000005654006, y: -0.0000002468203, z: 0.4039015, w: 0.9148025}
+  m_LocalPosition: {x: -0.027530741, y: 0.004234567, z: -0.029546807}
+  m_LocalScale: {x: 0.99999964, y: 0.9999996, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 4477707923842536496}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.000069753456, y: -0.0000016927368, z: 107.381004}
+--- !u!1 &8351345056750848066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6347302169777641636}
+  m_Layer: 0
+  m_Name: squirrel_r_Heel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6347302169777641636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351345056750848066}
+  m_LocalRotation: {x: -0.49967828, y: 0.5003225, z: -0.49967867, w: 0.50032014}
+  m_LocalPosition: {x: 0.0000000047683715, y: 0.00628973, z: -0.02895308}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 3933851478803951485}
+  m_Father: {fileID: 772355746071859091}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0001561832, y: 90.0001, z: -131.92635}
+--- !u!1 &8352672624756798799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147492046424019686}
+  m_Layer: 0
+  m_Name: squirrel_r_paw_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147492046424019686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352672624756798799}
+  m_LocalRotation: {x: 0.49816364, y: -0.5018296, z: 0.49816173, w: 0.50183153}
+  m_LocalPosition: {x: 0.020941896, y: 0.00000002503395, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 7799304499274941675}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 89.579414, y: -89.99976, z: -0.00023352375}
+--- !u!1 &8497837607758395116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7910973608985819928}
+  m_Layer: 0
+  m_Name: squirrel_r_Humerus_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7910973608985819928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8497837607758395116}
+  m_LocalRotation: {x: 0.00000032338642, y: 0.00000068106914, z: 0.7213452, w: 0.6925757}
+  m_LocalPosition: {x: 0.031248314, y: 0.000000019073486, z: 0.000000014305114}
+  m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 1748837945838020284}
+  m_Father: {fileID: 5267922063287350423}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00005026233, y: 0.00015462548, z: 59.889107}
+--- !u!1 &8603603836846049646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4138367255205113686}
+  m_Layer: 0
+  m_Name: squirrel_l_Ear2-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4138367255205113686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8603603836846049646}
+  m_LocalRotation: {x: -0.0000000074505793, y: -0.000000014901158, z: 0.000000022351736, w: 1}
+  m_LocalPosition: {x: -0.023988256, y: -0.000000009536743, z: -0.000000019073486}
+  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 1196654768626865202}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000010190095, y: -0.000002038019, z: 0.0000030570272}
+--- !u!1 &8623640201993172524
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8475357474692623560}
+  m_Layer: 0
+  m_Name: squirrel_r_Ear_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8475357474692623560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8623640201993172524}
+  m_LocalRotation: {x: 0.6504047, y: 0.2406257, z: 0.5922871, w: 0.41020605}
+  m_LocalPosition: {x: -0.0200418, y: 0.01738852, z: 0.020220539}
+  m_LocalScale: {x: 1, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 7197836749079129614}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 14.392373, y: 87.74299, z: 124.43042}
+--- !u!1 &8634324761222404595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748837945838020284}
+  m_Layer: 0
+  m_Name: squirrel_r_Radius_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1748837945838020284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8634324761222404595}
+  m_LocalRotation: {x: -0.00000043531548, y: 0.000001109768, z: -0.5256513, w: 0.85070014}
+  m_LocalPosition: {x: 0.029822292, y: 0.000000038146972, z: -0.000000021457671}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 3138330320007374783}
+  m_Father: {fileID: 7910973608985819928}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00006039387, y: 0.00012248296, z: -79.55472}
+--- !u!1 &8659429361036403561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5511218360333811347}
+  m_Layer: 0
+  m_Name: squirrel_Tail1_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5511218360333811347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659429361036403561}
+  m_LocalRotation: {x: 0.00000023432573, y: -0.00000004298609, z: 0.06811532, w: 0.99767745}
+  m_LocalPosition: {x: -0.036046382, y: -0.0000000047683715, z: 0.000000009536743}
+  m_LocalScale: {x: 1.0000001, y: 1.0000004, z: 1}
+  m_Children:
+  - {fileID: 1106746034292306626}
+  m_Father: {fileID: 1326190274424938833}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0.000026180558, y: -0.000003987033, z: 84.93022}
+--- !u!1 &8719753283541839409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9001763530674225036}
+  m_Layer: 0
+  m_Name: squirrel_r_WristPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9001763530674225036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719753283541839409}
+  m_LocalRotation: {x: 0.000000043711793, y: -0.000000043711324, z: 0.0000000433065, w: 1}
+  m_LocalPosition: {x: -0.02092393, y: -0.0033744718, z: -0.000000014305114}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3929677692664896663}
+  - {fileID: 700421218924322992}
+  m_Father: {fileID: 3611305163721560503}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.000005008958, y: -0.000005008926, z: 1.0560496}
+--- !u!1 &8755408100736650808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8719058923098506164}
+  m_Layer: 0
+  m_Name: squirrel_r_Eye_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8719058923098506164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8755408100736650808}
+  m_LocalRotation: {x: 0.6147033, y: 0.17921259, z: 0.7313771, w: -0.23475555}
+  m_LocalPosition: {x: -0.04015542, y: 0.0021080398, z: 0.009430275}
+  m_LocalScale: {x: 1.0000005, y: 1.0000001, z: 1.0000002}
+  m_Children:
+  - {fileID: 4765800119400660851}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: -33.41875, y: 77.54287, z: -171.52132}
+--- !u!1 &8879029621097229255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5960473428769850489}
+  m_Layer: 0
+  m_Name: squirrel_l_WristPeel_hlp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5960473428769850489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8879029621097229255}
+  m_LocalRotation: {x: 0, y: 2.6645353e-14, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0209239, y: 0.003374548, z: 0.000000023841856}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7938197541880423719}
+  - {fileID: 5547729688034626108}
+  m_Father: {fileID: 2053587423266127558}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 5.1140658e-11, y: 5.3061763e-11, z: 1.0560393}
+--- !u!1 &8881384659794990889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3172132163538923188}
+  - component: {fileID: 7903968820843217631}
+  m_Layer: 0
+  m_Name: squirrel_teethupper_mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3172132163538923188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881384659794990889}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.000000010685347, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7218639340500199738}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!137 &7903968820843217631
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881384659794990889}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -7960456506634364820, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 7550325808596936207, guid: 9d281b10982e3c740880598263c19eb7, type: 3}
+  m_Bones:
+  - {fileID: 9180289813876848676}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 9180289813876848676}
+  m_AABB:
+    m_Center: {x: -0.020570332, y: -0.012483822, z: -0.00000078976154}
+    m_Extent: {x: 0.007185459, y: 0.004862985, z: 0.012015951}
+  m_DirtyAABB: 0
+--- !u!1 &8935761888519368455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1326190274424938833}
+  m_Layer: 0
+  m_Name: squirrel_Pelvis_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1326190274424938833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935761888519368455}
+  m_LocalRotation: {x: 0.70134413, y: -0.09009129, z: 0.7013442, w: -0.09009073}
+  m_LocalPosition: {x: -0, y: 0.000000009536743, z: 0}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999999}
+  m_Children:
+  - {fileID: 1575076485405321786}
+  - {fileID: 6111085689588270482}
+  - {fileID: 3898696933003975800}
+  - {fileID: 6774938487181956772}
+  - {fileID: 5511218360333811347}
+  m_Father: {fileID: 8305938769100188718}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00007036959, y: 90, z: 137.49074}
+--- !u!1 &8949431763285798964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6993477817801689159}
+  m_Layer: 0
+  m_Name: squirrel_l_ball_IKGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6993477817801689159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949431763285798964}
+  m_LocalRotation: {x: -0.49691686, y: -0.5030643, z: -0.49691516, w: 0.503066}
+  m_LocalPosition: {x: 0.00000017642975, y: 0.00000015407801, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7129102676602985321}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -89.29556, y: -89.999855, z: 0}
+--- !u!1 &8959612565790300828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2313534333519416797}
+  m_Layer: 0
+  m_Name: squirrel_l_Eye-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2313534333519416797
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8959612565790300828}
+  m_LocalRotation: {x: 0, y: -0.0000000102445465, z: -0, w: 1}
+  m_LocalPosition: {x: -0.014391601, y: -0.000000038146972, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 8858364897119720858}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0.0000014011378, z: 0}
+--- !u!1 &9008603002119507584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614212095383353912}
+  m_Layer: 0
+  m_Name: squirrel_Jaw_ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &614212095383353912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008603002119507584}
+  m_LocalRotation: {x: -6.540954e-14, y: -0.00000009720056, z: -0.186727, w: 0.98241186}
+  m_LocalPosition: {x: -0.030019483, y: 0.03141574, z: -0.000000019073495}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 673046518189986586}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000009333576, y: -0.00001562525, z: -21.523682}
+--- !u!1 &9008779045273487018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1404161100477236348}
+  m_Layer: 0
+  m_Name: squirrel_Jaw-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1404161100477236348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008779045273487018}
+  m_LocalRotation: {x: 0.0000000056805045, y: 5.3290697e-15, z: -3.0271805e-23, w: 1}
+  m_LocalPosition: {x: -0.025966397, y: 0, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6393868292588088494}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000077691766, y: 7.2885215e-13, z: 0}
+--- !u!1 &9011845061150463755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 236664050146017736}
+  m_Layer: 0
+  m_Name: squirrel_l_Toe_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &236664050146017736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011845061150463755}
+  m_LocalRotation: {x: -0.0000017306158, y: -0.00000054930956, z: -0.34864715, w: 0.9372541}
+  m_LocalPosition: {x: -0.036353864, y: 0.0000019454956, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6057472204249799492}
+  m_Father: {fileID: 6856117626074558614}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00028927275, y: -0.000011255706, z: 7.7717214}
+--- !u!1 &9014225853857841274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 194411625872712718}
+  m_Layer: 0
+  m_Name: squirrel_r_EyelidUpper_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &194411625872712718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014225853857841274}
+  m_LocalRotation: {x: 0.5608351, y: 0.30893487, z: 0.76496726, w: -0.069630794}
+  m_LocalPosition: {x: -0.04015542, y: 0.0021080398, z: 0.009430275}
+  m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 0.9999998}
+  m_Children:
+  - {fileID: 1955542242135137537}
+  m_Father: {fileID: 8010237735071206962}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: -33.418575, y: 77.542755, z: 163.2897}
+--- !u!1 &9098302497783516593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575076485405321786}
+  m_Layer: 0
+  m_Name: squirrel_l_Thigh_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1575076485405321786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098302497783516593}
+  m_LocalRotation: {x: 0.0000003578545, y: 0.00000028563252, z: -0.8141455, w: 0.58066094}
+  m_LocalPosition: {x: -0.013217659, y: 0.001303792, z: -0.0295468}
+  m_LocalScale: {x: 1.0000005, y: 1.0000006, z: 1.0000001}
+  m_Children:
+  - {fileID: 3317358623443363794}
+  m_Father: {fileID: 1326190274424938833}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00010945313, y: 0.000017163457, z: -95.66846}
+--- !u!1 &9098841901216743509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5226823366098306509}
+  m_Layer: 0
+  m_Name: squirrel_l_EyelidUpper-nub_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5226823366098306509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098841901216743509}
+  m_LocalRotation: {x: 0.000000007450579, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.014391603, y: -0.000000038146972, z: 0}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7834738992417485716}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000010190095, y: 0, z: 0}
