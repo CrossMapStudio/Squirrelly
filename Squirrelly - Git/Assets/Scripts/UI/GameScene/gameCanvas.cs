@@ -6,14 +6,21 @@ using UnityEngine.UI;
 public class gameCanvas : MonoBehaviour
 {
     gameController gameControl;
-    public Text timer;
-    public GameObject pauseMenuUI;
+    public Text timer, gameTimer, waveCounter, scoreCounter;
+    public GameObject pauseMenuUI, gameCompleteMenuUI;
+    private levelCompleteMenu gameCompleteUIScript;
 
     [SerializeField] private menuButton activeButton;
     private inputHandler inputController;
     [SerializeField] private GameObject loadingScreen;
     private InputMap IMap;
     private bool resetInput = true;
+    //Use this for the Acorns Triggers Etc.
+    public Color acornEarnedColor;
+    public Image[] acorns;
+    public Animator acornAnim;
+    [HideInInspector]
+    public animationController acornAnimController;
 
     private void Start()
     {
@@ -30,12 +37,11 @@ public class gameCanvas : MonoBehaviour
         IMap.InGamePause.Options.started += context => pauseMenu(0);
 
         gameController.pauseState = false;
-    }
 
-    //Debugging/Testing
-    public void starAddition(int stars)
-    {
-        gameControl.activeStorage.addStar(stars);
+        gameCompleteUIScript = gameCompleteMenuUI.GetComponent<levelCompleteMenu>();
+
+        //For Anim
+        acornAnimController = new animationController(acornAnim);
     }
 
     public void waveReset()
@@ -69,15 +75,17 @@ public class gameCanvas : MonoBehaviour
         }
     }
 
-    public void endGame()
+    public void endGame(interpreterData runData)
     {
-        pauseMenuUI.SetActive(true);
+        //Enum Later for Ease of Reading - 0 is loss 1 is win
+        gameCompleteMenuUI.SetActive(true);
+        gameCompleteUIScript.setAllUIElements(runData);
+        //Update States by Passing from Game Controller
         if (inputHandler.currentControl == inputHandler.controlSetting.controller)
             activeButton.setHoveringValue = true;
         IMap.InGame.Disable();
         IMap.InGamePause.Enable();
-        //Update States by Passing from Game Controller
-    }
+        }
 
     public void pauseMenu(int index)
     {

@@ -18,3 +18,13 @@ MonoBehaviour:
   gamemodeDifficulties:
   - startTime: 30
     addedTime: 8
+    timeIntervalForRewards:
+    - 50
+    - 75
+    - 100
+    unitLossLimit: 3
+    spawnOnAwake: 0
+    startingSpawnTarget: 0
+    vehicleSpawnRatePerWaveIncremental: {x: 0, y: 0}
+    vehicleSpawnRateClamp: 0
+    wavesToComplete: 20

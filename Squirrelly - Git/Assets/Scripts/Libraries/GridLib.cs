@@ -170,6 +170,7 @@ namespace GridHandler
             if (selectedUnit != null)
             {
                 switchNodeSelection(selectedUnit);
+                selectedUnit.lockedSelection = true;
                 if (selectedUnit.neighbors[0] != null)
                     switchNodeSelection(selectedUnit.neighbors[0]);
                 if (selectedUnit.neighbors[1] != null)

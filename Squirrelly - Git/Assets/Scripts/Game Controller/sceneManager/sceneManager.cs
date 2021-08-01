@@ -67,6 +67,7 @@ public class sceneManager : MonoBehaviour
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
         currentLevelIndex = sceneToLoad;
+        data.clear();
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
@@ -82,7 +83,6 @@ public class sceneManager : MonoBehaviour
 
     private void gameStateInit()
     {
-        data.clear();
         data.activeLevel = c.currentlySelectedLevel;
         //Will Vary based on the GameMode that was Selected + Difficulty
         data.unitList = c.currentlySelectedLevel.getTimeMode.units;

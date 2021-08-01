@@ -22,7 +22,7 @@ public class gameController : MonoBehaviour
     private Dictionary<string, level> levelListing;
     //This will change with the level data element actually feeding the correct units -> For now this is for input handling
     //Pause State ->
-    public static bool pauseState = false;
+    public static bool pauseState = false, gameEndState = false;
 
     private void Awake()
     {
@@ -102,6 +102,8 @@ public class gameController : MonoBehaviour
             sceneControl.loadScene(2, loadSceneAnim, animToTrigger, animationNameForLoadStart);
         }
     }
+
+    public gameData getGameDataForSave { get { return gData; } }
 }
 
 #region Level Information for Proper Storage and Backtracking

@@ -109,3 +109,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationHoverName: hover
+  loadingScreen: {fileID: 0}
+  startAnimationName: loadIn
+  targetAnimationName: inFrame
+  buttonTypeVariation: 0
+  sceneIndex: 0
+  dynamicNeighboring: 0
+  northButton: {fileID: 0}
+  northEastButton: {fileID: 0}
+  eastButton: {fileID: 0}
+  southEastButton: {fileID: 0}
+  southButton: {fileID: 0}
+  southWestButton: {fileID: 0}
+  westButton: {fileID: 0}
+  northWestButton: {fileID: 0}

@@ -15,7 +15,7 @@ public class baseUnit : MonoBehaviour
     [HideInInspector]
     public baseUnit[] neighbors = new baseUnit[2];
     [HideInInspector]
-    public bool selected = false, potential = false;
+    public bool selected = false, potential = false, lockedSelection = false;
     [HideInInspector]
     public baseUnit entity;
     [HideInInspector]
@@ -38,6 +38,8 @@ public class baseUnit : MonoBehaviour
     private stateMachine unitStateMachine;
     private animationController animControl;
     private audioController audioControl;
+    private particleController particleControl;
+    public ParticleSystem[] particleSystems;
 
     public float RotationSpeed = 2f;
     private Vector3 _direction;
@@ -81,8 +83,9 @@ public class baseUnit : MonoBehaviour
         //Enter the Awake State ---
         audioControl = new audioController();
         animControl = new animationController(unitAnimator);
+        particleControl = new particleController(particleSystems);
 
-        unitStateMachine = new stateMachine(this, animControl, audioControl);
+        unitStateMachine = new stateMachine(this, animControl, audioControl, particleControl);
         unitStateMachine.changeState(new idleState());
 
         //For Tracking Unit on Death for Win State
@@ -188,6 +191,14 @@ public class baseUnit : MonoBehaviour
             {
                 currentState = unitState.idle;
                 changeState(0);
+
+                if (worldPosition == pos1)
+                {
+                    if (activeNodes[0] != null)
+                        activeNodes[0].inWinPos = true;
+                }
+
+                gameData.gameModeInt.checkNodeData();
             }
         }
 
@@ -220,12 +231,14 @@ public class stateMachine
     private baseUnit controller;
     private animationController animControl;
     private audioController audioControl;
+    private particleController particleControl;
 
-    public stateMachine(baseUnit _controller, animationController _animControl, audioController _audioControl)
+    public stateMachine(baseUnit _controller, animationController _animControl, audioController _audioControl, particleController _particleControl)
     {
         controller = _controller;
         animControl = _animControl;
         audioControl = _audioControl;
+        particleControl = _particleControl;
     }
 
     public void changeState(state newState, GameObject stateIdentity = null)
@@ -239,6 +252,7 @@ public class stateMachine
         this.currentState.controller = controller;
         this.currentState.animControl = animControl;
         this.currentState.audioControl = audioControl;
+        this.currentState.particleControl = particleControl;
         this.currentState.onEnter();
     }
 
@@ -295,6 +309,7 @@ public interface state
     public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
+    public particleController particleControl { get; set; }
 }
 
 #region States
@@ -323,6 +338,7 @@ public class awakeState : state
     public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
+    public particleController particleControl { get; set; }
 }
 public class idleState : state
 {
@@ -353,6 +369,11 @@ public class idleState : state
 
         //rotate us over time according to speed until we are in the required rotation
         controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, lookRotation, Time.deltaTime * 4f);
+
+        if (controller.selected)
+            particleControl.playParticles(0);
+        else
+            particleControl.stopParticles(0);
     }
 
     public void onFixedUpdate()
@@ -363,11 +384,13 @@ public class idleState : state
     public void onExit()
     {
         animControl.setBool("idleState", false);
+        particleControl.stopParticles(0);
     }
 
     public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
+    public particleController particleControl { get; set; }
 }
 public class movingState : state
 {
@@ -416,6 +439,7 @@ public class movingState : state
     public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
+    public particleController particleControl { get; set; }
 }
 public class deathState : state
 {
@@ -450,6 +474,7 @@ public class deathState : state
     public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
+    public particleController particleControl { get; set; }
 }
 public class positionEnterStatepublic : state
 {
@@ -477,6 +502,7 @@ public class positionEnterStatepublic : state
     public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
+    public particleController particleControl { get; set; }
 }
 public class levelCompletionState : state
 {
@@ -504,6 +530,7 @@ public class levelCompletionState : state
     public baseUnit controller { get; set; }
     public animationController animControl { get; set; }
     public audioController audioControl { get; set; }
+    public particleController particleControl { get; set; }
 }
 #endregion
 
@@ -564,4 +591,33 @@ public class changeState
     }
 }
 
+public class particleController
+{
+    ParticleSystem[] unitParticleSystems;
+    public particleController(ParticleSystem[] _unitParticleSystems)
+    {
+        unitParticleSystems = _unitParticleSystems;
+    }
+
+    public void playParticles(int particleIndex)
+    {
+        if (!unitParticleSystems[particleIndex].isPlaying)
+            unitParticleSystems[particleIndex].Play();
+    }
+
+    public void stopParticles(int particleIndex)
+    {
+        if (!unitParticleSystems[particleIndex].isStopped)
+            unitParticleSystems[particleIndex].Stop();
+    }
+
+    public void stopAllParticles()
+    {
+        for (int i = 0; i < unitParticleSystems.Length; i++)
+        {
+            if (unitParticleSystems[i].isPlaying)
+                unitParticleSystems[i].Stop();
+        }
+    }
+}
 #endregion
