@@ -316,7 +316,7 @@ public struct container
     {
         if (size > dataSize)
         {
-            for (int i = dataSize - 1; i < size; i++)
+            for (int i = dataSize; i < size; i++)
             {
                 gameInfo local = new gameInfo();
                 data.Add(local);
@@ -324,9 +324,9 @@ public struct container
         }
         else if (size < dataSize)
         {
-            for (int i = dataSize - 1; i > size; i--)
+            for (int i = dataSize; i > size; i--)
             {
-                data.RemoveAt(i);
+                data.RemoveAt(i - 1);
             }
         }
     }

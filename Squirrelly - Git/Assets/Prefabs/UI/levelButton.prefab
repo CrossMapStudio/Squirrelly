@@ -568,7 +568,7 @@ MonoBehaviour:
   - {fileID: 6810337042364680228}
   levelName: {fileID: 6945025257131027023}
   starColor: {r: 1, g: 0.7402892, b: 0, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.39215687}
 --- !u!1 &8936797108194298021
 GameObject:
   m_ObjectHideFlags: 0

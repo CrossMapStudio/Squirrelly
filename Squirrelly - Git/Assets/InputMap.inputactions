@@ -108,6 +108,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Options",
+                    "type": "Button",
+                    "id": "530226a6-fb37-4e1d-a5ec-91b38bd8d436",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -251,6 +259,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "bBumperLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f7e1130-3292-43d4-8d5d-5ca955e23748",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Options",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -501,109 +520,6 @@
                 {
                     "name": "",
                     "id": "51c1909a-1958-4c1d-9c26-91db810215e0",
-                    "path": "<Gamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Options",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "In-GamePause",
-            "id": "fcf19d5d-0e08-497c-95ee-11e8f9b3a3d9",
-            "actions": [
-                {
-                    "name": "Action1",
-                    "type": "Button",
-                    "id": "71c7d560-6a3b-4c29-88d8-add7171e19e0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Action2",
-                    "type": "Button",
-                    "id": "5b3bc29f-9566-4f57-a2b0-11c8b45736d8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "DPadN",
-                    "type": "Button",
-                    "id": "80b0c79d-5738-4cd7-930a-c4e91c167cbd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "DPadS",
-                    "type": "Button",
-                    "id": "4c338cb7-fc11-4adf-94bf-820da5e0d8a3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Options",
-                    "type": "Button",
-                    "id": "a7ae3dc5-1e3f-430f-9dc6-0857fc193024",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "0d6d4a60-c86a-4667-a521-7df69a02d894",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Action1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ae733e4a-a906-4e3b-90a3-c339cf5b42b5",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Action2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9a24deec-d422-45f8-a0db-acf2884f82c6",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DPadN",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cbc980e8-b600-400b-8ca2-a7c1e92b84ab",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DPadS",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "41ae6c19-8a30-4696-ac36-8ba565476093",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",

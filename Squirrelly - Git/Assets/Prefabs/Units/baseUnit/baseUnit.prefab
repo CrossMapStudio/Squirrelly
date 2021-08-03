@@ -1565,7 +1565,6 @@ GameObject:
   - component: {fileID: 1334065903051099300}
   - component: {fileID: 6166247914517467101}
   - component: {fileID: 5993451934586652010}
-  - component: {fileID: 7022260056170024900}
   m_Layer: 6
   m_Name: unit
   m_TagString: Untagged
@@ -1636,19 +1635,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7022260056170024900
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3639118429053808665}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3647315029798515909
 GameObject:
   m_ObjectHideFlags: 0
@@ -3909,13 +3895,14 @@ MonoBehaviour:
   - {fileID: 0}
   selected: 0
   potential: 0
+  lockedSelection: 0
   entity: {fileID: 0}
   winPos: 0
   gameData: {fileID: 0}
   speedScaler: 20
   selectedMat: {fileID: 2100000, guid: 99de54a33aec301478268eb9311ee651, type: 2}
   potentialMat: {fileID: 2100000, guid: 479e8b7a70fc61a4dba4ba9e044dc20a, type: 2}
-  onDelete: {fileID: 198105611435355940, guid: 14c970e5088917041882baa0106b1400, type: 3}
+  onDelete: {fileID: 198052119433049416, guid: 429ff48304d4db946bd190220bdd0ffd, type: 3}
   inputText: {fileID: 6265984357123308581}
   unitAnimator: {fileID: 9174925701618599406}
   particleSystems:

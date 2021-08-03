@@ -22,5 +22,5 @@ public class level : ScriptableObject
     //For Checking Against Added/Removed Levels and Optimizing the Dictionary
     public int getTotalCount { get { return getTimeMode.getCount + getWaveMode.getCount + getHighScoreMode.getCount; } } 
 
-    public string id { get { return name + idTag; } }
+    public string id { get { return idTag; } }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class levelSelectCanvas : MonoBehaviour
@@ -37,16 +38,6 @@ public class levelSelectCanvas : MonoBehaviour
 
         inputController = gameControl.GetComponent<inputHandler>();
         inputController.setIMapControlScheme(0);
-        IMap = inputController.IMAP;
-
-        IMap.MenuActions.DPadE.performed += cnx => navigateMenu(2);
-        IMap.MenuActions.DPadW.performed += cnx => navigateMenu(6);
-
-        IMap.MenuActions.DPadN.performed += cnx => navigateMenu(0);
-        IMap.MenuActions.DPadS.performed += cnx => navigateMenu(4);
-
-        IMap.MenuActions.Action1.performed += context => callAction();
-        IMap.MenuActions.Action2.started += context => backButton.callButtonAction();
 
         gameController.pauseState = false;
     }
@@ -72,6 +63,52 @@ public class levelSelectCanvas : MonoBehaviour
             {
                 navigateMenu(4);
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+
+        //Action X and Action Y
+        if (inputHandler.inputListener == 1)
+        {
+            callAction();
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        if (inputHandler.inputListener == 2)
+        {
+            backButton.callButtonAction();
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        //Back Triggers Etc.
+        if (inputHandler.inputListener == 5)
+        {
+            gModeScroller.scrollOver(-1, 3);
+            updateButtons();
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        if (inputHandler.inputListener == 6)
+        {
+            gModeScroller.scrollOver(1, 3);
+            updateButtons();
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        if (inputHandler.inputListener == 7)
+        {
+            diffScroller.scrollOver(-1, 4);
+            updateButtons();
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        if (inputHandler.inputListener == 8)
+        {
+            diffScroller.scrollOver(1, 4);
+            updateButtons();
+            inputHandler.setInputActiveListenerValue(0);
         }
     }
 
@@ -190,40 +227,45 @@ public class levelSelectCanvas : MonoBehaviour
 
     private void navigateMenu(int switchValue)
     {
-        activeButton.setHoveringValue = false;
-        var clone = activeButton;
-        var current = activeButton;
-        activeButton = null;
-        while (activeButton == null)
+        if (!sceneManager.inLoadState)
         {
-            if (current.getNeighbor(switchValue) == null)
+            if (activeButton != null)
+                activeButton.setHoveringValue = false;
+            var clone = activeButton;
+            var current = activeButton;
+            activeButton = null;
+            while (activeButton == null)
             {
-                activeButton = clone;
-                activeButton.setHoveringValue = true;
-                break;
-            }
-            else
-            {
-                if (!current.getNeighbor(switchValue).gameObject.activeSelf)
+                if (current.getNeighbor(switchValue) == null)
                 {
-                    current = current.getNeighbor(switchValue);
-                    continue;
+                    activeButton = clone;
+                    activeButton.setHoveringValue = true;
+                    break;
                 }
                 else
                 {
-                    activeButton = current.getNeighbor(switchValue);
-                    break;
+                    if (!current.getNeighbor(switchValue).gameObject.activeSelf)
+                    {
+                        current = current.getNeighbor(switchValue);
+                        continue;
+                    }
+                    else
+                    {
+                        activeButton = current.getNeighbor(switchValue);
+                        break;
+                    }
                 }
             }
-        }
 
-        resetInput = false;
-        StartCoroutine(inputReset());
+            activeButton.setHoveringValue = true;
+            resetInput = false;
+            StartCoroutine(inputReset());
+        }
     }
 
     private void callAction()
     {
-        if (activeButton != null)
+        if (activeButton != null && !sceneManager.inLoadState)
             activeButton.callButtonAction();
     }
 
@@ -250,11 +292,6 @@ public class levelSelectCanvas : MonoBehaviour
         yield return new WaitForFixedUpdate();
         gModeScroller = gameMode.getScrollButton;
         diffScroller = difficulty.getScrollButton;
-        IMap.MenuActions.fBumperRight.performed += context => { gModeScroller.scrollOver(-1, 3); updateButtons(); };
-        IMap.MenuActions.fBumperLeft.performed += context => { gModeScroller.scrollOver(1, 3); updateButtons(); };
-
-        IMap.MenuActions.bBumperRight.started += context => { diffScroller.scrollOver(-1, 4); updateButtons(); };
-        IMap.MenuActions.bBumperLeft.started += context => { diffScroller.scrollOver(1, 4); updateButtons(); };
         populateLevelSelect();
     }
 }

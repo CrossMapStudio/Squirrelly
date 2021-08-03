@@ -5,13 +5,25 @@ using UnityEngine;
 public class waveGamemode : ScriptableObject
 {
     public string id;
-    [SerializeField] private waveGameModeParameters[] gamemodeDifficulties;
+    public waveGameModeParameters[] gamemodeDifficulties;
     public int getCount { get { return gamemodeDifficulties.Length; } }
 }
 
 [Serializable]
 public struct waveGameModeParameters
 {
-    //Just PlaceHolders
-    [SerializeField] private float totalWaves, unitDeathLimit;
+    //X = Waves Needed to Complete Y = Time in Order to Complete those Waves
+    public int[] unitLossLimitsForRewards;
+
+    //The Start will be incremented by the X per (Y Waves) --- Example 
+    public bool spawnOnAwake;
+    public float startingSpawnTarget;
+    public Vector2 vehicleSpawnRatePerWaveIncremental;
+
+    //This will not allow the spawn rate to go under this amount
+    public float vehicleSpawnRateClamp;
+
+    //This will allow a winstate instead of an infinite playthrough
+    public int wavesToComplete;
+    public int unitLossTarget;
 }

@@ -36,8 +36,11 @@ public class dataInterpreter : MonoBehaviour
         //Will Handle Creating the Correct Interpreter
         switch (gamemodeIndex)
         {
-            default:
+            case 0:
                 gameModeInt = new timeModeInt(difficultyIndex, this, gameStateControl, gameUI);
+                break;
+            case 1:
+                gameModeInt = new waveModeInt(difficultyIndex, this, gameStateControl, gameUI);
                 break;
         }
 
@@ -117,7 +120,7 @@ public class gameStateController
                 data.gameModeInt.updateAll();
                 serializationHandler.saveGame(serializationHandler.fileTag, data.controller.getGameDataForSave);
                 data.Grid.gridControl.clearGrid();
-                gameController.pauseState = true;
+                gameController.gameEndState = true;
                 data.gameUI.endGame(data.gameModeInt.runData);
                 gameState = state.none;
                 break;
@@ -149,6 +152,7 @@ public class timeModeInt : interpreter
 
     timeGamemode levelData;
     float currentTime, rewardTime, timePlayed;
+    int unitDeathCounter;
 
     private int wavesCompleted, wavesCompletedWithinRewardGrouping, targetWaves, currentRewardStatus, currentScore;
 
@@ -266,7 +270,144 @@ public class timeModeInt : interpreter
 
     public void onUnitDeath()
     {
+        unitDeathCounter++;
+        currentTime -= levelData.gamemodeDifficulties[(int)currentDifficulty].unitLossTime;
+    }
 
+    public void setRunData(string gameStatus)
+    {
+        runData.gameStat = gameStatus;
+        runData.wavesCompleted = wavesCompleted;
+        runData.totalWaves = targetWaves;
+        if (controller.gameState == gameStateController.state.won)
+            runData.currentRewardStatus = 3 - currentRewardStatus;
+        else
+            runData.currentRewardStatus = 0;
+        runData.unitsLost = 0;
+        runData.currentScore = currentScore;
+    }
+
+    public void checkNodeData()
+    {
+        if (controller.grid.gridControl.checkWinNodes())
+            controller.setState(1);
+    }
+
+    public interpreterData runData { get; set; } = new interpreterData();
+}
+
+public class waveModeInt : interpreter
+{
+    gameStateController controller;
+    dataInterpreter data;
+    gameCanvas gameUI;
+
+    waveGamemode levelData;
+    float timePlayed;
+    int unitDeathCounter, unitDeathTarget;
+
+    private int wavesCompleted, targetWaves, currentRewardStatus, currentScore;
+
+    public enum difficulty
+    {
+        easy = 0,
+        moderate = 1,
+        hard = 2,
+        challenging = 3
+    }
+    public difficulty currentDifficulty;
+    public waveModeInt(int diff, dataInterpreter _data, gameStateController _controller, gameCanvas _gameUI)
+    {
+        currentDifficulty = (difficulty)diff;
+        controller = _controller;
+        data = _data;
+        gameUI = _gameUI;
+        //Based on difficulty set all Parameters to the Passed Values Correspondence
+        levelData = data.controller.currentlySelectedLevel.getWaveMode;
+
+        //Give Value based on Difficulty
+        targetWaves = levelData.gamemodeDifficulties[(int)currentDifficulty].wavesToComplete;
+        unitDeathTarget = levelData.gamemodeDifficulties[(int)currentDifficulty].unitLossTarget;
+        //Set UI
+        gameUI.waveCounter.text = "Current Wave: " + wavesCompleted + "/" + targetWaves;
+        gameUI.scoreCounter.text = "Current Score: " + currentScore + "/" + targetWaves;
+    }
+
+    public void onUpdate()
+    {
+        if (unitDeathCounter >= unitDeathTarget)
+        {
+            if (!gameController.gameEndState)
+            {
+                controller.gameState = gameStateController.state.lost;
+                setRunData("Failed");
+                controller.setState(0);
+            }
+        }
+        else
+        {
+            if (!gameController.pauseState && !gameController.gameEndState)
+            {
+                timePlayed += Time.deltaTime;
+            }
+
+            if (gameUI != null)
+            {
+                //gameUI.timer.text = "Wave Time: " + currentTime.ToString("F2");
+                gameUI.gameTimer.text = "Time Played: " + timePlayed.ToString("F2");
+            }
+
+            if (currentRewardStatus < 3)
+            {
+                if (unitDeathCounter >= levelData.gamemodeDifficulties[(int)currentDifficulty].unitLossLimitsForRewards[currentRewardStatus])
+                {
+                    data.gameUI.acorns[currentRewardStatus].color = Color.white;
+                    switch (currentRewardStatus)
+                    {
+                        case 0:
+                            data.gameUI.acornAnimController.setTrigger("firstAcornEarned");
+                            break;
+                        case 1:
+                            data.gameUI.acornAnimController.setTrigger("secondAcornEarned");
+                            break;
+                        case 2:
+                            data.gameUI.acornAnimController.setTrigger("thirdAcornEarned");
+                            break;
+                    }
+
+                    currentRewardStatus++;
+                }
+            }
+        }
+    }
+
+    public void onWaveCompletion()
+    {
+        wavesCompleted++;
+        gameUI.waveCounter.text = "Current Wave: " + wavesCompleted + "/" + targetWaves;
+        checkCurrentProgress();
+    }
+
+    public void checkCurrentProgress()
+    {
+        if (wavesCompleted >= targetWaves && targetWaves != 0)
+        {
+            controller.gameState = gameStateController.state.won;
+            setRunData("Completed");
+            controller.setState(0);
+        }
+    }
+
+    public void updateAll()
+    {
+        if (controller.gameState == gameStateController.state.won)
+            data.controller.activeStorage.addStar(3 - currentRewardStatus);
+        //Rest of the Data Update Here as Well
+    }
+
+    public void onUnitDeath()
+    {
+        unitDeathCounter++;
     }
 
     public void setRunData(string gameStatus)

@@ -109,19 +109,8 @@ public class baseUnit : MonoBehaviour
 
     public void destroyUnit()
     {
-        //This will Handle Rerouting Neighbors/Killing the Unit
-        /*
-        if (neighbors[0] != null)
-            neighbors[0].neighbors[1] = neighbors[1];
-
-        if (neighbors[1] != null)
-            neighbors[1].neighbors[0] = neighbors[0];
-            */
-
         var clone = Instantiate(onDelete, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity);
-
         activeNodes[0].isWinPos = false;
-
         Destroy(clone, 2f);
         Destroy(gameObject);
     }
@@ -168,7 +157,7 @@ public class baseUnit : MonoBehaviour
     {
         if (transform.position != worldPosition)
         {
-            if (gameController.pauseState)
+            if (gameController.pauseState || gameController.gameEndState)
             {
                 currentState = unitState.idle;
             }
@@ -348,7 +337,7 @@ public class idleState : state
     #endregion
     public void onEnter()
     {
-        Debug.Log("Idle State");
+        //Debug.Log("Idle State");
         animControl.setBool("idleState", true);
     }
 
@@ -452,6 +441,8 @@ public class deathState : state
 
         if (controller.neighbors[1] != null)
             controller.neighbors[1].neighbors[0] = controller.neighbors[0];
+
+        controller.gameData.gameModeInt.onUnitDeath();
         animControl = null;
         audioControl = null;
     }

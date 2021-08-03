@@ -78,26 +78,32 @@ public class menuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerEnter(PointerEventData element)
     {
-        mouseHovering = true;
-        setHoveringValue = true;
-        Debug.Log(mouseHovering);
-        if (buttonAnim != null)
-            buttonAnim.SetBool("hover", true);
+        if (!sceneManager.inLoadState)
+        {
+            mouseHovering = true;
+            setHoveringValue = true;
+            Debug.Log("Button Name: " + name);
+            if (buttonAnim != null)
+                buttonAnim.SetBool("hover", true);
+        }
     }
 
     public void OnPointerExit(PointerEventData element)
     {
-        mouseHovering = false;
-        setHoveringValue = false;
-        Debug.Log(mouseHovering);
-        if (buttonAnim != null)
-            buttonAnim.SetBool("hover", false);
+        if (!sceneManager.inLoadState)
+        {
+            mouseHovering = false;
+            setHoveringValue = false;
+            Debug.Log(mouseHovering);
+            if (buttonAnim != null)
+                buttonAnim.SetBool("hover", false);
+        }
     }
 
     public void OnPointerClick(PointerEventData element)
     {
-        //Perform Interface Action
-        callButtonAction();
+        if (!sceneManager.inLoadState)
+            callButtonAction();
     }
 
     public menuButton getNeighbor(int index)
@@ -127,7 +133,7 @@ public class menuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void callButtonAction()
     {
-        if (assignedAction != null)
+        if (assignedAction != null && !sceneManager.inLoadState)
             assignedAction.triggerAction();
     }
 

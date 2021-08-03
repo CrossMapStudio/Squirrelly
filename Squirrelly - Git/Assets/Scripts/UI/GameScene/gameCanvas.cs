@@ -10,7 +10,7 @@ public class gameCanvas : MonoBehaviour
     public GameObject pauseMenuUI, gameCompleteMenuUI;
     private levelCompleteMenu gameCompleteUIScript;
 
-    [SerializeField] private menuButton activeButton;
+    [SerializeField] private menuButton activeButtonPauseMenu, activeButtonGameCompletionMenu;
     private inputHandler inputController;
     [SerializeField] private GameObject loadingScreen;
     private InputMap IMap;
@@ -27,21 +27,45 @@ public class gameCanvas : MonoBehaviour
         gameControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
         inputController = gameControl.GetComponent<inputHandler>();
         inputController.setIMapControlScheme(1);
-
-        IMap = inputController.IMAP;
-
-        IMap.InGamePause.DPadN.performed += context => navigateMenu(0);
-        IMap.InGamePause.DPadS.performed += context => navigateMenu(4);
-        IMap.InGamePause.Action1.performed += context => checkNullAction();
-        IMap.InGamePause.Action2.started += context => pauseMenu(0);
-        IMap.InGamePause.Options.started += context => pauseMenu(0);
-
         gameController.pauseState = false;
-
         gameCompleteUIScript = gameCompleteMenuUI.GetComponent<levelCompleteMenu>();
-
         //For Anim
         acornAnimController = new animationController(acornAnim);
+    }
+
+    private void LateUpdate()
+    {
+        #region In-Game Menu Controller Input Listener
+        if (inputHandler.inputListener == 9)
+        {
+            navigateMenu(0);
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        if (inputHandler.inputListener == 10)
+        {
+            navigateMenu(4);
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        if (inputHandler.inputListener == 11 && gameController.pauseState)
+        {
+            pauseMenu(0);
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        if (inputHandler.inputListener == 2 && gameController.pauseState)
+        {
+            pauseMenu(0);
+            inputHandler.setInputActiveListenerValue(0);
+        }
+
+        if (inputHandler.inputListener == 1)
+        {
+            checkNullAction();
+            inputHandler.setInputActiveListenerValue(0);
+        }
+        #endregion
     }
 
     public void waveReset()
@@ -64,14 +88,12 @@ public class gameCanvas : MonoBehaviour
         if (gameController.pauseState)
         {
             if (inputHandler.currentControl == inputHandler.controlSetting.controller)
-                activeButton.setHoveringValue = true;
-            IMap.InGame.Disable();
-            IMap.InGamePause.Enable();
+                activeButtonPauseMenu.setHoveringValue = true;
+            inputController.setIMapControlScheme(2);
         }
         else
         {
-            IMap.InGame.Enable();
-            IMap.InGamePause.Disable();
+            inputController.setIMapControlScheme(3);
         }
     }
 
@@ -82,10 +104,9 @@ public class gameCanvas : MonoBehaviour
         gameCompleteUIScript.setAllUIElements(runData);
         //Update States by Passing from Game Controller
         if (inputHandler.currentControl == inputHandler.controlSetting.controller)
-            activeButton.setHoveringValue = true;
-        IMap.InGame.Disable();
-        IMap.InGamePause.Enable();
-        }
+            activeButtonGameCompletionMenu.setHoveringValue = true;
+        inputController.setIMapControlScheme(2);
+    }
 
     public void pauseMenu(int index)
     {
@@ -107,29 +128,45 @@ public class gameCanvas : MonoBehaviour
     }
     private void navigateMenu(int switchValue)
     {
-        activeButton.setHoveringValue = false;
-        activeButton = activeButton.getNeighbor(switchValue) ?? activeButton;
-        activeButton.setHoveringValue = true;
+        if (gameController.pauseState)
+        {
+            activeButtonPauseMenu.setHoveringValue = false;
+            activeButtonPauseMenu = activeButtonPauseMenu.getNeighbor(switchValue) ?? activeButtonPauseMenu;
+            activeButtonPauseMenu.setHoveringValue = true;
+        }
+        else
+        {
+            activeButtonGameCompletionMenu.setHoveringValue = false;
+            activeButtonGameCompletionMenu = activeButtonGameCompletionMenu.getNeighbor(switchValue) ?? activeButtonGameCompletionMenu;
+            activeButtonGameCompletionMenu.setHoveringValue = true;
+        }
+
         resetInput = false;
-            StartCoroutine(inputReset(this));
+        StartCoroutine(inputReset());
     }
     private void checkNullAction()
     {
-        if (activeButton != null && activeButton.buttonTypeVariation == menuButton.buttonType.nullAction)
+        if (gameController.pauseState)
         {
-            //Hard Coded --- Yikes
-            pauseMenu(0);
+            if (activeButtonPauseMenu != null && activeButtonPauseMenu.buttonTypeVariation == menuButton.buttonType.nullAction)
+            {
+                //Hard Coded --- Yikes
+                pauseMenu(0);
+            }
+            else if (activeButtonPauseMenu != null)
+            {
+                activeButtonPauseMenu.callButtonAction();
+            }
         }
-        else if (activeButton != null)
+        else
         {
-            activeButton.callButtonAction();
+            activeButtonGameCompletionMenu.callButtonAction();
         }
     }
 
-    IEnumerator inputReset(gameCanvas local)
+    IEnumerator inputReset()
     {
         yield return new WaitForSeconds(.2f);
-        if (local != null)
-            resetInput = true;
+        resetInput = true;
     }
 }

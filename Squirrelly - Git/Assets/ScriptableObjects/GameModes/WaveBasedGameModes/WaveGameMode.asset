@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: waveBased
   gamemodeDifficulties:
-  - totalWaves: 0
-    unitDeathLimit: 0
-  - totalWaves: 0
-    unitDeathLimit: 0
-  - totalWaves: 0
-    unitDeathLimit: 0
-  - totalWaves: 0
-    unitDeathLimit: 0
+  - unitLossLimitsForRewards: 010000000200000003000000
+    spawnOnAwake: 0
+    startingSpawnTarget: 0
+    vehicleSpawnRatePerWaveIncremental: {x: 0, y: 0}
+    vehicleSpawnRateClamp: 0
+    wavesToComplete: 20
+    unitLossTarget: 5

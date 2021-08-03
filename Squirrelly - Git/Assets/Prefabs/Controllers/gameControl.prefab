@@ -50,6 +50,8 @@ MonoBehaviour:
   groupedLevels:
   - associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
   - associatedLevel: {fileID: 11400000, guid: 7fd6608fdab63ab4eac3ca25fe77cf96, type: 2}
+  - associatedLevel: {fileID: 11400000, guid: aa5b1e867b356d24a9c0ed1db4c6f3cd, type: 2}
+  - associatedLevel: {fileID: 11400000, guid: 8da92c83b28685e4f9c714c990be19b7, type: 2}
   currentlySelectedLevel: {fileID: 0}
   activeStorage:
     id: 

@@ -17,13 +17,6 @@ public class mainMenuCanvas : MonoBehaviour
     {
         inputController = GameObject.FindGameObjectWithTag("GameController").GetComponent<inputHandler>();
         inputController.setIMapControlScheme(0);
-        IMap = inputController.IMAP;
-
-        IMap.MenuActions.DPadE.performed += context => navigateMenu(2);
-        IMap.MenuActions.DPadW.performed += context => navigateMenu(6);
-
-        IMap.MenuActions.Action1.performed += context => callAction();
-
         gameController.pauseState = false;
     }
 
@@ -38,6 +31,15 @@ public class mainMenuCanvas : MonoBehaviour
             {
                 navigateMenu(6);
             }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (inputHandler.inputListener == 1)
+        {
+            callAction();
+            inputHandler.setInputActiveListenerValue(0);
         }
     }
 

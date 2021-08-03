@@ -9,6 +9,7 @@ public class sceneManager : MonoBehaviour
     private bool beginLoad, waitForAnim;
 
     public static int currentLevelIndex = 0;
+    public static bool inLoadState = false;
     private int levelSelectIndex = 1, playSceneIndex = 2, mainMenuIndex = 0;
 
     private gameController c;
@@ -42,6 +43,7 @@ public class sceneManager : MonoBehaviour
             passedAnim = loadSceneAnim;
             loadStartAnim = animationNameForLoadStart;
             passedAnim.Play(animToTrigger);
+            beginLoad = false;
             waitForAnim = true;
         }
     }
@@ -55,6 +57,7 @@ public class sceneManager : MonoBehaviour
         }
         else if (waitForAnim)
         {
+            inLoadState = true;
             if (passedAnim.GetCurrentAnimatorStateInfo(0).IsName(loadStartAnim))
             {
                 beginLoad = true;
@@ -78,16 +81,20 @@ public class sceneManager : MonoBehaviour
         {
             gameStateInit();
         }
+
+        inLoadState = false;
         //This may change^^
     }
 
     private void gameStateInit()
     {
+        Debug.Log("Currently Selected Level: " + c.currentlySelectedLevel);
         data.activeLevel = c.currentlySelectedLevel;
         //Will Vary based on the GameMode that was Selected + Difficulty
         data.unitList = c.currentlySelectedLevel.getTimeMode.units;
         data.unitLayer = c.unitLayer;
         data.enabled = true;
+        gameController.gameEndState = false;
         data.initializeOnStart();
     }
 

@@ -18,7 +18,7 @@ public struct timeGameModeParameters
     public float startTime, addedTime;
     //X = Waves Needed to Complete Y = Time in Order to Complete those Waves
     public float[] timeIntervalForRewards;
-    public int unitLossLimit;
+    public int unitLossTime;
 
     //The Start will be incremented by the X per (Y Waves) --- Example 
     public bool spawnOnAwake;

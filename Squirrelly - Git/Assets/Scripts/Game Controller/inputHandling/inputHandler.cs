@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class inputHandler : MonoBehaviour
@@ -12,6 +13,8 @@ public class inputHandler : MonoBehaviour
     private bool fireCast = true;
     private InputMap IMap;
     private Vector2 leftAnalogCurrentValue;
+    public static inputHandler inputController;
+    private static int inputActiveListener;
 
     public enum controlSetting
     {
@@ -48,11 +51,30 @@ public class inputHandler : MonoBehaviour
 
     private void Awake()
     {
+        inputController = this;
+        main = Camera.main;
         IMap = new InputMap();
+        
         //Analog Sticks
         IMap.MenuActions.LeftStick.performed += context => leftAnalogCurrentValue = context.ReadValue<Vector2>();
         IMap.MenuActions.LeftStick.canceled += context => leftAnalogCurrentValue = Vector2.zero;
-        main = Camera.main;
+
+        //Enum for Later
+        IMap.MenuActions.Action1.started += context => setInputActiveListenerValue(1);
+        IMap.MenuActions.Action2.started += context => setInputActiveListenerValue(2);
+        IMap.MenuActions.Action3.started += context => setInputActiveListenerValue(3);
+        IMap.MenuActions.Action4.started += context => setInputActiveListenerValue(4);
+
+        IMap.MenuActions.fBumperRight.started += context => setInputActiveListenerValue(5);
+        IMap.MenuActions.fBumperLeft.started += context => setInputActiveListenerValue(6);
+        IMap.MenuActions.bBumperRight.started += context => setInputActiveListenerValue(7);
+        IMap.MenuActions.bBumperLeft.started += context => setInputActiveListenerValue(8);
+
+        IMap.MenuActions.DPadN.started += context => setInputActiveListenerValue(9);
+        IMap.MenuActions.DPadS.started += context => setInputActiveListenerValue(10);
+
+        IMap.MenuActions.Options.started += context => setInputActiveListenerValue(11);
+
         //Game Actions
         IMap.InGame.WestAction.started += context => { activeInput = inputAction.westButton; gridInputCheck(); };
         IMap.InGame.SouthAction.started += context => { activeInput = inputAction.southButton; gridInputCheck(); };
@@ -67,6 +89,13 @@ public class inputHandler : MonoBehaviour
             gameController.pauseState = !gameController.pauseState;
             data.gameUI.triggerPauseMenuUI();
         };
+
+        /*
+        {
+            gameController.pauseState = !gameController.pauseState;
+            data.gameUI.triggerPauseMenuUI();
+        };
+        */
 
         //Turn off in-game, enable menu
         setIMapControlScheme(0);
@@ -89,7 +118,7 @@ public class inputHandler : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (!gameController.pauseState && currentControl == controlSetting.mouseKey)
+        if (!gameController.pauseState && !gameController.gameEndState && currentControl == controlSetting.mouseKey)
         {
             if (Input.GetMouseButtonDown(0))
                 if (data != null)
@@ -138,7 +167,7 @@ public class inputHandler : MonoBehaviour
     {
         if (currentControl == controlSetting.mouseKey && data)
         {
-            if (fireCast && !gameController.pauseState)
+            if (fireCast && !gameController.pauseState && !gameController.gameEndState)
             {
                 RaycastHit unitHit;
                 if (!main)
@@ -160,6 +189,31 @@ public class inputHandler : MonoBehaviour
         }
     }
 
+    public static int inputListener
+    {
+        get
+        {
+            if (inputActiveListener != 0)
+            {
+                inputController.StartCoroutine(inputController.resetInputQueue());
+                return inputActiveListener;
+            }
+
+            return 0;
+        }
+    }
+
+    public IEnumerator resetInputQueue()
+    {
+        yield return new WaitForEndOfFrame();
+        setInputActiveListenerValue(0);
+    }
+
+    public static void setInputActiveListenerValue(int index)
+    {
+        inputActiveListener = index;
+    }
+
     private void gridInputCheck()
     {
         if ((int)activeInput < data.gameStateControl.activeUnits.Count)
@@ -173,13 +227,20 @@ public class inputHandler : MonoBehaviour
             case 0:
                 IMap.MenuActions.Enable();
                 IMap.InGame.Disable();
-                IMap.InGamePause.Disable();
                 data = null;
                 break;
             case 1:
                 IMap.InGame.Enable();
                 IMap.MenuActions.Disable();
                 data = GetComponent<dataInterpreter>();
+                break;
+            case 2:
+                IMap.MenuActions.Enable();
+                IMap.InGame.Disable();
+                break;
+            case 3:
+                IMap.MenuActions.Disable();
+                IMap.InGame.Enable();
                 break;
         }
     }

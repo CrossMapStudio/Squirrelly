@@ -121,6 +121,14 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Options"",
+                    ""type"": ""Button"",
+                    ""id"": ""530226a6-fb37-4e1d-a5ec-91b38bd8d436"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -264,6 +272,17 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""bBumperLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f7e1130-3292-43d4-8d5d-5ca955e23748"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Options"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -523,109 +542,6 @@ public class @InputMap : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""In-GamePause"",
-            ""id"": ""fcf19d5d-0e08-497c-95ee-11e8f9b3a3d9"",
-            ""actions"": [
-                {
-                    ""name"": ""Action1"",
-                    ""type"": ""Button"",
-                    ""id"": ""71c7d560-6a3b-4c29-88d8-add7171e19e0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Action2"",
-                    ""type"": ""Button"",
-                    ""id"": ""5b3bc29f-9566-4f57-a2b0-11c8b45736d8"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""DPadN"",
-                    ""type"": ""Button"",
-                    ""id"": ""80b0c79d-5738-4cd7-930a-c4e91c167cbd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""DPadS"",
-                    ""type"": ""Button"",
-                    ""id"": ""4c338cb7-fc11-4adf-94bf-820da5e0d8a3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Options"",
-                    ""type"": ""Button"",
-                    ""id"": ""a7ae3dc5-1e3f-430f-9dc6-0857fc193024"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""0d6d4a60-c86a-4667-a521-7df69a02d894"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Action1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ae733e4a-a906-4e3b-90a3-c339cf5b42b5"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Action2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9a24deec-d422-45f8-a0db-acf2884f82c6"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DPadN"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cbc980e8-b600-400b-8ca2-a7c1e92b84ab"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DPadS"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""41ae6c19-8a30-4696-ac36-8ba565476093"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Options"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": []
@@ -645,6 +561,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         m_MenuActions_fBumperLeft = m_MenuActions.FindAction("fBumperLeft", throwIfNotFound: true);
         m_MenuActions_bBumperRight = m_MenuActions.FindAction("bBumperRight", throwIfNotFound: true);
         m_MenuActions_bBumperLeft = m_MenuActions.FindAction("bBumperLeft", throwIfNotFound: true);
+        m_MenuActions_Options = m_MenuActions.FindAction("Options", throwIfNotFound: true);
         // In-Game
         m_InGame = asset.FindActionMap("In-Game", throwIfNotFound: true);
         m_InGame_SouthAction = m_InGame.FindAction("SouthAction", throwIfNotFound: true);
@@ -660,13 +577,6 @@ public class @InputMap : IInputActionCollection, IDisposable
         m_InGame_DPadEast = m_InGame.FindAction("DPadEast", throwIfNotFound: true);
         m_InGame_DPadWest = m_InGame.FindAction("DPadWest", throwIfNotFound: true);
         m_InGame_Options = m_InGame.FindAction("Options", throwIfNotFound: true);
-        // In-GamePause
-        m_InGamePause = asset.FindActionMap("In-GamePause", throwIfNotFound: true);
-        m_InGamePause_Action1 = m_InGamePause.FindAction("Action1", throwIfNotFound: true);
-        m_InGamePause_Action2 = m_InGamePause.FindAction("Action2", throwIfNotFound: true);
-        m_InGamePause_DPadN = m_InGamePause.FindAction("DPadN", throwIfNotFound: true);
-        m_InGamePause_DPadS = m_InGamePause.FindAction("DPadS", throwIfNotFound: true);
-        m_InGamePause_Options = m_InGamePause.FindAction("Options", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -729,6 +639,7 @@ public class @InputMap : IInputActionCollection, IDisposable
     private readonly InputAction m_MenuActions_fBumperLeft;
     private readonly InputAction m_MenuActions_bBumperRight;
     private readonly InputAction m_MenuActions_bBumperLeft;
+    private readonly InputAction m_MenuActions_Options;
     public struct MenuActionsActions
     {
         private @InputMap m_Wrapper;
@@ -746,6 +657,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         public InputAction @fBumperLeft => m_Wrapper.m_MenuActions_fBumperLeft;
         public InputAction @bBumperRight => m_Wrapper.m_MenuActions_bBumperRight;
         public InputAction @bBumperLeft => m_Wrapper.m_MenuActions_bBumperLeft;
+        public InputAction @Options => m_Wrapper.m_MenuActions_Options;
         public InputActionMap Get() { return m_Wrapper.m_MenuActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -794,6 +706,9 @@ public class @InputMap : IInputActionCollection, IDisposable
                 @bBumperLeft.started -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnBBumperLeft;
                 @bBumperLeft.performed -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnBBumperLeft;
                 @bBumperLeft.canceled -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnBBumperLeft;
+                @Options.started -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnOptions;
+                @Options.performed -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnOptions;
+                @Options.canceled -= m_Wrapper.m_MenuActionsActionsCallbackInterface.OnOptions;
             }
             m_Wrapper.m_MenuActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -837,6 +752,9 @@ public class @InputMap : IInputActionCollection, IDisposable
                 @bBumperLeft.started += instance.OnBBumperLeft;
                 @bBumperLeft.performed += instance.OnBBumperLeft;
                 @bBumperLeft.canceled += instance.OnBBumperLeft;
+                @Options.started += instance.OnOptions;
+                @Options.performed += instance.OnOptions;
+                @Options.canceled += instance.OnOptions;
             }
         }
     }
@@ -970,71 +888,6 @@ public class @InputMap : IInputActionCollection, IDisposable
         }
     }
     public InGameActions @InGame => new InGameActions(this);
-
-    // In-GamePause
-    private readonly InputActionMap m_InGamePause;
-    private IInGamePauseActions m_InGamePauseActionsCallbackInterface;
-    private readonly InputAction m_InGamePause_Action1;
-    private readonly InputAction m_InGamePause_Action2;
-    private readonly InputAction m_InGamePause_DPadN;
-    private readonly InputAction m_InGamePause_DPadS;
-    private readonly InputAction m_InGamePause_Options;
-    public struct InGamePauseActions
-    {
-        private @InputMap m_Wrapper;
-        public InGamePauseActions(@InputMap wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Action1 => m_Wrapper.m_InGamePause_Action1;
-        public InputAction @Action2 => m_Wrapper.m_InGamePause_Action2;
-        public InputAction @DPadN => m_Wrapper.m_InGamePause_DPadN;
-        public InputAction @DPadS => m_Wrapper.m_InGamePause_DPadS;
-        public InputAction @Options => m_Wrapper.m_InGamePause_Options;
-        public InputActionMap Get() { return m_Wrapper.m_InGamePause; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InGamePauseActions set) { return set.Get(); }
-        public void SetCallbacks(IInGamePauseActions instance)
-        {
-            if (m_Wrapper.m_InGamePauseActionsCallbackInterface != null)
-            {
-                @Action1.started -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnAction1;
-                @Action1.performed -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnAction1;
-                @Action1.canceled -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnAction1;
-                @Action2.started -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnAction2;
-                @Action2.performed -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnAction2;
-                @Action2.canceled -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnAction2;
-                @DPadN.started -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnDPadN;
-                @DPadN.performed -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnDPadN;
-                @DPadN.canceled -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnDPadN;
-                @DPadS.started -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnDPadS;
-                @DPadS.performed -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnDPadS;
-                @DPadS.canceled -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnDPadS;
-                @Options.started -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnOptions;
-                @Options.performed -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnOptions;
-                @Options.canceled -= m_Wrapper.m_InGamePauseActionsCallbackInterface.OnOptions;
-            }
-            m_Wrapper.m_InGamePauseActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Action1.started += instance.OnAction1;
-                @Action1.performed += instance.OnAction1;
-                @Action1.canceled += instance.OnAction1;
-                @Action2.started += instance.OnAction2;
-                @Action2.performed += instance.OnAction2;
-                @Action2.canceled += instance.OnAction2;
-                @DPadN.started += instance.OnDPadN;
-                @DPadN.performed += instance.OnDPadN;
-                @DPadN.canceled += instance.OnDPadN;
-                @DPadS.started += instance.OnDPadS;
-                @DPadS.performed += instance.OnDPadS;
-                @DPadS.canceled += instance.OnDPadS;
-                @Options.started += instance.OnOptions;
-                @Options.performed += instance.OnOptions;
-                @Options.canceled += instance.OnOptions;
-            }
-        }
-    }
-    public InGamePauseActions @InGamePause => new InGamePauseActions(this);
     public interface IMenuActionsActions
     {
         void OnAction1(InputAction.CallbackContext context);
@@ -1050,6 +903,7 @@ public class @InputMap : IInputActionCollection, IDisposable
         void OnFBumperLeft(InputAction.CallbackContext context);
         void OnBBumperRight(InputAction.CallbackContext context);
         void OnBBumperLeft(InputAction.CallbackContext context);
+        void OnOptions(InputAction.CallbackContext context);
     }
     public interface IInGameActions
     {
@@ -1065,14 +919,6 @@ public class @InputMap : IInputActionCollection, IDisposable
         void OnDPadNorth(InputAction.CallbackContext context);
         void OnDPadEast(InputAction.CallbackContext context);
         void OnDPadWest(InputAction.CallbackContext context);
-        void OnOptions(InputAction.CallbackContext context);
-    }
-    public interface IInGamePauseActions
-    {
-        void OnAction1(InputAction.CallbackContext context);
-        void OnAction2(InputAction.CallbackContext context);
-        void OnDPadN(InputAction.CallbackContext context);
-        void OnDPadS(InputAction.CallbackContext context);
         void OnOptions(InputAction.CallbackContext context);
     }
 }

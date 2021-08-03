@@ -16,13 +16,25 @@ MonoBehaviour:
   units:
   - {fileID: 8115288634431194154, guid: f378880030cae994d85b49c8cb4eeb54, type: 3}
   gamemodeDifficulties:
-  - startTime: 30
+  - startTime: 15
     addedTime: 8
     timeIntervalForRewards:
-    - 50
-    - 75
     - 100
-    unitLossLimit: 3
+    - 120
+    - 150
+    unitLossTime: 8
+    spawnOnAwake: 0
+    startingSpawnTarget: 0
+    vehicleSpawnRatePerWaveIncremental: {x: 0, y: 0}
+    vehicleSpawnRateClamp: 0
+    wavesToComplete: 20
+  - startTime: 15
+    addedTime: 8
+    timeIntervalForRewards:
+    - 100
+    - 120
+    - 150
+    unitLossTime: 8
     spawnOnAwake: 0
     startingSpawnTarget: 0
     vehicleSpawnRatePerWaveIncremental: {x: 0, y: 0}
