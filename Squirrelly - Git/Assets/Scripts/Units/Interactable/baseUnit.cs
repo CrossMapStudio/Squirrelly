@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class baseUnit : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class baseUnit : MonoBehaviour
     [HideInInspector]
     public Vector3 worldPosition, pos1, pos2, vel;
     [HideInInspector]
-    public bool winState;
+    public bool winState, unitDead;
     [HideInInspector]
     public baseUnit[] neighbors = new baseUnit[2];
     [HideInInspector]
@@ -30,7 +31,7 @@ public class baseUnit : MonoBehaviour
     private MeshRenderer mRend;
     private Material baseMat;
     public Material selectedMat, potentialMat;
-    public ParticleSystem onDelete;
+    public ParticleSystem onDelete, onDeleteSuccess;
     public Text inputText;
 
     //New Stuff
@@ -107,11 +108,19 @@ public class baseUnit : MonoBehaviour
             neighbors[1].potential = triggerStatus;
     }
 
-    public void destroyUnit()
+    public void destroyUnit(int deathCause = 0)
     {
-        var clone = Instantiate(onDelete, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity);
+        if (deathCause == 0)
+        {
+            var clone = Instantiate(onDelete, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity);
+            Destroy(clone, 2f);
+        }
+        else
+        {
+            var clone = Instantiate(onDeleteSuccess, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity);
+            Destroy(clone, 2f);
+        }
         activeNodes[0].isWinPos = false;
-        Destroy(clone, 2f);
         Destroy(gameObject);
     }
 
@@ -151,11 +160,37 @@ public class baseUnit : MonoBehaviour
             if (activeNodes[0] != null)
                 activeNodes[0].inWinPos = false;
         }
+
+        //For Dynamic Line Cast
+        if (selected)
+        {
+            if (worldPosition == pos1)
+            {
+                if (!activeNodes[1].targetSymbol.activeSelf)
+                {
+                    activeNodes[0].targetSymbol.SetActive(false);
+                    activeNodes[1].targetSymbol.SetActive(true);
+                }
+            }
+            else
+            {
+                if (!activeNodes[0].targetSymbol.activeSelf)
+                {
+                    activeNodes[1].targetSymbol.SetActive(false);
+                    activeNodes[0].targetSymbol.SetActive(true);
+                }
+            }
+        }
+        else
+        {
+            activeNodes[0].targetSymbol.SetActive(false);
+            activeNodes[1].targetSymbol.SetActive(false);
+        }
     }
 
     public void FixedUpdate()
     {
-        if (transform.position != worldPosition)
+        if (transform.position != worldPosition && unitStateMachine.getCurrentState() != "deathState")
         {
             if (gameController.pauseState || gameController.gameEndState)
             {
@@ -170,7 +205,6 @@ public class baseUnit : MonoBehaviour
                     currentState = unitState.moving;
                     changeState(1);
                 }
-
             }
         }
 
@@ -208,7 +242,10 @@ public class baseUnit : MonoBehaviour
                 break;
             case 2:
                 if (unitStateMachine.getCurrentState() != "deathState")
+                {
                     unitStateMachine.changeState(new deathState());
+                    unitDead = true;
+                }
                 break;
         }
     }
@@ -434,7 +471,7 @@ public class deathState : state
 {
     public void onEnter()
     {
-        animControl.setTrigger("dead");
+        //animControl.setTrigger("dead");
         //This will Handle Rerouting Neighbors/Killing the Unit
         if (controller.neighbors[0] != null)
             controller.neighbors[0].neighbors[1] = controller.neighbors[1];
@@ -445,6 +482,9 @@ public class deathState : state
         controller.gameData.gameModeInt.onUnitDeath();
         animControl = null;
         audioControl = null;
+
+        controller.gameData.Grid.gridControl.disableTargetSymbols(controller);
+        controller.destroyUnit();
     }
 
     public void onUpdate()

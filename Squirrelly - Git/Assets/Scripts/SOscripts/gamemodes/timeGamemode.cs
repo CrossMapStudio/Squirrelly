@@ -23,9 +23,12 @@ public struct timeGameModeParameters
     //The Start will be incremented by the X per (Y Waves) --- Example 
     public bool spawnOnAwake;
     public float startingSpawnTarget;
-    public Vector2 vehicleSpawnRatePerWaveIncremental;
+    //Rate to Increase Multiplier
+    public float vehicleSpawnRatePerWaveIncremental;
+    //How Many Waves Before we Increment the Multiplier
+    public int vehicleSpawnIncremental;
 
-    //This will not allow the spawn rate to go under this amount
+    //This will not allow the spawn rate to go over this amount
     public float vehicleSpawnRateClamp;
 
     //This will allow a winstate instead of an infinite playthrough

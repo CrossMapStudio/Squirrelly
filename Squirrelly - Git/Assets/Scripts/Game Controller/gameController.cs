@@ -17,7 +17,7 @@ public class gameController : MonoBehaviour
 
     //This will be temp we can set most of this with the level system
     public GameObject gameUnit;
-    public LayerMask unitLayer;
+    public LayerMask inputLayer;
     public List<storedLevelData> updatedLevels { get; set; }
     private Dictionary<string, level> levelListing;
     //This will change with the level data element actually feeding the correct units -> For now this is for input handling

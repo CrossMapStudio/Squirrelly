@@ -9,7 +9,7 @@ public class dataInterpreter : MonoBehaviour
     //Create a Grid Gen and this handle all functionality
     public GridGenerator Grid = new GridGenerator();
     public List<GameObject> unitList;
-    public LayerMask unitLayer;
+    public LayerMask inputLayer;
 
     //For interpreting/Gameplay
     public gameController controller;
@@ -17,20 +17,35 @@ public class dataInterpreter : MonoBehaviour
     public interpreter gameModeInt;
     public gameCanvas gameUI;
     //Grid Texture
-    public GameObject gridTexture;
+    public GameObject columnTriggerButtons, columnTargets;
+    public Vector3 columnTargetSymbolModifier;
 
     public float nodeRadius = .5f;
     public Vector2 unitSpacing;
+    private GameObject vehicleSpawnController;
+    [SerializeField] private string vehicleTag;
+
+    public void Start()
+    {
+        //Don't Go Here
+    }
 
     public void initializeOnStart()
     {
-        gameUI = Camera.main.transform.GetChild(0).GetComponent<gameCanvas>();
-        Grid.bakeGrid(activeLevel, activeLevel.originPoint, nodeRadius, unitSpacing, unitList, gridTexture);
-        gameStateControl = new gameStateController(Grid, this);
+        var stage = activeLevel.stageElement == null ? Instantiate(activeLevel.defaultStageElement, transform.position, Quaternion.identity) :
+        Instantiate(activeLevel.stageElement, transform.position + activeLevel.levelOriginAdjustment, Quaternion.identity);
 
-        gameStateControl.activeUnits = Grid.gridControl.getUnitList;
+        vehicleSpawnController = GameObject.FindGameObjectWithTag(vehicleTag);
+        vControl = vehicleSpawnController.GetComponent<vehicleController>();
+
+        gameUI = Camera.main.transform.GetChild(0).GetComponent<gameCanvas>();
+        Grid.bakeGrid(activeLevel, activeLevel.originPoint, nodeRadius, unitSpacing, unitList, columnTriggerButtons, activeLevel.columnButtonTriggerModifier, columnTargets, columnTargetSymbolModifier);
+
 
         controller = GetComponent<gameController>();
+        gameStateControl = new gameStateController(Grid, this);
+        gameStateControl.activeUnits = Grid.gridControl.getUnitList;
+
         var gamemodeIndex = controller.activeStorage.containerIndex;
         var difficultyIndex = controller.activeStorage.difficultyIndex;
         //Will Handle Creating the Correct Interpreter
@@ -43,10 +58,6 @@ public class dataInterpreter : MonoBehaviour
                 gameModeInt = new waveModeInt(difficultyIndex, this, gameStateControl, gameUI);
                 break;
         }
-
-        //Generate the Level Stage Element --- Can Also Hold Load until this is finished + If we want to do baked lighting
-        var stage = activeLevel.stageElement == null ? Instantiate(activeLevel.defaultStageElement, transform.position, Quaternion.identity) : 
-            Instantiate(activeLevel.stageElement, transform.position + activeLevel.levelOriginAdjustment, Quaternion.identity);
     }
 
     private void Update()
@@ -65,6 +76,8 @@ public class dataInterpreter : MonoBehaviour
         gameStateControl = null;
         gameModeInt = null;
     }
+
+    public vehicleController vControl { get; set; }
 }
 /// <summary>
 /// This class will handle the random placemeent of Units -> and Connection of Nodes
@@ -75,6 +88,7 @@ public class gameStateController
     public List<baseUnit> activeUnits;
     public GridGenerator grid;
     private dataInterpreter data;
+    private inputHandler inputController;
     public enum state
     {
         start,
@@ -89,6 +103,7 @@ public class gameStateController
     {
         grid = _grid;
         data = _data;
+        inputController = data.controller.GetComponent<inputHandler>();
         waveTrigger();
     }
 
@@ -103,11 +118,12 @@ public class gameStateController
 
     public void waveTrigger()
     {
-        //Increment Wave Counter - Give Points - Etc.aw
+        //Increment Wave Counter - Give Points - Etc.
         if (gameState != state.start)
             data.gameModeInt.onWaveCompletion();
 
         grid.startWave();
+        inputController.activeButtonHover = null;
         gameState = state.playing;
     }
 
@@ -180,6 +196,10 @@ public class timeModeInt : interpreter
         //Set UI
         gameUI.waveCounter.text = "Current Wave: " + wavesCompleted + "/" + targetWaves;
         gameUI.scoreCounter.text = "Current Score: " + currentScore + "/" + targetWaves;
+
+        data.vControl.waveTarget = levelData.gamemodeDifficulties[(int)currentDifficulty].vehicleSpawnIncremental;
+        data.vControl.currentSpawnMultiplier = levelData.gamemodeDifficulties[(int)currentDifficulty].vehicleSpawnRatePerWaveIncremental;
+        data.vControl.targetSpawnTime = levelData.gamemodeDifficulties[(int)currentDifficulty].startingSpawnTarget;
     }
 
     public void onUpdate()
@@ -248,7 +268,7 @@ public class timeModeInt : interpreter
         wavesCompletedWithinRewardGrouping++;
         gameUI.waveCounter.text = "Current Wave: " + wavesCompleted + "/" + targetWaves;
         checkCurrentProgress();
-        Debug.Log("Time Added! -> " + currentTime);
+        data.vControl.checkWaveIncrementation();
     }
 
     public void checkCurrentProgress()

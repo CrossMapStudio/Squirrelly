@@ -9,7 +9,7 @@ public class level : ScriptableObject
     public Vector3 originPoint = Vector3.zero;
     //This is the prefab level design -> Baked Lighting Etc...
     public GameObject stageElement, defaultStageElement;
-    public Vector3 levelOriginAdjustment;
+    public Vector3 levelOriginAdjustment, columnButtonTriggerModifier;
 
     //These are the Added SO to Encapsulate the Difficulty Levels with Associated Gamemodes
     [SerializeField] private timeGamemode timeMode;

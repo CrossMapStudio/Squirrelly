@@ -15,6 +15,8 @@ public class inputHandler : MonoBehaviour
     private Vector2 leftAnalogCurrentValue;
     public static inputHandler inputController;
     private static int inputActiveListener;
+    [HideInInspector]
+    public columnTriggers activeButtonHover;
 
     public enum controlSetting
     {
@@ -169,7 +171,7 @@ public class inputHandler : MonoBehaviour
         {
             if (fireCast && !gameController.pauseState && !gameController.gameEndState)
             {
-                RaycastHit unitHit;
+                RaycastHit inputLayerHit;
                 if (!main)
                 {
                     main = Camera.main;
@@ -177,13 +179,31 @@ public class inputHandler : MonoBehaviour
                 }
 
                 Ray ray = main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out unitHit, data.unitLayer))
+                if (Physics.Raycast(ray, out inputLayerHit, 300f, data.inputLayer))
                 {
-                    data.Grid.gridControl.checkNodeSelection(unitHit.collider.GetComponent<baseUnit>(), false);
+                    if (inputLayerHit.collider != null)
+                    {
+                        if (activeButtonHover != null && activeButtonHover.gameObject.GetInstanceID() != inputLayerHit.collider.gameObject.GetInstanceID())
+                        {
+                            activeButtonHover.onExit();
+                            activeButtonHover = inputLayerHit.collider.gameObject.GetComponent<columnTriggers>();
+                            activeButtonHover.onHover();
+                        }
+                        else if (activeButtonHover == null)
+                        {
+                            activeButtonHover = inputLayerHit.collider.gameObject.GetComponent<columnTriggers>();
+                            activeButtonHover.onHover();
+                        }
+                    }
                 }
                 else
                 {
-                    data.Grid.gridControl.checkNodeSelection(null, false);
+                    if (activeButtonHover != null)
+                    {
+                        activeButtonHover.onExit();
+                        activeButtonHover = null;
+                        data.Grid.gridControl.disableTargetSymbols();
+                    }
                 }
             }
         }

@@ -92,7 +92,7 @@ public class sceneManager : MonoBehaviour
         data.activeLevel = c.currentlySelectedLevel;
         //Will Vary based on the GameMode that was Selected + Difficulty
         data.unitList = c.currentlySelectedLevel.getTimeMode.units;
-        data.unitLayer = c.unitLayer;
+        data.inputLayer = c.inputLayer;
         data.enabled = true;
         gameController.gameEndState = false;
         data.initializeOnStart();

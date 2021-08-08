@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace GridHandler
 {
@@ -9,18 +8,21 @@ namespace GridHandler
         //6-7
         //Used for Assigning Win Side, Etc.
         Node[,] grid;
+        public List<columnTriggers> triggerButtons;
         public gridController gridControl;
         List<GameObject> levelUnits;
-        GameObject gridTexture;
-
+        GameObject columnTrigger, columnTarget;
         public int gridSizeX, gridSizeY;
-        public void bakeGrid(level activeLevel, Vector3 originPoint, float nodeRadius, Vector2 unitSpacing, List<GameObject> _levelUnits, GameObject _gridTexture = null)
+        public void bakeGrid(level activeLevel, Vector3 originPoint, float nodeRadius, Vector2 unitSpacing, List<GameObject> _levelUnits, GameObject _columnTrigger, 
+            Vector3 _columnTriggerModifier, GameObject _columnTarget, Vector3 _columnTargetModifier)
         {
             float nodeDiameter = nodeRadius * 2f;
-            gridTexture = _gridTexture;
+            columnTrigger = _columnTrigger;
+            columnTarget = _columnTarget;
             gridSizeX = Mathf.RoundToInt(activeLevel.gridSize.x);
             gridSizeY = Mathf.RoundToInt(activeLevel.gridSize.y);
             grid = new Node[gridSizeX, gridSizeY];
+            triggerButtons = new List<columnTriggers>();
 
             Node[,] localAvailableNodes = new Node[2, grid.GetLength(1) * 2];
             Vector3 worldBottomLeft = originPoint - Vector3.right * activeLevel.gridSize.x * unitSpacing.x / 2 - Vector3.forward * activeLevel.gridSize.y * unitSpacing.y / 2;
@@ -35,13 +37,23 @@ namespace GridHandler
                     {
                         grid[0, j].isWinPos = true;
                         localAvailableNodes[0, j] = grid[0, j];
+
+                        //Target Symbol
+                        var targetSymbol = Object.Instantiate(columnTarget, worldPoint + _columnTargetModifier, Quaternion.identity);
+                        grid[0, j].targetSymbol = targetSymbol;
+                        targetSymbol.SetActive(false);
                     }
                     else if (i == gridSizeX - 1)
                     {
                         localAvailableNodes[1, j] = grid[i, j];
-                    }
+                        var trigger = Object.Instantiate(columnTrigger, worldPoint + _columnTriggerModifier, Quaternion.identity);
+                        triggerButtons.Add(trigger.GetComponent<columnTriggers>());
 
-                    Object.Instantiate(gridTexture, worldPoint, Quaternion.identity);
+                        //Target Symbol
+                         var targetSymbol = Object.Instantiate(columnTarget, worldPoint + _columnTargetModifier, Quaternion.identity);
+                         grid[i, j].targetSymbol = targetSymbol;
+                         targetSymbol.SetActive(false);
+                    }
                 }
             }
 
@@ -83,9 +95,9 @@ namespace GridHandler
                 int spawnChance = Random.Range(0, 2) == 1 ? 0 : 1;
                 Node local = availableNodes[spawnChance, i];
 
-                //Change for Spawn in
-                var clone = Object.Instantiate(units[0], local.worldPosition, Quaternion.identity);
+                var clone = Object.Instantiate(units[Random.Range(0, units.Count)], local.worldPosition, Quaternion.identity);
                 activeUnits.Add(clone);
+
                 baseUnit unit = clone.GetComponent<baseUnit>();
                 unit.worldPosition = local.worldPosition;
                 unit.winPos = availableNodes[0, i].worldPosition.x;
@@ -101,7 +113,8 @@ namespace GridHandler
 
                 unit.pos1 = availableNodes[0, i].worldPosition;
                 unit.pos2 = availableNodes[1, i].worldPosition;
-                unit.activeNodes.Add(availableNodes[0, i]); unit.activeNodes.Add(availableNodes[1, i]);
+                unit.activeNodes.Add(availableNodes[0, i]); 
+                unit.activeNodes.Add(availableNodes[1, i]);
                 if (unit.worldPosition == availableNodes[0, i].worldPosition)
                 {
                     availableNodes[0, i].inWinPos = true;
@@ -111,6 +124,9 @@ namespace GridHandler
                     availableNodes[0, i].inWinPos = false;
                 }
                 unitList.Add(unit);
+
+                controller.triggerButtons[i].gridControl = this;
+                controller.triggerButtons[i].associatedUnit = unit;
             }
 
             //This Section creates the connections
@@ -159,9 +175,26 @@ namespace GridHandler
             {
                 selectedUnit = element;
                 selectedUnit.selected = true;
-                selectedUnit.triggerNeighbors(true);
+                selectedUnit.triggerNeighbors(true);    
                 if (switchAuto)
                     startSwitch();
+            }
+        }
+
+        public void disableTargetSymbols(baseUnit unitToDisable = null)
+        {
+            if (unitToDisable != null)
+            {
+                unitToDisable.activeNodes[1].targetSymbol.SetActive(false);
+                unitToDisable.activeNodes[0].targetSymbol.SetActive(false);
+            } 
+            else if (selectedUnit != null)
+            {
+                selectedUnit.selected = false;
+                selectedUnit.triggerNeighbors(false);
+                selectedUnit.activeNodes[1].targetSymbol.SetActive(false);
+                selectedUnit.activeNodes[0].targetSymbol.SetActive(false);
+                selectedUnit = null;
             }
         }
 
@@ -194,7 +227,7 @@ namespace GridHandler
                 for (int i = 0; i < unitList.Count; i++)
                 {
                     if (unitList[i] != null)
-                        unitList[i].destroyUnit();
+                        unitList[i].destroyUnit(1);
                 }
             }
         }
@@ -231,6 +264,7 @@ namespace GridHandler
         public Vector3 worldPosition;
         public int gridX, gridY;
         public bool active = false, selected = false;
+        public GameObject targetSymbol;
         //Instant of instantiated squirrel etc. --- Placeholder for now
         public baseUnit presentEntity;
 
@@ -243,11 +277,6 @@ namespace GridHandler
 
             gridX = _gridX;
             gridY = _gridY;
-
-            if (!(presentEntity is null))
-            {
-
-            }
         }
     }
 }
