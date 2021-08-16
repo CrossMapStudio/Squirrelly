@@ -27,7 +27,7 @@ public class baseVehicle : MonoBehaviour
 
     private void Update()
     {
-        if (currentTargetNode != null)
+        if (currentTargetNode != null && !gameController.pauseState)
         {
             if (Vector3.Distance(transform.position, currentTargetNode.position) <= .5f)
             {
@@ -50,7 +50,7 @@ public class baseVehicle : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentTargetNode != null)
+        if (currentTargetNode != null && !gameController.pauseState)
             transform.position += transform.forward * vehicleSpeed * Time.fixedDeltaTime;
 
         Collider[] collisionData = Physics.OverlapBox(transform.position + originModification, halfExt, Quaternion.identity, unitLayerMask);

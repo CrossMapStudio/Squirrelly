@@ -283,9 +283,24 @@ public class storedLevelData
     }
 
     //Will Save the Most Stars
-    public void addStar(int stars)
+    public void setGameDetailsToSave(int indexToSet, float setValue)
     {
-        activeRoute.starsEarned = activeRoute.starsEarned < stars ? stars : activeRoute.starsEarned;
+        switch (indexToSet) {
+            case 0:
+                activeRoute.starsEarned = activeRoute.starsEarned < (int)setValue ? (int)setValue : activeRoute.starsEarned;
+                break;
+            case 1:
+                activeRoute.scoreEarned = activeRoute.scoreEarned < (int)setValue ? (int)setValue : activeRoute.scoreEarned;
+                break;
+            case 2:
+                if (setValue != 0)
+                    activeRoute.completed = 1;
+                break;
+            case 3:
+                activeRoute.completionTime = activeRoute.completionTime > setValue ? setValue : activeRoute.completionTime;
+                break;
+        }
+
         getContainer(gameModeTags[containerIndex]).setGameInfo(difficultyIndex, activeRoute);
     }
 }
@@ -335,7 +350,8 @@ public struct container
 [Serializable]
 public struct gameInfo
 {
-    public int starsEarned, lastWaveCompleted;
-    public bool completed;
+    //Completed is 1 - Not Completed is 0
+    public int starsEarned, scoreEarned, completed;
+    public float completionTime;
 }
 #endregion

@@ -13,6 +13,7 @@ public class levelCompleteMenu : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private Text wavesCompleted;
     [SerializeField] private Text unitsLost;
+    [SerializeField] private Text timeOfCompletion;
 
     public void setAllUIElements(interpreterData data)
     {
@@ -23,5 +24,6 @@ public class levelCompleteMenu : MonoBehaviour
         scoreText.text = "Score: " + data.currentScore.ToString();
         wavesCompleted.text = "Waves Completed: " + data.wavesCompleted.ToString() + "/" + data.totalWaves.ToString();
         unitsLost.text = "Units Lost: " + data.unitsLost.ToString();
+        timeOfCompletion.text = "Completed Time: " + data.bestTimeOfCompletion.ToString();
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - loadingScreen
   - vehicleSpawnControl
   - columnTrigger
+  - gameCanvas
   layers:
   - Default
   - TransparentFX

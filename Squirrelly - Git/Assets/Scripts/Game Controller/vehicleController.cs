@@ -28,16 +28,19 @@ public class vehicleController : MonoBehaviour
 
     private void Update()
     {
-        if (currentSpawnCounter >= targetSpawnTime)
+        if (!gameController.pauseState)
         {
-            int spawnPos = UnityEngine.Random.Range(0, paths.Count);
-            var clone = Instantiate(vehicleUnits[UnityEngine.Random.Range(0,vehicleUnits.Length)], paths[spawnPos].nodes[0].position, Quaternion.identity);
-            clone.GetComponent<baseVehicle>().setList(paths[spawnPos].nodes);
-            currentSpawnCounter = 0f;
-        }
-        else
-        {
-            currentSpawnCounter += Time.deltaTime * (1 + currentWaveIncremental * currentSpawnMultiplier);
+            if (currentSpawnCounter >= targetSpawnTime)
+            {
+                int spawnPos = UnityEngine.Random.Range(0, paths.Count);
+                var clone = Instantiate(vehicleUnits[UnityEngine.Random.Range(0, vehicleUnits.Length)], paths[spawnPos].nodes[0].position, Quaternion.identity);
+                clone.GetComponent<baseVehicle>().setList(paths[spawnPos].nodes);
+                currentSpawnCounter = 0f;
+            }
+            else
+            {
+                currentSpawnCounter += Time.deltaTime * (1 + currentWaveIncremental * currentSpawnMultiplier);
+            }
         }
     }
 

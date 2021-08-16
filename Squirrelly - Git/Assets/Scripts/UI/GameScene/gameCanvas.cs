@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class gameCanvas : MonoBehaviour
 {
     gameController gameControl;
-    public Text timer, gameTimer, waveCounter, scoreCounter;
-    public GameObject pauseMenuUI, gameCompleteMenuUI;
+    public GameObject pauseMenuUI, gameCompleteMenuUI, xpCoin, addedTextContainer;
     private levelCompleteMenu gameCompleteUIScript;
 
     [SerializeField] private menuButton activeButtonPauseMenu, activeButtonGameCompletionMenu;
@@ -21,6 +20,41 @@ public class gameCanvas : MonoBehaviour
     public Animator acornAnim;
     [HideInInspector]
     public animationController acornAnimController;
+
+    //Holds the Animated Stats Elements
+    public GameObject statsLayoutGroup;
+    [HideInInspector] public List<Text> stats;
+    //Used Incase Elements are Missing
+    private Dictionary<string, UIStats> animatorDictionary;
+    private string statHolderBaseName = "UIStatHolder";
+    public string[] UIStatAnimations;
+
+    public enum stat
+    {
+        timer,
+        gameTimer,
+        waveCounter,
+        scoreCounter,
+        unitsSaved,
+        unitsLost
+    }
+
+    private void Awake()
+    {
+        animatorDictionary = new Dictionary<string, UIStats>();
+        for (int i = 0; i < statsLayoutGroup.transform.childCount; i++)
+        {
+            GameObject child = statsLayoutGroup.transform.GetChild(i).gameObject;
+            var animatorClone = child.GetComponent<Animator>();
+            var textClone = child.transform.GetChild(0).GetComponent<Text>();
+
+            UIStats statHolder = new UIStats();
+            statHolder.anim = animatorClone;
+            statHolder.worldPos = animatorClone.gameObject.transform.position;
+            animatorDictionary.Add(animatorClone.gameObject.name, statHolder);
+            stats.Add(textClone);
+        }
+    }
 
     private void Start()
     {
@@ -169,4 +203,22 @@ public class gameCanvas : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         resetInput = true;
     }
+
+    public void playUIStatAnimation(string keyModifier, int animationKey, string addedTextValue = "")
+    {
+        var clone = animatorDictionary[statHolderBaseName + keyModifier];
+        var added = Instantiate(addedTextContainer, clone.anim.gameObject.transform.position + new Vector3(Random.Range(-50,50), 0f, 0f), Quaternion.identity, clone.anim.gameObject.transform);
+        added.transform.GetChild(0).GetComponent<Text>().text = addedTextValue;
+
+        Destroy(added, 1.5f);
+        clone.anim.playbackTime = 0f;
+        clone.anim.Play(UIStatAnimations[animationKey]);
+    }
+}
+
+struct UIStats
+{
+    public Vector3 worldPos;
+    public Animator anim;
+    public Text addedText;
 }

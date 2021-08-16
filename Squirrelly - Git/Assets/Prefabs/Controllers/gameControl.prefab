@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7434821740218711696}
   - component: {fileID: -1462270475550252148}
   - component: {fileID: -3202950756656305449}
+  - component: {fileID: -4747793037882171606}
   - component: {fileID: -6203718337364692350}
   m_Layer: 0
   m_Name: gameControl
@@ -111,6 +112,8 @@ MonoBehaviour:
   gameUI: {fileID: 0}
   columnTriggerButtons: {fileID: 2392121055013293939, guid: 26f756328d5dbe94e95790fdf1d82e43, type: 3}
   columnTargets: {fileID: 6363501326562312182, guid: 5536558a48846a948ba01bd512addaca, type: 3}
+  xpPoints: {fileID: 5684864043628064833, guid: 39afa5cb55fc1db4d941765ea82c04ad, type: 3}
+  directionalParticleSystem: {fileID: 468083658976485437, guid: aca4a55ac863eb34bb3877e6e72ddc66, type: 3}
   columnTargetSymbolModifier: {x: 0, y: 1, z: 0}
   nodeRadius: 0.5
   unitSpacing: {x: 1, y: 2}
@@ -130,6 +133,19 @@ MonoBehaviour:
   musicPlayer: {fileID: -6203718337364692350}
   musicList:
   - {fileID: 8300000, guid: 7e86954c2f62cab40ab8d737108f70a8, type: 3}
+--- !u!114 &-4747793037882171606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683458224521270165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58a5503a7bf172479df82381e861e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textHolder: {fileID: 1649622464125943911, guid: 9a038c3aa397fcf43be953a6f50c66f3, type: 3}
 --- !u!82 &-6203718337364692350
 AudioSource:
   m_ObjectHideFlags: 0
@@ -145,7 +161,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

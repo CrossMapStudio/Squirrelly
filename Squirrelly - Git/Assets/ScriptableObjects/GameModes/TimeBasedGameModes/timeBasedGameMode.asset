@@ -29,3 +29,16 @@ MonoBehaviour:
     vehicleSpawnIncremental: 3
     vehicleSpawnRateClamp: 0
     wavesToComplete: 20
+  - startTime: 45
+    addedTime: 7
+    timeIntervalForRewards:
+    - 100
+    - 120
+    - 150
+    unitLossTime: 9
+    spawnOnAwake: 0
+    startingSpawnTarget: 5
+    vehicleSpawnRatePerWaveIncremental: 0.4
+    vehicleSpawnIncremental: 2
+    vehicleSpawnRateClamp: 0
+    wavesToComplete: 30

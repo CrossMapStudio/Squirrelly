@@ -186,6 +186,7 @@ public class inputHandler : MonoBehaviour
                         if (activeButtonHover != null && activeButtonHover.gameObject.GetInstanceID() != inputLayerHit.collider.gameObject.GetInstanceID())
                         {
                             activeButtonHover.onExit();
+                            //Needs Opimizing
                             activeButtonHover = inputLayerHit.collider.gameObject.GetComponent<columnTriggers>();
                             activeButtonHover.onHover();
                         }

@@ -176,7 +176,7 @@ public class levelSelectCanvas : MonoBehaviour
             {
                 button.gameObject.SetActive(true);
                 gameInfo local = current.getGameInfo(diffScroller.currentSelection);
-                button.setPar(element, local.starsEarned, element.displayName);
+                button.setPar(element, local.starsEarned, element.displayName, local.scoreEarned);
                 //For Pulling Save Later in Game --- Can Optionally Clear these before Return
                 element.difficultyIndex = diffScroller.currentSelection;
                 element.containerIndex = gModeScroller.currentSelection;

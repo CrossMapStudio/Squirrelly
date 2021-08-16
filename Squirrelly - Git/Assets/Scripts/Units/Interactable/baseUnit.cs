@@ -1,10 +1,8 @@
 using GridHandler;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class baseUnit : MonoBehaviour
 {
@@ -82,7 +80,7 @@ public class baseUnit : MonoBehaviour
     private void Awake()
     {
         //Enter the Awake State ---
-        audioControl = new audioController();
+        audioControl = new audioController(null, null);
         animControl = new animationController(unitAnimator);
         particleControl = new particleController(particleSystems);
 
@@ -170,6 +168,7 @@ public class baseUnit : MonoBehaviour
                 {
                     activeNodes[0].targetSymbol.SetActive(false);
                     activeNodes[1].targetSymbol.SetActive(true);
+                    activeNodes[0].directionalParticleSystem.gameObject.SetActive(true);
                 }
             }
             else
@@ -178,6 +177,7 @@ public class baseUnit : MonoBehaviour
                 {
                     activeNodes[1].targetSymbol.SetActive(false);
                     activeNodes[0].targetSymbol.SetActive(true);
+                    activeNodes[1].directionalParticleSystem.gameObject.SetActive(true);
                 }
             }
         }
@@ -185,6 +185,8 @@ public class baseUnit : MonoBehaviour
         {
             activeNodes[0].targetSymbol.SetActive(false);
             activeNodes[1].targetSymbol.SetActive(false);
+            activeNodes[0].directionalParticleSystem.gameObject.SetActive(false);
+            activeNodes[1].directionalParticleSystem.gameObject.SetActive(false);
         }
     }
 
@@ -245,6 +247,7 @@ public class baseUnit : MonoBehaviour
                 {
                     unitStateMachine.changeState(new deathState());
                     unitDead = true;
+                    gameData.gameModeInt.checkNodeData();
                 }
                 break;
         }
@@ -428,6 +431,8 @@ public class movingState : state
     {
         animControl.setBool("movingState", true);
         Debug.Log("Movement State");
+        particleControl.InstantiateParticleEffect(1, controller.transform, 2f, Quaternion.identity, true);
+        particleControl.InstantiateParticleEffect(2, controller.transform, 2f, Quaternion.identity);
     }
 
     public void onUpdate()
@@ -479,11 +484,12 @@ public class deathState : state
         if (controller.neighbors[1] != null)
             controller.neighbors[1].neighbors[0] = controller.neighbors[0];
 
-        controller.gameData.gameModeInt.onUnitDeath();
+        controller.gameData.gameModeInt.onUnitDeath(controller.transform);
         animControl = null;
         audioControl = null;
 
         controller.gameData.Grid.gridControl.disableTargetSymbols(controller);
+        baseCamera.triggerScreenShake(baseCamera.shakePresets.onUnitDeath);
         controller.destroyUnit();
     }
 
@@ -595,9 +601,27 @@ public class animationController
 
 public class audioController
 {
-    public audioController()
+    AudioSource source;
+    List<AudioClip> clips;
+    public audioController(AudioSource _source, List<AudioClip> _clips)
     {
+        source = _source;
+        clips = _clips;
+    }
 
+    public void playSoundOnIndex(int index)
+    {
+        source.PlayOneShot(clips[index]);
+    }
+
+    public void playSoundOnClip(AudioClip clip) 
+    {
+        source.PlayOneShot(clip);
+    }
+
+    public void playSoundClipBetweenRange(int start, int end)
+    {
+        source.PlayOneShot(clips[Random.Range(start, end)]);
     }
 }
 
@@ -649,6 +673,17 @@ public class particleController
             if (unitParticleSystems[i].isPlaying)
                 unitParticleSystems[i].Stop();
         }
+    }
+
+    public void InstantiateParticleEffect(int particleIndex, Transform transform, float destroyTime, Quaternion particleSystemRotation, bool followObject = false)
+    {
+        GameObject clone = Object.Instantiate(unitParticleSystems[particleIndex], transform.position, particleSystemRotation).gameObject;
+        if (followObject)
+        {
+            var followScript = clone.gameObject.AddComponent<trailFollow>();
+            followScript.target = transform;
+        }
+        Object.Destroy(clone, destroyTime);
     }
 }
 #endregion

@@ -47,12 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodePositions: []
-  vehicleSpeed: 15
+  vehicleSpeed: 25
+  vehicleRotationMultiplier: 5
   unitLayerMask:
     serializedVersion: 2
     m_Bits: 64
   halfExt: {x: 1.5, y: 1, z: 4}
-  originModification: {x: 0, y: 0.4, z: 0.3}
+  originModification: {x: 0, y: 0.4, z: 0}
 --- !u!1 &4230178528362167369
 GameObject:
   m_ObjectHideFlags: 0

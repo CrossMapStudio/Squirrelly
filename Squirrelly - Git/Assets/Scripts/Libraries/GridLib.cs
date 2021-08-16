@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace GridHandler
 {
@@ -12,20 +14,28 @@ namespace GridHandler
         public gridController gridControl;
         List<GameObject> levelUnits;
         GameObject columnTrigger, columnTarget;
+        ParticleSystem directionalParticleSystem;
         public int gridSizeX, gridSizeY;
+        private float directionTimeValue;
+
         public void bakeGrid(level activeLevel, Vector3 originPoint, float nodeRadius, Vector2 unitSpacing, List<GameObject> _levelUnits, GameObject _columnTrigger, 
-            Vector3 _columnTriggerModifier, GameObject _columnTarget, Vector3 _columnTargetModifier)
+            Vector3 _columnTriggerModifier, GameObject _columnTarget, Vector3 _columnTargetModifier, ParticleSystem _directionalParticleSystem)
         {
             float nodeDiameter = nodeRadius * 2f;
             columnTrigger = _columnTrigger;
             columnTarget = _columnTarget;
+            directionalParticleSystem = _directionalParticleSystem;
             gridSizeX = Mathf.RoundToInt(activeLevel.gridSize.x);
             gridSizeY = Mathf.RoundToInt(activeLevel.gridSize.y);
             grid = new Node[gridSizeX, gridSizeY];
             triggerButtons = new List<columnTriggers>();
+            directionTimeValue = gridSizeX * nodeDiameter / directionalParticleSystem.main.startSpeed.constantMax - 1;
+
 
             Node[,] localAvailableNodes = new Node[2, grid.GetLength(1) * 2];
             Vector3 worldBottomLeft = originPoint - Vector3.right * activeLevel.gridSize.x * unitSpacing.x / 2 - Vector3.forward * activeLevel.gridSize.y * unitSpacing.y / 2;
+            
+            
             for (int i = 0; i < gridSizeX; i++)
             {
                 for (int j = 0; j < gridSizeY; j++)
@@ -40,7 +50,11 @@ namespace GridHandler
 
                         //Target Symbol
                         var targetSymbol = Object.Instantiate(columnTarget, worldPoint + _columnTargetModifier, Quaternion.identity);
+                        var directionalParticleSystems = Object.Instantiate(directionalParticleSystem, worldPoint + _columnTargetModifier, Quaternion.identity);
                         grid[0, j].targetSymbol = targetSymbol;
+                        grid[0, j].directionalParticleSystem = directionalParticleSystems;
+                        var localMain = grid[0, j].directionalParticleSystem.main;
+                        localMain.startLifetime = directionTimeValue;
                         targetSymbol.SetActive(false);
                     }
                     else if (i == gridSizeX - 1)
@@ -50,9 +64,13 @@ namespace GridHandler
                         triggerButtons.Add(trigger.GetComponent<columnTriggers>());
 
                         //Target Symbol
-                         var targetSymbol = Object.Instantiate(columnTarget, worldPoint + _columnTargetModifier, Quaternion.identity);
-                         grid[i, j].targetSymbol = targetSymbol;
-                         targetSymbol.SetActive(false);
+                        var targetSymbol = Object.Instantiate(columnTarget, worldPoint + _columnTargetModifier, Quaternion.identity);
+                        var directionalParticleSystems = Object.Instantiate(directionalParticleSystem, worldPoint + _columnTargetModifier, Quaternion.Euler(0f, 180f, 0f));
+                        grid[i, j].targetSymbol = targetSymbol;
+                        grid[i, j].directionalParticleSystem = directionalParticleSystems;
+                        var localMain = grid[i, j].directionalParticleSystem.main;
+                        localMain.startLifetime = directionTimeValue;
+                        targetSymbol.SetActive(false);
                     }
                 }
             }
@@ -88,11 +106,12 @@ namespace GridHandler
         public List<baseUnit> populateGrid(List<GameObject> units)
         {
             //Wipe it clean
-            clearGrid();
+            //clearGrid();
             //This is where the algorithm will play a role in terms of level difficulty -> For now it will be a constant algorithm
+            bool positionalSetNoWin = false;
             for (int i = 0; i < totalFillSlots; i++)
             {
-                int spawnChance = Random.Range(0, 2) == 1 ? 0 : 1;
+                int spawnChance = Random.Range(0, 2);
                 Node local = availableNodes[spawnChance, i];
 
                 var clone = Object.Instantiate(units[Random.Range(0, units.Count)], local.worldPosition, Quaternion.identity);
@@ -101,7 +120,17 @@ namespace GridHandler
                 baseUnit unit = clone.GetComponent<baseUnit>();
                 unit.worldPosition = local.worldPosition;
                 unit.winPos = availableNodes[0, i].worldPosition.x;
-                unit.winState = unit.worldPosition.x == unit.winPos ?  true : false;
+                unit.winState = unit.worldPosition.x == unit.winPos ? true : false;
+                if (!unit.winState)
+                {
+                    positionalSetNoWin = true;
+                }
+                else if (!positionalSetNoWin && i == totalFillSlots - 1)
+                {
+                    unit.worldPosition = availableNodes[1, i].worldPosition;
+                    unit.winState = false;
+                }
+
                 if (inputHandler.currentControl == inputHandler.controlSetting.controller)
                 {
                     unit.setInput(0, i);
@@ -149,9 +178,14 @@ namespace GridHandler
             return unitList;
         }
 
-        public void clearGrid()
+        public List<Vector3> clearGrid()
         {
-            destoryUnit(true);
+            List<Vector3> screenPointPositions = destoryUnit(true);
+
+            for(int i = 0; i < screenPointPositions.Count; i++)
+            {
+                 screenPointPositions[i] = Camera.main.WorldToScreenPoint(screenPointPositions[i]);
+            }
             activeUnits.Clear();
             unitList.Clear();
 
@@ -160,6 +194,7 @@ namespace GridHandler
                 availableNodes[0, i].inWinPos = false;
                 availableNodes[0, i].isWinPos = true;
             }
+            return screenPointPositions;
         }
 
         public void checkNodeSelection(baseUnit element, bool switchAuto = true)
@@ -187,6 +222,8 @@ namespace GridHandler
             {
                 unitToDisable.activeNodes[1].targetSymbol.SetActive(false);
                 unitToDisable.activeNodes[0].targetSymbol.SetActive(false);
+                unitToDisable.activeNodes[1].directionalParticleSystem.gameObject.SetActive(false);
+                unitToDisable.activeNodes[0].directionalParticleSystem.gameObject.SetActive(false);
             } 
             else if (selectedUnit != null)
             {
@@ -194,6 +231,8 @@ namespace GridHandler
                 selectedUnit.triggerNeighbors(false);
                 selectedUnit.activeNodes[1].targetSymbol.SetActive(false);
                 selectedUnit.activeNodes[0].targetSymbol.SetActive(false);
+                selectedUnit.activeNodes[0].directionalParticleSystem.gameObject.SetActive(false);
+                selectedUnit.activeNodes[1].directionalParticleSystem.gameObject.SetActive(false);
                 selectedUnit = null;
             }
         }
@@ -208,11 +247,17 @@ namespace GridHandler
                     switchNodeSelection(selectedUnit.neighbors[0]);
                 if (selectedUnit.neighbors[1] != null)
                     switchNodeSelection(selectedUnit.neighbors[1]);
+
+                selectedUnit.activeNodes[0].directionalParticleSystem.gameObject.SetActive(false);
+                selectedUnit.activeNodes[1].directionalParticleSystem.gameObject.SetActive(false);
+
+                baseCamera.audioControl.playSoundClipBetweenRange((int)baseCamera.onePlaySounds.swish1, (int)baseCamera.onePlaySounds.swish3+1);
             }
         }
 
-        public void destoryUnit(bool destroyAll = false)
+        public List<Vector3> destoryUnit(bool destroyAll = false)
         {
+            List<Vector3> positions = new List<Vector3>();
             if (!destroyAll)
             {
                 if (selectedUnit != null)
@@ -227,9 +272,14 @@ namespace GridHandler
                 for (int i = 0; i < unitList.Count; i++)
                 {
                     if (unitList[i] != null)
+                    {
+                        positions.Add(unitList[i].transform.position);
                         unitList[i].destroyUnit(1);
+                    }
                 }
             }
+
+            return positions;
         }
 
         public void switchNodeSelection(baseUnit uni)
@@ -270,7 +320,7 @@ namespace GridHandler
 
         public bool isWinPos;
         public bool inWinPos;
-
+        public ParticleSystem directionalParticleSystem;
         public Node(Vector3 _worldPosition, int _gridX, int _gridY)
         {
             worldPosition = _worldPosition;
