@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Locked
+  m_Text: Settings
 --- !u!222 &20458516
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1054,7 +1054,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5131703815151922761, guid: fce55636fdba1414f9abe2e676300026, type: 3}
       propertyPath: m_Name
-      value: lockedButton
+      value: campaignSelect
       objectReference: {fileID: 0}
     - target: {fileID: 5131703815151922762, guid: fce55636fdba1414f9abe2e676300026, type: 3}
       propertyPath: m_Pivot.x
@@ -1146,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 2115635908}
     - target: {fileID: 5131703815151922763, guid: fce55636fdba1414f9abe2e676300026, type: 3}
       propertyPath: sceneIndex
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5131703815151922763, guid: fce55636fdba1414f9abe2e676300026, type: 3}
       propertyPath: westButton
@@ -1158,7 +1158,7 @@ PrefabInstance:
       objectReference: {fileID: 1118488222}
     - target: {fileID: 5131703815151922763, guid: fce55636fdba1414f9abe2e676300026, type: 3}
       propertyPath: buttonTypeVariation
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5131703815151922764, guid: fce55636fdba1414f9abe2e676300026, type: 3}
       propertyPath: m_Sprite
@@ -1581,7 +1581,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Locked
+  m_Text: Campaign
 --- !u!222 &1286461307
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2144,7 +2144,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5131703815151922761, guid: fce55636fdba1414f9abe2e676300026, type: 3}
       propertyPath: m_Name
-      value: lockedButton1
+      value: settings
       objectReference: {fileID: 0}
     - target: {fileID: 5131703815151922762, guid: fce55636fdba1414f9abe2e676300026, type: 3}
       propertyPath: m_Pivot.x

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &67841986632492654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8089248478578074477}
+  m_Layer: 0
+  m_Name: middleLaneTarget2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8089248478578074477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67841986632492654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4073160403147443084}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &122412734457186826
 GameObject:
   m_ObjectHideFlags: 0
@@ -5871,7 +5901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2246243783164648141}
   m_Layer: 0
-  m_Name: middleLaneTarget2
+  m_Name: middleLaneTarget3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5885,7 +5915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2667419288817442789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4073160403147443084}
@@ -6326,18 +6356,42 @@ MonoBehaviour:
   paths:
   - nodes:
     - targetNodeMarker: {fileID: 7891576391012524919}
+      startTriggerCameraShake: 1
+      endTriggerCameraShake: 0
+      position: {x: 0, y: 0, z: 0}
+    - targetNodeMarker: {fileID: 67841986632492654}
+      startTriggerCameraShake: 0
+      endTriggerCameraShake: 1
       position: {x: 0, y: 0, z: 0}
     - targetNodeMarker: {fileID: 2667419288817442789}
+      startTriggerCameraShake: 0
+      endTriggerCameraShake: 0
       position: {x: 0, y: 0, z: 0}
   - nodes:
     - targetNodeMarker: {fileID: 4786084434668713001}
+      startTriggerCameraShake: 1
+      endTriggerCameraShake: 0
+      position: {x: 0, y: 0, z: 0}
+    - targetNodeMarker: {fileID: 8779009762444128991}
+      startTriggerCameraShake: 0
+      endTriggerCameraShake: 1
       position: {x: 0, y: 0, z: 0}
     - targetNodeMarker: {fileID: 7196894946720707771}
+      startTriggerCameraShake: 0
+      endTriggerCameraShake: 0
       position: {x: 0, y: 0, z: 0}
   - nodes:
     - targetNodeMarker: {fileID: 4085206422858713489}
+      startTriggerCameraShake: 1
+      endTriggerCameraShake: 0
+      position: {x: 0, y: 0, z: 0}
+    - targetNodeMarker: {fileID: 8740618984128938644}
+      startTriggerCameraShake: 0
+      endTriggerCameraShake: 1
       position: {x: 0, y: 0, z: 0}
     - targetNodeMarker: {fileID: 8125886912336872272}
+      startTriggerCameraShake: 0
+      endTriggerCameraShake: 0
       position: {x: 0, y: 0, z: 0}
   vehicleUnits:
   - {fileID: 343039935979297437, guid: 41ebd202cd87397449b0701463f71c49, type: 3}
@@ -6346,6 +6400,7 @@ MonoBehaviour:
   currentWaveIncremental: 0
   currentSpawnMultiplier: 0
   targetSpawnTime: 4
+  screenShakeDistanceModifier: 15
 --- !u!1 &3732663180107321654
 GameObject:
   m_ObjectHideFlags: 0
@@ -6383,6 +6438,9 @@ Transform:
   - {fileID: 1850023725651814548}
   - {fileID: 42071104185800536}
   - {fileID: 2688661207687086010}
+  - {fileID: 8089248478578074477}
+  - {fileID: 4920994011717364372}
+  - {fileID: 1287182969810308850}
   m_Father: {fileID: 2498302079155714732}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
@@ -7584,7 +7642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1850023725651814548}
   m_Layer: 0
-  m_Name: sideLaneTarget2
+  m_Name: sideLaneTarget3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7598,7 +7656,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7196894946720707771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -0.33, z: 1}
+  m_LocalPosition: {x: -5, y: -0.33, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4073160403147443084}
@@ -8007,7 +8065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2688661207687086010}
   m_Layer: 0
-  m_Name: sideLane2Target2
+  m_Name: sideLane2Target3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8021,7 +8079,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8125886912336872272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0.367, z: 1}
+  m_LocalPosition: {x: -5, y: 0.367, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4073160403147443084}
@@ -8096,6 +8154,66 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &8740618984128938644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1287182969810308850}
+  m_Layer: 0
+  m_Name: sideLane2Target2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1287182969810308850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740618984128938644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8, y: 0.367, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4073160403147443084}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8779009762444128991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4920994011717364372}
+  m_Layer: 0
+  m_Name: sideLaneTarget2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4920994011717364372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779009762444128991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8, y: -0.33, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4073160403147443084}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9044600056441500551
 GameObject:
   m_ObjectHideFlags: 0

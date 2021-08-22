@@ -22,6 +22,8 @@ public class levelSelectCanvas : MonoBehaviour
     private scrollerButton gModeScroller, diffScroller;
 
     private bool resetInput = true;
+    public bool isCampaignLevels;
+    private bool beginDisable;
 
     private void Awake()
     {
@@ -119,27 +121,79 @@ public class levelSelectCanvas : MonoBehaviour
 
         foreach (storedLevelData element in gameControl.updatedLevels)
         {
-            var clone = Instantiate(levelButton, buttonOrigin.transform);
-            levelButton button = clone.GetComponent<levelButton>();
-            //clone.GetComponent<Button>().onClick.AddListener(() => { checkButton(button); });
-            updateStats(ref button, element);
-            levels.Add(button);
-            
-            menuGrid[currentColumnIndex, currentRowIndex] = clone.GetComponent<menuButton>();
-            if (currentColumnIndex == 0) {
-                if (currentRowIndex == 0)
+            if (isCampaignLevels)
+            {
+                if (element.campaignLevel)
                 {
-                    activeButton = clone.GetComponent<menuButton>();
-                    activeButton.setHoveringValue = inputHandler.currentControl == inputHandler.controlSetting.controller;
+                    var clone = Instantiate(levelButton, buttonOrigin.transform);
+                    levelButton button = clone.GetComponent<levelButton>();
+                    //clone.GetComponent<Button>().onClick.AddListener(() => { checkButton(button); });
+                    updateStats(ref button, element);
+                    levels.Add(button);
+
+                    menuGrid[currentColumnIndex, currentRowIndex] = clone.GetComponent<menuButton>();
+                    if (currentColumnIndex == 0)
+                    {
+                        if (currentRowIndex == 0)
+                        {
+                            activeButton = clone.GetComponent<menuButton>();
+                            activeButton.setHoveringValue = inputHandler.currentControl == inputHandler.controlSetting.controller;
+                        }
+                    }
+
+                    linkButtons(currentColumnIndex, currentRowIndex);
+                    currentColumnIndex++;
+                    if (currentColumnIndex == 5)
+                    {
+                        currentColumnIndex = 0;
+                        currentRowIndex++;
+                    }
+
+                    if (beginDisable)
+                    {
+                        button.disableButton();
+                    }
+                    else
+                    {
+                        if (element.retrieveStorage().completed == 1)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            beginDisable = true;
+                        }
+                    }
                 }
             }
-
-            linkButtons(currentColumnIndex, currentRowIndex);
-            currentColumnIndex++;
-            if (currentColumnIndex == 5)
+            else
             {
-                currentColumnIndex = 0;
-                currentRowIndex++;
+                if (!element.campaignLevel)
+                {
+                    var clone = Instantiate(levelButton, buttonOrigin.transform);
+                    levelButton button = clone.GetComponent<levelButton>();
+                    //clone.GetComponent<Button>().onClick.AddListener(() => { checkButton(button); });
+                    updateStats(ref button, element);
+                    levels.Add(button);
+
+                    menuGrid[currentColumnIndex, currentRowIndex] = clone.GetComponent<menuButton>();
+                    if (currentColumnIndex == 0)
+                    {
+                        if (currentRowIndex == 0)
+                        {
+                            activeButton = clone.GetComponent<menuButton>();
+                            activeButton.setHoveringValue = inputHandler.currentControl == inputHandler.controlSetting.controller;
+                        }
+                    }
+
+                    linkButtons(currentColumnIndex, currentRowIndex);
+                    currentColumnIndex++;
+                    if (currentColumnIndex == 5)
+                    {
+                        currentColumnIndex = 0;
+                        currentRowIndex++;
+                    }
+                }
             }
         }
     }
@@ -200,7 +254,7 @@ public class levelSelectCanvas : MonoBehaviour
         for (int i = 0; i < levels.Count; i++)
         {
             levelButton el = levels[i];
-            updateStats(ref el, gameControl.updatedLevels[i]);
+            updateStats(ref el, gameControl.updatedLevels[el.levelData.updatedLevelIndex]);
         }
     }
 

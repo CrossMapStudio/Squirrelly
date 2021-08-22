@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace GridHandler
 {
@@ -255,26 +253,34 @@ namespace GridHandler
             }
         }
 
-        public List<Vector3> destoryUnit(bool destroyAll = false)
+        public List<Vector3> destoryUnit(bool destroyAll = false, baseUnit unitToDestroy = null)
         {
             List<Vector3> positions = new List<Vector3>();
-            if (!destroyAll)
+            if (unitToDestroy != null)
             {
-                if (selectedUnit != null)
-                {
-                    selectedUnit.changeState(2);
-                    unitList.Remove(selectedUnit);
-                    selectedUnit = null;
-                }
+                unitToDestroy.changeState(2);
+                unitList.Remove(unitToDestroy);
             }
             else
             {
-                for (int i = 0; i < unitList.Count; i++)
+                if (!destroyAll)
                 {
-                    if (unitList[i] != null)
+                    if (selectedUnit != null)
                     {
-                        positions.Add(unitList[i].transform.position);
-                        unitList[i].destroyUnit(1);
+                        selectedUnit.changeState(2);
+                        unitList.Remove(selectedUnit);
+                        selectedUnit = null;
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < unitList.Count; i++)
+                    {
+                        if (unitList[i] != null)
+                        {
+                            positions.Add(unitList[i].transform.position);
+                            unitList[i].destroyUnit(1, false);
+                        }
                     }
                 }
             }

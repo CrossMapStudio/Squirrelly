@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Level 2
   idTag: Level2ID
-  gridSize: {x: 6, y: 7}
+  gridSize: {x: 11, y: 7}
   originPoint: {x: 0, y: 0, z: 0}
   stageElement: {fileID: 3400227899839350571, guid: ea461e0f739cfab44a3f92d4216c7791, type: 3}
   defaultStageElement: {fileID: 3130297672343218521, guid: 23d105b538bad3a4a8f39df2ebbcea85, type: 3}
   levelOriginAdjustment: {x: -15, y: 0, z: -15}
+  columnButtonTriggerModifier: {x: 2, y: 1, z: 0}
   timeMode: {fileID: 11400000, guid: 41cf05e7458722e409c1702931e67466, type: 2}
   waveMode: {fileID: 0}
   scoreMode: {fileID: 0}

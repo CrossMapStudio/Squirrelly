@@ -102,6 +102,15 @@ public class baseCamera : MonoBehaviour
         activeZoomModifier = shakePreset[(int)passed].zoomModifier;
         shakeCounter = 0f;
     }
+
+    static public void valueBasedScreenShake(float valueAmplitude, float valueFrequency)
+    {
+        targetAmplitude = valueAmplitude;
+        targetFrequency = valueFrequency;
+        //Continous Repeat
+        duration = 1f;
+        shakeCounter = 0f;
+    }
 }
 
 public struct presetCameraShakeValues

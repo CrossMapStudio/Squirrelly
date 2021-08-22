@@ -10,9 +10,18 @@ public class levelButton : MonoBehaviour
     [SerializeField] private Color starColor, defaultColor;
     gameController gData;
 
+    [HideInInspector]
+    public animationController animController;
+    private Animator anim;
+
+    [HideInInspector]
+    public bool disabled;
+
     public void Awake()
     {
         gData = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        anim = GetComponent<Animator>();
+        animController = new animationController(anim);
     }
     public void setPar(storedLevelData associated, int starsEarned, string _levelName, int _highScore)
     {
@@ -28,7 +37,19 @@ public class levelButton : MonoBehaviour
     {
         if (status)
         {
-            gData.getActiveLevel(levelData.id, levelData);
+            gData.setActiveLevel(levelData.id, levelData);
         }
+    }
+
+    public void disableButton()
+    {
+        animController.setBool("disabled", true);
+        disabled = true;
+    }
+
+    public void enableButton()
+    {
+        animController.setBool("disabled", false);
+        disabled = false;
     }
 }

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/gameScene.unity
     guid: 280fc27420430194ba8d5c01dd25cf69
+  - enabled: 1
+    path: Assets/Scenes/campaignSelect.unity
+    guid: 7fcde07075a59e943b72e006b4c60742
   m_configObjects: {}

@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: highScoreGameMode
   m_EditorClassIdentifier: 
   id: highScore
+  units: []
   gamemodeDifficulties:
-  - spawn: 0
-  - spawn: 0
-  - spawn: 0
-  - spawn: 0
+  - startTime: 20
+    scoreToReachForAcornReward: 320000003c00000046000000
+    spawnOnAwake: 0
+    startingSpawnTarget: 6
+    vehicleSpawnRatePerWaveIncremental: 0.2
+    vehicleSpawnIncremental: 3
+    vehicleSpawnRateClamp: 0

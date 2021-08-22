@@ -51,17 +51,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneControl: {fileID: 0}
   groupedLevels:
-  - associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
-  - associatedLevel: {fileID: 11400000, guid: 7fd6608fdab63ab4eac3ca25fe77cf96, type: 2}
-  - associatedLevel: {fileID: 11400000, guid: aa5b1e867b356d24a9c0ed1db4c6f3cd, type: 2}
-  - associatedLevel: {fileID: 11400000, guid: 8da92c83b28685e4f9c714c990be19b7, type: 2}
+  - campaignLevel: 0
+    tag: 
+    associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
+  - campaignLevel: 0
+    tag: 
+    associatedLevel: {fileID: 11400000, guid: aa5b1e867b356d24a9c0ed1db4c6f3cd, type: 2}
+  - campaignLevel: 0
+    tag: Bingo
+    associatedLevel: {fileID: 11400000, guid: 8da92c83b28685e4f9c714c990be19b7, type: 2}
+  - campaignLevel: 0
+    tag: Charlie
+    associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
+  campaignLevels:
+  - campaignLevel: 1
+    tag: 
+    associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
+  - campaignLevel: 1
+    tag: Level2
+    associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
+  - campaignLevel: 1
+    tag: Level3
+    associatedLevel: {fileID: 11400000, guid: f96aa4458ef4b8a4cb83d3afe2f97b48, type: 2}
   currentlySelectedLevel: {fileID: 0}
   activeStorage:
     id: 
     displayName: 
     difficultyIndex: 0
     containerIndex: 0
+    updatedLevelIndex: 0
     found: 0
+    campaignLevel: 0
   gameUnit: {fileID: 8115288634431194154, guid: f378880030cae994d85b49c8cb4eeb54, type: 3}
   inputLayer:
     serializedVersion: 2
@@ -132,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicPlayer: {fileID: -6203718337364692350}
   musicList:
-  - {fileID: 8300000, guid: 7e86954c2f62cab40ab8d737108f70a8, type: 3}
+  - {fileID: 8300000, guid: 364c14ef555849a46b32ef0baf7bf07b, type: 3}
 --- !u!114 &-4747793037882171606
 MonoBehaviour:
   m_ObjectHideFlags: 0

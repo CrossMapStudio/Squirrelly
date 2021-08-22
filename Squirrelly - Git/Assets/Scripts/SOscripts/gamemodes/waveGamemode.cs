@@ -18,7 +18,9 @@ public struct waveGameModeParameters
     //The Start will be incremented by the X per (Y Waves) --- Example 
     public bool spawnOnAwake;
     public float startingSpawnTarget;
-    public Vector2 vehicleSpawnRatePerWaveIncremental;
+    public float vehicleSpawnRatePerWaveIncremental;
+    //How Many Waves Before we Increment the Multiplier
+    public int vehicleSpawnIncremental;
 
     //This will not allow the spawn rate to go under this amount
     public float vehicleSpawnRateClamp;

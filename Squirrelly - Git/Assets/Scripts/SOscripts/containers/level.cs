@@ -4,13 +4,14 @@ using UnityEngine;
 public class level : ScriptableObject
 {
     public string displayName;
-    [SerializeField] private string idTag;
+    public string idTag;
     public Vector2 gridSize;
     public Vector3 originPoint = Vector3.zero;
     //This is the prefab level design -> Baked Lighting Etc...
     public GameObject stageElement, defaultStageElement;
     public Vector3 levelOriginAdjustment, columnButtonTriggerModifier;
-
+    [HideInInspector]
+    public levelElement parentElement;
     //These are the Added SO to Encapsulate the Difficulty Levels with Associated Gamemodes
     [SerializeField] private timeGamemode timeMode;
     [SerializeField] private waveGamemode waveMode;

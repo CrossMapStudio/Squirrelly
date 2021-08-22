@@ -86,6 +86,7 @@ public class inputHandler : MonoBehaviour
         IMap.InGame.LeftBackBumper.started += context => { activeInput = inputAction.leftBack; gridInputCheck(); };
         IMap.InGame.RightFrontBumper.started += context => { activeInput = inputAction.rightFront; gridInputCheck(); };
         IMap.InGame.RightBackBumper.started += context => { activeInput = inputAction.rightBack; gridInputCheck(); };
+        IMap.InGame.DPadSouth.started += context => setInputActiveListenerValue(10);
         IMap.InGame.Options.started += context =>
         {
             gameController.pauseState = !gameController.pauseState;
@@ -120,11 +121,14 @@ public class inputHandler : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (!gameController.pauseState && !gameController.gameEndState && currentControl == controlSetting.mouseKey)
+        if (!gameController.pauseState && !gameController.gameEndState && !gameController.gameIntroState && currentControl == controlSetting.mouseKey)
         {
             if (Input.GetMouseButtonDown(0))
                 if (data != null)
+                {
                     data.Grid.gridControl.startSwitch();
+                    data.gameModeInt.onUnitMove();
+                }
 
             //For Debugging
             if (Input.GetMouseButtonDown(1))
@@ -169,7 +173,7 @@ public class inputHandler : MonoBehaviour
     {
         if (currentControl == controlSetting.mouseKey && data)
         {
-            if (fireCast && !gameController.pauseState && !gameController.gameEndState)
+            if (fireCast && !gameController.pauseState && !gameController.gameEndState && !gameController.gameIntroState)
             {
                 RaycastHit inputLayerHit;
                 if (!main)
@@ -237,8 +241,11 @@ public class inputHandler : MonoBehaviour
 
     private void gridInputCheck()
     {
-        if ((int)activeInput < data.gameStateControl.activeUnits.Count)
-            data.Grid.gridControl.checkNodeSelection(data.gameStateControl.activeUnits[(int)activeInput]);
+        if (!gameController.gameIntroState)
+        {
+            if ((int)activeInput < data.gameStateControl.activeUnits.Count)
+                data.Grid.gridControl.checkNodeSelection(data.gameStateControl.activeUnits[(int)activeInput]);
+        }
     }
 
     public void setIMapControlScheme(int controlSchemeIndex)

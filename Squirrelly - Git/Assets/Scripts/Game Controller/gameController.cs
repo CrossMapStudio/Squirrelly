@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class gameController : MonoBehaviour
@@ -9,6 +10,7 @@ public class gameController : MonoBehaviour
     public sceneManager sceneControl;
     //This is for the Editor
     [SerializeField] private List<levelElement> groupedLevels;
+    [SerializeField] private List<levelElement> campaignLevels;
     //Might need to make private ---
     [HideInInspector]
     public level currentlySelectedLevel;
@@ -22,13 +24,14 @@ public class gameController : MonoBehaviour
     private Dictionary<string, level> levelListing;
     //This will change with the level data element actually feeding the correct units -> For now this is for input handling
     //Pause State ->
-    public static bool pauseState = false, gameEndState = false;
+    public static bool pauseState = false, gameEndState = false, gameIntroState = false;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         gData = serializationHandler.LoadGame(serializationHandler.fileTag) != null ? new gameData(serializationHandler.LoadGame(serializationHandler.fileTag)) : new gameData();
         sceneControl = GetComponent<sceneManager>();
+        groupedLevels.AddRange(campaignLevels);
         updatedLevels = gData.generatestoredLevelData(groupedLevels);
         levelListing = new Dictionary<string, level>();
         //Create the Dictionary to Access the Updated Levels with the Grouped Levels
@@ -82,7 +85,7 @@ public class gameController : MonoBehaviour
 
     }
 
-    public void getActiveLevel(string id, storedLevelData _activeStorage)
+    public void setActiveLevel(string id, storedLevelData _activeStorage)
     {
         currentlySelectedLevel = levelListing[id];
         activeStorage = _activeStorage;
@@ -110,6 +113,8 @@ public class gameController : MonoBehaviour
 [Serializable]
 public struct levelElement
 {
+    public bool campaignLevel;
+    public string tag;
     public level associatedLevel;
 }
 #endregion

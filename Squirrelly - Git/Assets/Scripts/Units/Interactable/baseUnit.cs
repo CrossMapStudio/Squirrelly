@@ -106,18 +106,21 @@ public class baseUnit : MonoBehaviour
             neighbors[1].potential = triggerStatus;
     }
 
-    public void destroyUnit(int deathCause = 0)
+    public void destroyUnit(int deathCause = 0, bool removeFromList = true)
     {
         if (deathCause == 0)
         {
-            var clone = Instantiate(onDelete, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity);
-            Destroy(clone, 2f);
+            var clone = Instantiate(onDelete, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity).gameObject;
+            Destroy(clone, 1.5f);
         }
         else
         {
-            var clone = Instantiate(onDeleteSuccess, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity);
-            Destroy(clone, 2f);
+            var clone = Instantiate(onDeleteSuccess, transform.position + new Vector3(0f, .5f, 0f), Quaternion.identity).gameObject;
+            Destroy(clone, 1.5f);
         }
+
+        if (removeFromList)
+            gameData.gameStateControl.activeUnits.Remove(this);
         activeNodes[0].isWinPos = false;
         Destroy(gameObject);
     }
@@ -194,7 +197,7 @@ public class baseUnit : MonoBehaviour
     {
         if (transform.position != worldPosition && unitStateMachine.getCurrentState() != "deathState")
         {
-            if (gameController.pauseState || gameController.gameEndState)
+            if (gameController.pauseState || gameController.gameEndState || gameController.gameIntroState)
             {
                 currentState = unitState.idle;
             }

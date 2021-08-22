@@ -16,8 +16,9 @@ MonoBehaviour:
   gamemodeDifficulties:
   - unitLossLimitsForRewards: 010000000200000003000000
     spawnOnAwake: 0
-    startingSpawnTarget: 0
-    vehicleSpawnRatePerWaveIncremental: {x: 0, y: 0}
+    startingSpawnTarget: 6
+    vehicleSpawnRatePerWaveIncremental: 0.2
+    vehicleSpawnIncremental: 3
     vehicleSpawnRateClamp: 0
     wavesToComplete: 20
     unitLossTarget: 5

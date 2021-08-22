@@ -65,25 +65,55 @@ public class levelHandler
             el.Value.found = false;
         }
 
-
+        int index = 0;
         foreach (levelElement el in element)
         {
+            el.associatedLevel.parentElement = el;
             //Check for Addition
-            if (!levelDictionary.ContainsKey(el.associatedLevel.id) || levelDictionary[el.associatedLevel.id] == null)
+            if (el.campaignLevel)
             {
-                //Create a new stored Data
-                storedLevelData sData = new storedLevelData(el.associatedLevel);
-                levelDictionary.Add(el.associatedLevel.id, sData);
-                sData.found = true;
-                levels.Add(sData);
+                if (!levelDictionary.ContainsKey(el.associatedLevel.id + "Campaign" + el.tag) || levelDictionary[el.associatedLevel.id + "Campaign" + el.tag] == null)
+                {
+                    //Create a new stored Data
+                    storedLevelData sData = new storedLevelData(el.associatedLevel);
+                    levelDictionary.Add(el.associatedLevel.id + "Campaign" + el.tag, sData);
+                    sData.found = true;
+                    sData.id = el.associatedLevel.id + "Campaign" + el.tag;
+                    sData.campaignLevel = true;
+                    sData.updatedLevelIndex = index++;
+                    levels.Add(sData);
+                }
+                else
+                {
+                    //All Checks for Changes -> Some Can Be Handled in Class
+                    storedLevelData active = levelDictionary[el.associatedLevel.id + "Campaign" + el.tag];
+                    active.found = true;
+                    active.updatedLevelIndex = index++;
+                    active.update(el.associatedLevel);
+                    levels.Add(active);
+                }
             }
             else
             {
-                //All Checks for Changes -> Some Can Be Handled in Class
-                storedLevelData active = levelDictionary[el.associatedLevel.id];
-                active.found = true;
-                active.update(el.associatedLevel);
-                levels.Add(active);
+                if (!levelDictionary.ContainsKey(el.associatedLevel.id + el.tag) || levelDictionary[el.associatedLevel.id + el.tag] == null)
+                {
+                    //Create a new stored Data
+                    storedLevelData sData = new storedLevelData(el.associatedLevel);
+                    levelDictionary.Add(el.associatedLevel.id + el.tag, sData);
+                    sData.found = true;
+                    sData.id = el.associatedLevel.id + el.tag;
+                    sData.updatedLevelIndex = index++;
+                    levels.Add(sData);
+                }
+                else
+                {
+                    //All Checks for Changes -> Some Can Be Handled in Class
+                    storedLevelData active = levelDictionary[el.associatedLevel.id + el.tag];
+                    active.found = true;
+                    active.update(el.associatedLevel);
+                    active.updatedLevelIndex = index++;
+                    levels.Add(active);
+                }
             }
         }
 
@@ -119,7 +149,7 @@ public class levelHandler
 public class storedLevelData
 {
     public string id, displayName;
-    public int difficultyIndex, containerIndex;
+    public int difficultyIndex, containerIndex, updatedLevelIndex;
     Dictionary<string, container> gamemodes;
     //Array Must always stay the same ---
     public readonly string[] gameModeTags = { "timeMode", "waveMode", "highScore" };
@@ -127,6 +157,7 @@ public class storedLevelData
 
     //Vars
     public bool found;
+    public bool campaignLevel;
     public storedLevelData(level associatedLevel)
     {
         id = associatedLevel.id;
@@ -277,31 +308,62 @@ public class storedLevelData
         gamemodes[key] = element;
     }
 
-    public void retrieveStorage()
+    public gameInfo retrieveStorage()
     {
-        activeRoute = getContainer(gameModeTags[containerIndex]).getGameInfo(difficultyIndex);
+        return activeRoute = getContainer(gameModeTags[containerIndex]).getGameInfo(difficultyIndex);
     }
 
     //Will Save the Most Stars
-    public void setGameDetailsToSave(int indexToSet, float setValue)
+    public bool setGameDetailsToSave(int indexToSet, float setValue)
     {
         switch (indexToSet) {
             case 0:
-                activeRoute.starsEarned = activeRoute.starsEarned < (int)setValue ? (int)setValue : activeRoute.starsEarned;
-                break;
+                if (activeRoute.starsEarned < (int)setValue)
+                {
+                    activeRoute.starsEarned = (int)setValue;
+                    getContainer(gameModeTags[containerIndex]).setGameInfo(difficultyIndex, activeRoute);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             case 1:
-                activeRoute.scoreEarned = activeRoute.scoreEarned < (int)setValue ? (int)setValue : activeRoute.scoreEarned;
-                break;
+                if (activeRoute.scoreEarned < (int)setValue)
+                {
+                    activeRoute.scoreEarned = (int)setValue;
+                    getContainer(gameModeTags[containerIndex]).setGameInfo(difficultyIndex, activeRoute);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             case 2:
                 if (setValue != 0)
+                {
                     activeRoute.completed = 1;
-                break;
+                    getContainer(gameModeTags[containerIndex]).setGameInfo(difficultyIndex, activeRoute);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             case 3:
-                activeRoute.completionTime = activeRoute.completionTime > setValue ? setValue : activeRoute.completionTime;
-                break;
+                if (activeRoute.completionTime > setValue || activeRoute.completionTime == 0f)
+                {
+                    activeRoute.completionTime = setValue;
+                    getContainer(gameModeTags[containerIndex]).setGameInfo(difficultyIndex, activeRoute);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            default:
+                return false;
         }
-
-        getContainer(gameModeTags[containerIndex]).setGameInfo(difficultyIndex, activeRoute);
     }
 }
 

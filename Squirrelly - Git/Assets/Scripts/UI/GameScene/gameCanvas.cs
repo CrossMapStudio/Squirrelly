@@ -29,6 +29,10 @@ public class gameCanvas : MonoBehaviour
     private string statHolderBaseName = "UIStatHolder";
     public string[] UIStatAnimations;
 
+    public GameObject onScreenTextContainer;
+    public Animator onScreenTextAnimator;
+    private dataInterpreter data;
+
     public enum stat
     {
         timer,
@@ -59,6 +63,7 @@ public class gameCanvas : MonoBehaviour
     private void Start()
     {
         gameControl = GameObject.FindGameObjectWithTag("GameController").GetComponent<gameController>();
+        data = gameControl.gameObject.GetComponent<dataInterpreter>();
         inputController = gameControl.GetComponent<inputHandler>();
         inputController.setIMapControlScheme(1);
         gameController.pauseState = false;
@@ -78,8 +83,17 @@ public class gameCanvas : MonoBehaviour
 
         if (inputHandler.inputListener == 10)
         {
-            navigateMenu(4);
-            inputHandler.setInputActiveListenerValue(0);
+            if (!gameController.pauseState && !gameController.gameEndState && !gameController.gameIntroState)
+            {
+                var local = data.gameStateControl.activeUnits;
+                var unit = local[Random.Range(0, local.Count)];
+                data.Grid.gridControl.destoryUnit(false, unit);
+            }
+            else
+            {
+                navigateMenu(4);
+                inputHandler.setInputActiveListenerValue(0);
+            }
         }
 
         if (inputHandler.inputListener == 11 && gameController.pauseState)
@@ -102,9 +116,15 @@ public class gameCanvas : MonoBehaviour
         #endregion
     }
 
+    public void startCountDown()
+    {
+        onScreenTextContainer.SetActive(true);
+        onScreenTextAnimator.SetTrigger("startCount");
+    }
+
     public void waveReset()
     {
-        gameControl.gameObject.GetComponent<dataInterpreter>().gameStateControl.waveTrigger();
+        data.gameStateControl.waveTrigger();
     }
 
     public void quitScene() 
@@ -131,7 +151,7 @@ public class gameCanvas : MonoBehaviour
         }
     }
 
-    public void endGame(interpreterData runData)
+    public levelCompleteMenu endGame(interpreterData runData)
     {
         //Enum Later for Ease of Reading - 0 is loss 1 is win
         gameCompleteMenuUI.SetActive(true);
@@ -140,6 +160,8 @@ public class gameCanvas : MonoBehaviour
         if (inputHandler.currentControl == inputHandler.controlSetting.controller)
             activeButtonGameCompletionMenu.setHoveringValue = true;
         inputController.setIMapControlScheme(2);
+
+        return gameCompleteUIScript;
     }
 
     public void pauseMenu(int index)

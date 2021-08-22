@@ -15,15 +15,25 @@ public class levelCompleteMenu : MonoBehaviour
     [SerializeField] private Text unitsLost;
     [SerializeField] private Text timeOfCompletion;
 
+    [HideInInspector]
+    public Text[] UIElements;
+    public enum UITargetNames
+    {
+        gameStatus,
+        scoreText,
+        wavesCompleted,
+        unitsLost,
+        timeOfCompletion
+    }
+
+    public void Awake()
+    {
+        UIElements = new Text[] { gameStatus, scoreText, wavesCompleted, unitsLost, timeOfCompletion };
+    }
+
     public void setAllUIElements(interpreterData data)
     {
         for (int i = 0; i < data.currentRewardStatus; i++)
             acorns[i].color = acornEarnedColor;
-
-        gameStatus.text = data.gameStat;
-        scoreText.text = "Score: " + data.currentScore.ToString();
-        wavesCompleted.text = "Waves Completed: " + data.wavesCompleted.ToString() + "/" + data.totalWaves.ToString();
-        unitsLost.text = "Units Lost: " + data.unitsLost.ToString();
-        timeOfCompletion.text = "Completed Time: " + data.bestTimeOfCompletion.ToString();
     }
 }

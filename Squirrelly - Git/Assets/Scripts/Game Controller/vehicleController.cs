@@ -10,10 +10,13 @@ public class vehicleController : MonoBehaviour
     public int waveCount = 0, waveTarget, currentWaveIncremental;
     [HideInInspector]
     public float currentSpawnMultiplier, targetSpawnTime;
+    public float screenShakeDistanceModifier, audioDepreciationTarget = 20f;
     private float currentSpawnCounter;
 
     private void Awake()
     {
+        roadNode startShakeTrigger = null;
+        roadNode endShakeTrigger = null;
         foreach (roadNodeContainer element in paths)
         {
             for (int i = 0; i < element.nodes.Count; i++)
@@ -22,19 +25,27 @@ public class vehicleController : MonoBehaviour
                     element.nodes[i].nextNode = element.nodes[i + 1];
 
                 element.nodes[i].setPos();
+                if (element.nodes[i].startTriggerCameraShake)
+                    startShakeTrigger = element.nodes[i];
+
+                if (element.nodes[i].endTriggerCameraShake && startShakeTrigger != null)
+                {
+                    endShakeTrigger = element.nodes[i];
+                    startShakeTrigger.endNode = endShakeTrigger;
+                }
             }
         }
     }
 
     private void Update()
     {
-        if (!gameController.pauseState)
+        if (!gameController.pauseState && !gameController.gameIntroState)
         {
             if (currentSpawnCounter >= targetSpawnTime)
             {
                 int spawnPos = UnityEngine.Random.Range(0, paths.Count);
                 var clone = Instantiate(vehicleUnits[UnityEngine.Random.Range(0, vehicleUnits.Length)], paths[spawnPos].nodes[0].position, Quaternion.identity);
-                clone.GetComponent<baseVehicle>().setList(paths[spawnPos].nodes);
+                clone.GetComponent<baseVehicle>().setList(paths[spawnPos].nodes, screenShakeDistanceModifier, audioDepreciationTarget);
                 currentSpawnCounter = 0f;
             }
             else
@@ -65,9 +76,12 @@ public class roadNodeContainer
 public class roadNode
 {
     public GameObject targetNodeMarker;
+    public bool startTriggerCameraShake;
+    public bool endTriggerCameraShake;
     [HideInInspector]
     public Vector3 position;
     public roadNode nextNode;
+    public roadNode endNode;
 
     public void setPos()
     {

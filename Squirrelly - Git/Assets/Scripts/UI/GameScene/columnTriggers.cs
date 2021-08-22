@@ -51,7 +51,6 @@ public class columnTriggers : MonoBehaviour
             gridControl.checkNodeSelection(associatedUnit, false);
 
             animController.setBool("hover", true);
-            //cameraController.zoomToggle(true, 1f);
         }
     }
 

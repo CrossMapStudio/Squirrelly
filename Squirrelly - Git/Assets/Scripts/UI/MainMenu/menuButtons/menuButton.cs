@@ -31,7 +31,8 @@ public class menuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         restart = -1,
         levelSelect = 1,
         gameScene = 2,
-        mainMenu = 0
+        mainMenu = 0,
+        campaignSelect = 3
     }
     public sceneToChangeTo sceneIndex;
     private buttonAction assignedAction;
@@ -216,7 +217,8 @@ public class levelSelectButton : buttonAction, dynamicLevelSelect
 
     public void setActiveLevel(bool hovering)
     {
-        buttonData.setStatus(hovering);
+        if (!buttonData.disabled)
+            buttonData.setStatus(hovering);
     }
 
     public bool isDynamic { get; set; } = true;
