@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class gameCanvas : MonoBehaviour
 {
     gameController gameControl;
-    public GameObject pauseMenuUI, gameCompleteMenuUI, xpCoin, addedTextContainer;
+    public GameObject pauseMenuUI, gameCompleteMenuUI, addedTextContainer, settingsContainer;
     private levelCompleteMenu gameCompleteUIScript;
 
     [SerializeField] private menuButton activeButtonPauseMenu, activeButtonGameCompletionMenu;
@@ -32,6 +33,9 @@ public class gameCanvas : MonoBehaviour
     public GameObject onScreenTextContainer;
     public Animator onScreenTextAnimator;
     private dataInterpreter data;
+
+    //This is used for the Controller Inputs
+    private List<columnTriggers> triggers;
 
     public enum stat
     {
@@ -75,7 +79,7 @@ public class gameCanvas : MonoBehaviour
     private void LateUpdate()
     {
         #region In-Game Menu Controller Input Listener
-        if (inputHandler.inputListener == 9)
+        if (inputHandler.inputListener == 9 && !gameController.settingPanelState)
         {
             navigateMenu(0);
             inputHandler.setInputActiveListenerValue(0);
@@ -91,24 +95,30 @@ public class gameCanvas : MonoBehaviour
             }
             else
             {
-                navigateMenu(4);
-                inputHandler.setInputActiveListenerValue(0);
+                if (!gameController.settingPanelState)
+                {
+                    navigateMenu(4);
+                    inputHandler.setInputActiveListenerValue(0);
+                }
             }
         }
 
         if (inputHandler.inputListener == 11 && gameController.pauseState)
         {
-            pauseMenu(0);
-            inputHandler.setInputActiveListenerValue(0);
+            if (!gameController.settingPanelState)
+            {
+                pauseMenu(0);
+                inputHandler.setInputActiveListenerValue(0);
+            }
         }
 
-        if (inputHandler.inputListener == 2 && gameController.pauseState)
+        if (inputHandler.inputListener == 2 && gameController.pauseState && !gameController.settingPanelState)
         {
             pauseMenu(0);
             inputHandler.setInputActiveListenerValue(0);
         }
 
-        if (inputHandler.inputListener == 1)
+        if (inputHandler.inputListener == 1 && !gameController.settingPanelState)
         {
             checkNullAction();
             inputHandler.setInputActiveListenerValue(0);
@@ -137,8 +147,8 @@ public class gameCanvas : MonoBehaviour
 
     public void triggerPauseMenuUI()
     {
-        if (pauseMenuUI != null)
-            pauseMenuUI.SetActive(gameController.pauseState);
+        if (pauseMenuUI != null && gameController.pauseState)
+            pauseMenuUI.SetActive(true);
         if (gameController.pauseState)
         {
             if (inputHandler.currentControl == inputHandler.controlSetting.controller)
@@ -147,7 +157,9 @@ public class gameCanvas : MonoBehaviour
         }
         else
         {
+            activeButtonPauseMenu.setHoveringValue = false;
             inputController.setIMapControlScheme(3);
+            pauseMenuUI.SetActive(false);
         }
     }
 
@@ -180,11 +192,18 @@ public class gameCanvas : MonoBehaviour
                 gameController.pauseState = false;
                 gameControl.sceneControl.loadScene(0);
                 break;
+            case 3:
+                settingsContainer.SetActive(true);
+                Debug.Log("Show Settings");
+                break;
+            case 4:
+                settingsContainer.SetActive(false);
+                break;
         }
     }
     private void navigateMenu(int switchValue)
     {
-        if (gameController.pauseState)
+        if (gameController.pauseState && inputHandler.currentControl == inputHandler.controlSetting.controller)
         {
             activeButtonPauseMenu.setHoveringValue = false;
             activeButtonPauseMenu = activeButtonPauseMenu.getNeighbor(switchValue) ?? activeButtonPauseMenu;
@@ -206,8 +225,15 @@ public class gameCanvas : MonoBehaviour
         {
             if (activeButtonPauseMenu != null && activeButtonPauseMenu.buttonTypeVariation == menuButton.buttonType.nullAction)
             {
-                //Hard Coded --- Yikes
-                pauseMenu(0);
+                switch (activeButtonPauseMenu.sceneIndex)
+                {
+                    case menuButton.sceneToChangeTo.NullAction1:
+                        pauseMenu(0);
+                        break;
+                    case menuButton.sceneToChangeTo.NullAction2:
+                        pauseMenu(3);
+                        break;
+                }
             }
             else if (activeButtonPauseMenu != null)
             {

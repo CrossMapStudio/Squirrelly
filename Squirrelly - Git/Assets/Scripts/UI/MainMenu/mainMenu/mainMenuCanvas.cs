@@ -13,6 +13,9 @@ public class mainMenuCanvas : MonoBehaviour
     private InputMap IMap;
     private bool resetInput = true;
 
+    public GameObject settingsPanel;
+
+
     private void Start()
     {
         inputController = GameObject.FindGameObjectWithTag("GameController").GetComponent<inputHandler>();
@@ -38,7 +41,7 @@ public class mainMenuCanvas : MonoBehaviour
     {
         if (inputHandler.inputListener == 1)
         {
-            callAction();
+            checkNullAction();
             inputHandler.setInputActiveListenerValue(0);
         }
     }
@@ -56,6 +59,24 @@ public class mainMenuCanvas : MonoBehaviour
     {
         if (activeButton != null)
             activeButton.callButtonAction();
+    }
+
+    private void checkNullAction()
+    {
+        if (activeButton.buttonTypeVariation == menuButton.buttonType.nullAction)
+        {
+            openSettings();
+        }
+        else
+        {
+            callAction();
+        }
+    }
+
+    public void openSettings()
+    {
+        //Hard Coded for Settings
+        settingsPanel.SetActive(true);
     }
 
     IEnumerator inputReset()

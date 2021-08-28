@@ -304,6 +304,17 @@ public class levelSelectCanvas : MonoBehaviour
                     }
                     else
                     {
+                        var local = new levelButton();
+                        if ((local = current.getNeighbor(switchValue).GetComponent<levelButton>()) != null)
+                        {
+                            if (local.disabled)
+                            {
+                                activeButton = clone;
+                                activeButton.setHoveringValue = true;
+                                break;
+                            }
+                        }
+
                         activeButton = current.getNeighbor(switchValue);
                         break;
                     }

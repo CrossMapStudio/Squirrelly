@@ -94,10 +94,17 @@ public class baseVehicle : MonoBehaviour
             {
                 distance = Vector3.Distance(transform.position, targetMidPoint);
                 //baseCamera.valueBasedScreenShake(Mathf.Clamp(distanceModifier - distance, 0f, .2f) + .2f, 2f);
-                if (distance >= distanceToBeginAudioDepreciation)
+                if (distance >= distanceToBeginAudioDepreciation && !gameController.pauseState)
                     audioSource.volume = Mathf.Lerp(audioSource.volume, 0f, Time.deltaTime * 3f);
             }
         }
+
+        if (gameController.pauseState)
+            audioSource.mute = true;
+        else
+            audioSource.mute = false;
+
+        settingsListener();
     }
 
     private void FixedUpdate()
@@ -118,6 +125,16 @@ public class baseVehicle : MonoBehaviour
                     oneHit = true;
                 }
             }
+        }
+    }
+
+    private void settingsListener()
+    {
+        if (settingStorage.valuesUpdated)
+        {
+            float volume = audioSource.volume;
+            settingStorage.setValues(ref volume, settingStorage.volumeType.vehicle);
+            audioSource.volume = volume;
         }
     }
 

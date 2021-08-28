@@ -41,14 +41,14 @@ public class inputHandler : MonoBehaviour
     private inputAction activeInput;
 
     private KeyCode[] keys = { 
-        KeyCode.Q,
+        KeyCode.A,
         KeyCode.W,
-        KeyCode.E,
-        KeyCode.R,
-        KeyCode.T,
-        KeyCode.Y,
-        KeyCode.U,
-        KeyCode.I
+        KeyCode.S,
+        KeyCode.D,
+        KeyCode.LeftArrow,
+        KeyCode.UpArrow,
+        KeyCode.DownArrow,
+        KeyCode.RightArrow
     };
 
     private void Awake()
@@ -76,6 +76,9 @@ public class inputHandler : MonoBehaviour
         IMap.MenuActions.DPadS.started += context => setInputActiveListenerValue(10);
 
         IMap.MenuActions.Options.started += context => setInputActiveListenerValue(11);
+
+        IMap.MenuActions.DPadE.started += context => setInputActiveListenerValue(12);
+        IMap.MenuActions.DPadW.started += context => setInputActiveListenerValue(13);
 
         //Game Actions
         IMap.InGame.WestAction.started += context => { activeInput = inputAction.westButton; gridInputCheck(); };
@@ -111,6 +114,9 @@ public class inputHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
             currentControl = controlSetting.controller;
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            Time.timeScale = .1f;
 
         if (currentControl == controlSetting.controller)
         {
@@ -243,8 +249,13 @@ public class inputHandler : MonoBehaviour
     {
         if (!gameController.gameIntroState)
         {
-            if ((int)activeInput < data.gameStateControl.activeUnits.Count)
-                data.Grid.gridControl.checkNodeSelection(data.gameStateControl.activeUnits[(int)activeInput]);
+            if ((int)activeInput < data.Grid.triggerButtons.Count && data != null)
+            {
+                data.Grid.triggerButtons[(int)activeInput].onHover();
+                data.Grid.gridControl.startSwitch();
+                data.gameModeInt.onUnitMove();
+                data.Grid.triggerButtons[(int)activeInput].onExit();
+            }
         }
     }
 

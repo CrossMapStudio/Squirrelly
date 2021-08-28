@@ -13,4 +13,20 @@ public class musicController : MonoBehaviour
         musicPlayer.clip = musicList[0];
         musicPlayer.Play();
     }
+
+    private void Update()
+    {
+        settingsListener();
+    }
+
+    private void settingsListener()
+    {
+        if (settingStorage.valuesUpdated)
+        {
+            float volume = musicPlayer.volume;
+            settingStorage.setValues(ref volume, settingStorage.volumeType.music);
+            musicPlayer.volume = volume;
+        }
+    }
+
 }

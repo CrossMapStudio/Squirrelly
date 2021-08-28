@@ -92,6 +92,8 @@ public class baseCamera : MonoBehaviour
         {
             shakeCounter += Time.deltaTime;
         }
+
+        settingsListener();
     }
 
     static public void triggerScreenShake(shakePresets passed)
@@ -111,6 +113,17 @@ public class baseCamera : MonoBehaviour
         duration = 1f;
         shakeCounter = 0f;
     }
+
+    private void settingsListener()
+    {
+        if (settingStorage.valuesUpdated)
+        {
+            float volume = onePlayAudio.volume;
+            settingStorage.setValues(ref volume, settingStorage.volumeType.effect);
+            onePlayAudio.volume = volume;
+        }
+    }
+
 }
 
 public struct presetCameraShakeValues

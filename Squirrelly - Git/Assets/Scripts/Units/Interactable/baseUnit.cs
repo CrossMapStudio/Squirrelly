@@ -26,11 +26,7 @@ public class baseUnit : MonoBehaviour
     public List<Node> activeNodes;
 
     public float speedScaler;
-    private MeshRenderer mRend;
-    private Material baseMat;
-    public Material selectedMat, potentialMat;
     public ParticleSystem onDelete, onDeleteSuccess;
-    public Text inputText;
 
     //New Stuff
     public Animator unitAnimator;
@@ -43,38 +39,12 @@ public class baseUnit : MonoBehaviour
     public float RotationSpeed = 2f;
     private Vector3 _direction;
     private Quaternion _lookRotation;
-
-    private enum inputMapController
-    {
-        WB,
-        SB,
-        NB,
-        EB,
-        L1,
-        L2,
-        R1,
-        R2
-    }
-
-    private enum inputMapKeyMouse
-    { 
-        Q,
-        W,
-        E,
-        R,
-        T,
-        Y,
-        U,
-        I
-    }
-
     //This will change most likely
     private enum unitState
     {
         idle,
         moving
     }
-
     private unitState currentState = unitState.idle;
 
     private void Awake()
@@ -85,16 +55,16 @@ public class baseUnit : MonoBehaviour
         particleControl = new particleController(particleSystems);
 
         unitStateMachine = new stateMachine(this, animControl, audioControl, particleControl);
-        unitStateMachine.changeState(new idleState());
-
         //For Tracking Unit on Death for Win State
         gameData = GameObject.FindGameObjectWithTag("GameController").GetComponent<dataInterpreter>();
 
         rb = GetComponent<Rigidbody>();
-        mRend = transform.GetChild(1).GetComponent<MeshRenderer>();
-        baseMat = mRend.material;
-
         activeNodes = new List<Node>();
+    }
+
+    public void afterInitialize()
+    {
+        unitStateMachine.changeState(new idleState());
     }
 
     public void triggerNeighbors(bool triggerStatus = false)
@@ -125,29 +95,8 @@ public class baseUnit : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void setInput(int controllerType, int input)
-    {
-        switch (controllerType)
-        {
-            case 0:
-                inputMapController ps = (inputMapController)input;
-                inputText.text = ps.ToString();
-                break;
-            case 1:
-                inputMapKeyMouse keyMouse = (inputMapKeyMouse)input;
-                inputText.text = keyMouse.ToString();
-                break;
-        }
-    }
-
     public void Update()
     {
-        Material temp = selected ? selectedMat : baseMat;
-        temp = potential ? potentialMat : temp;
-
-        if (temp != mRend.material)
-            mRend.material = temp;
-
         if (unitStateMachine != null)
             unitStateMachine.executeStateUpdate();
 
@@ -382,10 +331,6 @@ public class idleState : state
     {
         //Debug.Log("Idle State");
         animControl.setBool("idleState", true);
-    }
-
-    public void onUpdate()
-    {
         //find the vector pointing from our position to the target
         if (controller.worldPosition == controller.pos1)
         {
@@ -398,10 +343,12 @@ public class idleState : state
 
         //create the rotation we need to be in to look at the target
         lookRotation = Quaternion.LookRotation(lookDirection);
-
         //rotate us over time according to speed until we are in the required rotation
-        controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, lookRotation, Time.deltaTime * 4f);
+        controller.transform.rotation = lookRotation;
+    }
 
+    public void onUpdate()
+    {
         if (controller.selected)
             particleControl.playParticles(0);
         else
@@ -442,22 +389,10 @@ public class movingState : state
     {
         //find the vector pointing from our position to the target
         lookDirection = (controller.worldPosition - controller.transform.position).normalized;
-        float dot = Vector3.Dot(controller.transform.forward, lookDirection);
-        animControl.setFloat("movementXParam", dot);
-        float localAnimParam = 1 + dot;
-
-        if (controller.worldPosition == controller.pos1)
-        {
-            animControl.setFloat("movementYParam", -2 + localAnimParam);
-        }
-        else
-        {
-            animControl.setFloat("movementYParam", 2 - localAnimParam);
-        }
         //create the rotation we need to be in to look at the target
         lookRotation = Quaternion.LookRotation(lookDirection);
         //rotate us over time according to speed until we are in the required rotation
-        controller.transform.rotation = Quaternion.Slerp(controller.transform.rotation, lookRotation, Time.deltaTime * 4f);
+        controller.transform.rotation = lookRotation;
     }
 
     public void onFixedUpdate()

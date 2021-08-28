@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 public class gameController : MonoBehaviour
 {
@@ -24,7 +25,10 @@ public class gameController : MonoBehaviour
     private Dictionary<string, level> levelListing;
     //This will change with the level data element actually feeding the correct units -> For now this is for input handling
     //Pause State ->
-    public static bool pauseState = false, gameEndState = false, gameIntroState = false;
+    public static bool pauseState = false, gameEndState = false, gameIntroState = false, settingPanelState = false;
+    private settingStorage sData;
+
+    private bool settingApplicationCalled = false;
 
     private void Awake()
     {
@@ -38,6 +42,15 @@ public class gameController : MonoBehaviour
         for (int i = 0; i < updatedLevels.Count; i++)
         {
             levelListing.Add(updatedLevels[i].id, groupedLevels[i].associatedLevel);
+        }
+    }
+
+    private void Update()
+    {
+        if (settingStorage.valuesUpdated)
+        {
+            if (!settingApplicationCalled)
+                StartCoroutine(resetUpdate());
         }
     }
 
@@ -107,6 +120,15 @@ public class gameController : MonoBehaviour
     }
 
     public gameData getGameDataForSave { get { return gData; } }
+
+    public System.Collections.IEnumerator resetUpdate()
+    {
+        //Scuffed but itll work
+        settingApplicationCalled = true;
+        //Activate Overlay to Show Setting Applcaitons?
+        yield return new WaitForSeconds(.1f);
+        settingApplicationCalled = settingStorage.valuesUpdated = false;
+    }
 }
 
 #region Level Information for Proper Storage and Backtracking

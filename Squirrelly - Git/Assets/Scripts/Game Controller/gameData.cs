@@ -15,17 +15,28 @@ public class gameData
         {
             pData = new progressData(this);
             lData = new levelHandler(this);
+            sData = new settingStorage();
+            sData.setStorage();
         }
         else
         {
             pData = savedData.pData;
             lData = savedData.lData;
+            //Needed More Attention than the Others allows for Static Management which is good!
+            sData = savedData.sData;
+            //Set Static Settings for rest of the Game->
+            gameSettingsController.masterVolume = sData.masterVolume;
+            gameSettingsController.vehicleVolume = sData.vehicleVolume;
+            gameSettingsController.effectsVolume = sData.effectsVolume;
+            gameSettingsController.musicVolume = sData.musicVolume;
+            sData.setStorage();
         }
     }
 
     //These are the stored Class Information we Can Access Directly from the Game Data
     public progressData pData { get; set; }
     public levelHandler lData { get; set; }
+    public settingStorage sData { get; set; }
 
     public List<storedLevelData> generatestoredLevelData(List<levelElement> element)
     {

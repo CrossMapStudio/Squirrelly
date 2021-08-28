@@ -32,7 +32,10 @@ public class menuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         levelSelect = 1,
         gameScene = 2,
         mainMenu = 0,
-        campaignSelect = 3
+        campaignSelect = 3,
+        NullAction1 = 4,
+        NullAction2 = 5,
+        NullAction3 = 6
     }
     public sceneToChangeTo sceneIndex;
     private buttonAction assignedAction;
@@ -90,6 +93,11 @@ public class menuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
 
     public void OnPointerExit(PointerEventData element)
+    {
+        exitButton();
+    }
+
+    public void exitButton()
     {
         if (!sceneManager.inLoadState)
         {

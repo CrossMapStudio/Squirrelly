@@ -103,9 +103,6 @@ namespace GridHandler
 
         public List<baseUnit> populateGrid(List<GameObject> units)
         {
-            //Wipe it clean
-            //clearGrid();
-            //This is where the algorithm will play a role in terms of level difficulty -> For now it will be a constant algorithm
             bool positionalSetNoWin = false;
             for (int i = 0; i < totalFillSlots; i++)
             {
@@ -117,6 +114,8 @@ namespace GridHandler
 
                 baseUnit unit = clone.GetComponent<baseUnit>();
                 unit.worldPosition = local.worldPosition;
+                unit.pos1 = availableNodes[0, i].worldPosition;
+                unit.pos2 = availableNodes[1, i].worldPosition;
                 unit.winPos = availableNodes[0, i].worldPosition.x;
                 unit.winState = unit.worldPosition.x == unit.winPos ? true : false;
                 if (!unit.winState)
@@ -128,18 +127,6 @@ namespace GridHandler
                     unit.worldPosition = availableNodes[1, i].worldPosition;
                     unit.winState = false;
                 }
-
-                if (inputHandler.currentControl == inputHandler.controlSetting.controller)
-                {
-                    unit.setInput(0, i);
-                }
-                else
-                {
-                    unit.setInput(1, i);
-                }
-
-                unit.pos1 = availableNodes[0, i].worldPosition;
-                unit.pos2 = availableNodes[1, i].worldPosition;
                 unit.activeNodes.Add(availableNodes[0, i]); 
                 unit.activeNodes.Add(availableNodes[1, i]);
                 if (unit.worldPosition == availableNodes[0, i].worldPosition)
@@ -154,6 +141,18 @@ namespace GridHandler
 
                 controller.triggerButtons[i].gridControl = this;
                 controller.triggerButtons[i].associatedUnit = unit;
+
+                if (inputHandler.currentControl == inputHandler.controlSetting.controller)
+                {
+                    controller.triggerButtons[i].setInput(0, i);
+                }
+                else
+                {
+                    controller.triggerButtons[i].setInput(1, i);
+                }
+
+                //For Idle Directional Set to be Correct
+                unit.afterInitialize();
             }
 
             //This Section creates the connections
@@ -253,13 +252,13 @@ namespace GridHandler
             }
         }
 
-        public List<Vector3> destoryUnit(bool destroyAll = false, baseUnit unitToDestroy = null)
+        public List<Vector3> destoryUnit(bool destroyAll = false, baseUnit destroyCurrent = null)
         {
             List<Vector3> positions = new List<Vector3>();
-            if (unitToDestroy != null)
+            if (destroyCurrent != null)
             {
-                unitToDestroy.changeState(2);
-                unitList.Remove(unitToDestroy);
+                destroyCurrent.changeState(2);
+                unitList.Remove(destroyCurrent);
             }
             else
             {
