@@ -1,5 +1,4 @@
 using GridHandler;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,6 +38,8 @@ public class baseUnit : MonoBehaviour
     public float RotationSpeed = 2f;
     private Vector3 _direction;
     private Quaternion _lookRotation;
+
+    public List<animationStream> animationGroups;
     //This will change most likely
     private enum unitState
     {
@@ -331,6 +332,8 @@ public class idleState : state
     {
         //Debug.Log("Idle State");
         animControl.setBool("idleState", true);
+        var local = controller.animationGroups[0].animationNames;
+        animControl.playAnimation(local[Random.Range(0, local.Count)]);
         //find the vector pointing from our position to the target
         if (controller.worldPosition == controller.pos1)
         {
@@ -535,6 +538,11 @@ public class animationController
         //Error Handling Later
         unitAnimator.SetFloat(valueName, value);
     }
+
+    public void playAnimation(string name)
+    {
+        unitAnimator.Play(name);
+    }
 }
 
 public class audioController
@@ -625,3 +633,13 @@ public class particleController
     }
 }
 #endregion
+
+[System.Serializable]
+public class animationStream
+{
+    public List<string> animationNames;
+    animationStream()
+    {
+
+    }
+}
